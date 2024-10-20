@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useHotkeys } from "react-hotkeys-hook"
 
 
-const shortcutList = [
+export const shortcutList = [
     { shortcut: 'ctrl+c', action: 'Copy' },
     { shortcut: 'ctrl+v', action: 'Paste' },
     { shortcut: 'ctrl+x', action: 'Cut' },
@@ -25,38 +25,41 @@ const shortcutList = [
     { shortcut: 'alt+down', action: 'Move Line Down' },
   ]
 
-interface HotkeytestProps {
+  
+  interface HotkeytestProps {
     gameStarted: boolean;
+    currentShortcutIndex: number;
+    setCurrentShortcutIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Hotkeytest = ({ gameStarted }: HotkeytestProps) => {
-    const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0)
-    const [inputHistory, setInputHistory] = useState<string[]>([]);
-
-    const currentShortcut = shortcutList[currentShortcutIndex]
-
-    useHotkeys(currentShortcut.shortcut, () => {
-        if (gameStarted) {
-            console.log(`Action performed: ${currentShortcut.action}`)
-            setInputHistory(prev =>[...prev, `${currentShortcut.shortcut} - ${currentShortcut.action} (valid)`])
-
-            setCurrentShortcutIndex((prevIndex) => (prevIndex + 1) % shortcutList.length)
-        }
-    }, [gameStarted, currentShortcut]);
-
-    return (
-        <>
-            <div>
-                <p>Action: {currentShortcut.action}</p>
-            </div>
-            <div className="bottom-section">HISTORY OF INPUTS</div>
-            <div>
-                {inputHistory.map((input, index) => (
-                    <div key={index}>{input}</div>
-                ))}
-            </div>
-        </>
-    )
-}
-
-export default Hotkeytest
+  const Hotkeytest = ({ gameStarted, currentShortcutIndex, setCurrentShortcutIndex }: HotkeytestProps) => {
+      const [inputHistory, setInputHistory] = useState<string[]>([]);
+  
+      const currentShortcut = shortcutList[currentShortcutIndex];
+  
+      useHotkeys(currentShortcut.shortcut, () => {
+          if (gameStarted) {
+              console.log(`Action performed: ${currentShortcut.action}`);
+              setInputHistory(prev => [...prev, `${currentShortcut.shortcut} - ${currentShortcut.action} (valid)`]);
+  
+              setCurrentShortcutIndex((prevIndex: number) => (prevIndex + 1) % shortcutList.length);
+          }
+      }, [gameStarted, currentShortcut]);
+  
+      return (
+          <>
+              <div>
+                  <p>Action: {currentShortcut.action}</p>
+              </div>
+              <div className="bottom-section">HISTORY OF INPUTS</div>
+              <div>
+                  {inputHistory.map((input, index) => (
+                      <div key={index}>{input}</div>
+                  ))}
+              </div>
+          </>
+      );
+  }
+  
+  export default Hotkeytest;
+  
