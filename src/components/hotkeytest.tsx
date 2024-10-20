@@ -50,14 +50,12 @@ export const shortcutList = [
       return (
           <>
               <div>
+                {gameStarted ? (
                   <p>Action: {currentShortcut.action}</p>
+                ): (<p>Press Start to begin</p>
+                )}
               </div>
-              <div className="bottom-section">HISTORY OF INPUTS</div>
-              <div>
-                  {inputHistory.map((input, index) => (
-                      <div key={index}>{input}</div>
-                  ))}
-              </div>
+
           </>
       );
   }

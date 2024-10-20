@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './LandingPage.css';
 import Hotkeytest from './hotkeytest';
 import { shortcutList } from './hotkeytest';
+import History from './History';
 const LandingPage = () => {
     const [gameStarted, setGameStarted] = useState(false);
     const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0);
@@ -40,6 +41,12 @@ const LandingPage = () => {
                 <button onClick={handleStartRecording} disabled={gameStarted}>Start</button>
                 <button onClick={handleStopRecording} disabled={!gameStarted}>Stop</button>
                 <button onClick={handleSkipShortcut} disabled={!gameStarted}>Skip</button>
+            </div>
+            < div           className="bottom-section">
+
+            <History
+            inputHistory={inputHistory}
+            />
             </div>
         </div>
     );
