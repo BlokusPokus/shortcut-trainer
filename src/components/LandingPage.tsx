@@ -5,6 +5,9 @@ import { shortcutList } from './hotkeytest';
 const LandingPage = () => {
     const [gameStarted, setGameStarted] = useState(false);
     const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0);
+    const [inputHistory, setInputHistory] = useState<string[]>([]);
+
+    const currentShortcut = shortcutList[currentShortcutIndex];
 
     const handleStartRecording = () => {
         setGameStarted(true);
@@ -17,6 +20,8 @@ const LandingPage = () => {
     const handleSkipShortcut = () => {
         console.log('handleskip trigerred ')
         setCurrentShortcutIndex((prevIndex) => (prevIndex + 1) % shortcutList.length);
+        setInputHistory(prev => [...prev, `${currentShortcut.shortcut} - ${currentShortcut.action} (skipped)`]);
+
     };
 
     return (
@@ -28,7 +33,8 @@ const LandingPage = () => {
                     gameStarted={gameStarted}
                     currentShortcutIndex={currentShortcutIndex}
                     setCurrentShortcutIndex={setCurrentShortcutIndex}
-                />
+                    setInputHistory={setInputHistory} 
+                    inputHistory={inputHistory}                />
             </div>
             <div className="middle-section">
                 <button onClick={handleStartRecording} disabled={gameStarted}>Start</button>

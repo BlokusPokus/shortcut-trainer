@@ -30,10 +30,11 @@ export const shortcutList = [
     gameStarted: boolean;
     currentShortcutIndex: number;
     setCurrentShortcutIndex: React.Dispatch<React.SetStateAction<number>>;
+    inputHistory: string[];
+    setInputHistory:React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-  const Hotkeytest = ({ gameStarted, currentShortcutIndex, setCurrentShortcutIndex }: HotkeytestProps) => {
-      const [inputHistory, setInputHistory] = useState<string[]>([]);
+  const Hotkeytest = ({ gameStarted, currentShortcutIndex, setCurrentShortcutIndex,inputHistory,setInputHistory }: HotkeytestProps) => {
   
       const currentShortcut = shortcutList[currentShortcutIndex];
   
