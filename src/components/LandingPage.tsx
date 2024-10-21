@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import './LandingPage.css';
 import Hotkeytest from './hotkeytest';
 import History from './History';
-import { cursorShortcut } from "./shortcutData";
-
+import { cursorShortcut, vsCodeShortchutMac } from "./shortcutData";
+import BrowserShortcut from './BrowserShortcut';
 interface LandingPageProps {
     toggleTheme: () => void;
     isDarkTheme: boolean;
 }
 
+const choosenShortcut = vsCodeShortchutMac
 const LandingPage: React.FC<LandingPageProps> = ({ toggleTheme, isDarkTheme }) => {
     const [gameStarted, setGameStarted] = useState(false);
     const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0);
@@ -23,17 +24,19 @@ const LandingPage: React.FC<LandingPageProps> = ({ toggleTheme, isDarkTheme }) =
 
     const handleSkipShortcut = () => {
         console.log('handleskip trigerred ')
-        setCurrentShortcutIndex((prevIndex) => (prevIndex + 1) % cursorShortcut.length);
-        setInputHistory(prev => [...prev, {text: `${cursorShortcut[currentShortcutIndex].key} - ${cursorShortcut[currentShortcutIndex].command}`, status: 'skipped'}]);    };
+        setCurrentShortcutIndex((prevIndex) => (prevIndex + 1) % choosenShortcut.length);
+        setInputHistory(prev => [...prev, {text: `${choosenShortcut[currentShortcutIndex].key} - ${choosenShortcut[currentShortcutIndex].command}`, status: 'skipped'}]);    };
 
     return (
         <>
+        <BrowserShortcut />
         <button className='theme-button' onClick={toggleTheme}>Toggle Theme</button>
         <div className={`container  ${isDarkTheme ? 'dark-theme' : ''}`}>
             
-            <div >
-                <div>don't bang your head too hard. your goal is to practice your shortcut skills.</div>
-
+            <div className='top-section'>
+                <div className="intro-text">don't bang your head too hard. your goal is to practice your shortcut skills.</div>
+            </div>
+            <div className='hotkey-section'>
                 <Hotkeytest
                     gameStarted={gameStarted}
                     currentShortcutIndex={currentShortcutIndex}
@@ -41,8 +44,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ toggleTheme, isDarkTheme }) =
                     setInputHistory={setInputHistory} 
                     inputHistory={inputHistory}
                 />
-            </div>
-            <div className="middle-section">
+                            <div className="middle-section">
                 <button 
                     onClick={handleStartRecording} 
                     disabled={gameStarted}
@@ -64,6 +66,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ toggleTheme, isDarkTheme }) =
                 >
                     Skip
                 </button>
+            </div>
+
             </div>
             <div>
                 <History

@@ -32,11 +32,12 @@
     text-align: center;
   }
   
-  .container > div {
-    width: 100%;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    margin-bottom: 1rem;
+  .middle-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
   }
   
   .top-section,
@@ -51,4 +52,20 @@
     position: absolute;
     top: 10px;
     left: 10px;
+  }
+
+  .top-section {
+    margin-bottom: 20px;
+  }
+
+  .intro-text {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+
+  .hotkey-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }

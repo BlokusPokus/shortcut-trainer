@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useHotkeys } from "react-hotkeys-hook"
-import { cursorShortcut } from "./shortcutData";
+import { cursorShortcut,vsCodeShortchutMac } from "./shortcutData";
 import './hotkeytest.css';
 
 
@@ -16,7 +16,7 @@ import './hotkeytest.css';
 
   const Hotkeytest = ({ gameStarted, currentShortcutIndex, setCurrentShortcutIndex,inputHistory,setInputHistory }: HotkeytestProps) => {
   
-      const currentShortcut = cursorShortcut[currentShortcutIndex];
+      const currentShortcut = vsCodeShortchutMac[currentShortcutIndex];
   
       useHotkeys(currentShortcut.key, () => {
           if (gameStarted) {
@@ -30,9 +30,15 @@ import './hotkeytest.css';
       return (
           <div className="hotkeytest-container">
               {gameStarted ? (
-                  <div className="action-display">
-                      <p className="action-label">Action:</p>
-                      <h2 className="action-command">{currentShortcut.command}</h2>
+                  <div className="flip-card">
+                      <div className="flip-card-inner">
+                          <div className="flip-card-front">
+                              <h2 className="action-command">{currentShortcut.command}</h2>
+                          </div>
+                          <div className="flip-card-back">
+                              <p className="action-key ">{currentShortcut.key}</p>
+                          </div>
+                      </div>
                   </div>
               ) : (
                   <p className="start-message">Press Start to begin</p>
