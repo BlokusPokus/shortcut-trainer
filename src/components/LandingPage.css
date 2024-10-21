@@ -1,19 +1,54 @@
-.container{
-display: grid;
-grid-template-rows: repeat(auto-fill,minmax(200px,1fr));
-gap: 1rem;
-justify-content: stretch;}
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --top-section-bg: antiquewhite;
+    --middle-section-bg: #a2d6f6;
+    --bottom-section-bg: #485e2c;
+  }
 
-.container > div {
+  .dark-theme {
+    --bg-color: #333333;
+    --text-color: #ffffff;
+    --top-section-bg: #4a4a4a;
+    --middle-section-bg: #2a2a2a;
+    --bottom-section-bg: #3a3a3a;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .container > div {
+    width: 100%;
     padding: 1.5rem;
     border-radius: 1rem;
+    margin-bottom: 1rem;
   }
-.top-section{
-    background-color: antiquewhite
-}
-.middle-section{
-    background-color: aqua;
-}
-.bottom-section{
-    background-color: rgb(185, 185, 209);
-}
+  
+  .top-section,
+  .middle-section,
+  .bottom-section {
+    width: 100%;
+  }
+  button:disabled {
+    opacity: 0.5;
+  }
+  .theme-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }

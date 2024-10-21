@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import './LandingPage.css';
 import Hotkeytest from './hotkeytest';
-import { shortcutList } from './hotkeytest';
 import History from './History';
-const LandingPage = () => {
+import { cursorShortcut } from "./shortcutData";
+
+interface LandingPageProps {
+    toggleTheme: () => void;
+    isDarkTheme: boolean;
+}
+
+const LandingPage: React.FC<LandingPageProps> = ({ toggleTheme, isDarkTheme }) => {
     const [gameStarted, setGameStarted] = useState(false);
     const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0);
     const [inputHistory, setInputHistory] = useState<string[]>([]);
-
-    const currentShortcut = shortcutList[currentShortcutIndex];
 
     const handleStartRecording = () => {
         setGameStarted(true);
@@ -20,14 +24,16 @@ const LandingPage = () => {
 
     const handleSkipShortcut = () => {
         console.log('handleskip trigerred ')
-        setCurrentShortcutIndex((prevIndex) => (prevIndex + 1) % shortcutList.length);
-        setInputHistory(prev => [...prev, `${currentShortcut.shortcut} - ${currentShortcut.action} (skipped)`]);
-
+        setCurrentShortcutIndex((prevIndex) => (prevIndex + 1) % cursorShortcut.length);
+        setInputHistory(prev => [...prev, `${cursorShortcut[currentShortcutIndex].key} - ${cursorShortcut[currentShortcutIndex].command} (skipped)`]);
     };
 
     return (
-        <div className='container'>
-            <div className="top-section">
+        <>
+        <button className='theme-button' onClick={toggleTheme}>Toggle Theme</button>
+        <div className={`container  ${isDarkTheme ? 'dark-theme' : ''}`}>
+            
+            <div >
                 <div>don't bang your head too hard. your goal is to practice your shortcut skills.</div>
                 <div>What's the shortcut for: </div>
                 <Hotkeytest
@@ -35,20 +41,39 @@ const LandingPage = () => {
                     currentShortcutIndex={currentShortcutIndex}
                     setCurrentShortcutIndex={setCurrentShortcutIndex}
                     setInputHistory={setInputHistory} 
-                    inputHistory={inputHistory}                />
+                    inputHistory={inputHistory}
+                />
             </div>
             <div className="middle-section">
-                <button onClick={handleStartRecording} disabled={gameStarted}>Start</button>
-                <button onClick={handleStopRecording} disabled={!gameStarted}>Stop</button>
-                <button onClick={handleSkipShortcut} disabled={!gameStarted}>Skip</button>
+                <button 
+                    onClick={handleStartRecording} 
+                    disabled={gameStarted}
+                    className={gameStarted ? 'disabled' : ''}
+                >
+                    Start
+                </button>
+                <button 
+                    onClick={handleStopRecording} 
+                    disabled={!gameStarted}
+                    className={!gameStarted ? 'disabled' : ''}
+                >
+                    Stop
+                </button>
+                <button 
+                    onClick={handleSkipShortcut} 
+                    disabled={!gameStarted}
+                    className={!gameStarted ? 'disabled' : ''}
+                >
+                    Skip
+                </button>
             </div>
-            < div           className="bottom-section">
-
-            <History
-            inputHistory={inputHistory}
-            />
+            <div>
+                <History
+                    inputHistory={inputHistory}
+                />
             </div>
         </div>
+        </>
     );
 }
 
