@@ -10,8 +10,8 @@ import './hotkeytest.css';
     gameStarted: boolean;
     currentShortcutIndex: number;
     setCurrentShortcutIndex: React.Dispatch<React.SetStateAction<number>>;
-    inputHistory: string[];
-    setInputHistory:React.Dispatch<React.SetStateAction<string[]>>;
+    inputHistory: {text: string, status: 'skipped' | 'found'}[];
+    setInputHistory: React.Dispatch<React.SetStateAction<{text: string, status: 'skipped' | 'found'}[]>>;
 }
 
   const Hotkeytest = ({ gameStarted, currentShortcutIndex, setCurrentShortcutIndex,inputHistory,setInputHistory }: HotkeytestProps) => {
@@ -21,7 +21,7 @@ import './hotkeytest.css';
       useHotkeys(currentShortcut.key, () => {
           if (gameStarted) {
               console.log(`Action performed: ${currentShortcut.command}`);
-              setInputHistory(prev => [...prev, `${currentShortcut.key} - ${currentShortcut.command} (valid)`]);
+              setInputHistory(prev => [...prev, {text: `${currentShortcut.key} - ${currentShortcut.command}`, status: 'found'}]);
   
               setCurrentShortcutIndex((prevIndex: number) => (prevIndex + 1) % cursorShortcut.length);
           }

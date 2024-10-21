@@ -12,8 +12,7 @@ interface LandingPageProps {
 const LandingPage: React.FC<LandingPageProps> = ({ toggleTheme, isDarkTheme }) => {
     const [gameStarted, setGameStarted] = useState(false);
     const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0);
-    const [inputHistory, setInputHistory] = useState<string[]>([]);
-
+    const [inputHistory, setInputHistory] = useState<{text: string, status: 'skipped' | 'found'}[]>([]);
     const handleStartRecording = () => {
         setGameStarted(true);
     };
@@ -25,8 +24,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ toggleTheme, isDarkTheme }) =
     const handleSkipShortcut = () => {
         console.log('handleskip trigerred ')
         setCurrentShortcutIndex((prevIndex) => (prevIndex + 1) % cursorShortcut.length);
-        setInputHistory(prev => [...prev, `${cursorShortcut[currentShortcutIndex].key} - ${cursorShortcut[currentShortcutIndex].command} (skipped)`]);
-    };
+        setInputHistory(prev => [...prev, {text: `${cursorShortcut[currentShortcutIndex].key} - ${cursorShortcut[currentShortcutIndex].command}`, status: 'skipped'}]);    };
 
     return (
         <>
@@ -35,7 +33,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ toggleTheme, isDarkTheme }) =
             
             <div >
                 <div>don't bang your head too hard. your goal is to practice your shortcut skills.</div>
-                <div>What's the shortcut for: </div>
+
                 <Hotkeytest
                     gameStarted={gameStarted}
                     currentShortcutIndex={currentShortcutIndex}

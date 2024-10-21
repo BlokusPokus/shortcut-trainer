@@ -17,15 +17,65 @@
 }
 
 .singleInputHistory {
-    width: 100px;
-    height: 100px;
-    border-radius: 2px;
-    background-color: var(--top-section-bg);
+    width: 150px;
+    height: 150px;
+    background: var(--bg-color);
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1),
+                 -5px -5px 10px rgba(255, 255, 255, 0.1);
+    transition: 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.singleInputHistory .header {
+    height: 40%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--bg-color);
+}
+
+.singleInputHistory.skipped .header {
+    background-color: #e8e268;
+}
+
+.singleInputHistory.found .header {
+    background-color: rgb(161, 192, 161);
+}
+
+.singleInputHistory .content {
+    height: 60%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 5px;
-    box-sizing: border-box;
+}
+
+.singleInputHistory .shortcut {
+    font-family: 'Inconsolata', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.singleInputHistory .command {
+    font-family: 'Inconsolata', monospace;
+    color: var(--text-color);
+    font-size: 12px;
+}
+
+.singleInputHistory:hover {
+    cursor: pointer;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+    transform: translateY(-5px);
 }
 
 /* Scrollbar styles */
@@ -39,5 +89,5 @@
 
 .history-section::-webkit-scrollbar-thumb {
     background-color: var(--text-color);
-    border-radius: 4px;
+    border-radius: 40px;
 }
