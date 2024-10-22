@@ -49,6 +49,10 @@
     background-color: rgb(161, 192, 161);
 }
 
+.singleInputHistory.wrong .header {
+    background-color: rgb(226, 123, 123);
+}
+
 .singleInputHistory .content {
     height: 60%;
     padding: 10px;

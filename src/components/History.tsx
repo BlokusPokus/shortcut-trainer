@@ -1,7 +1,7 @@
 import './History.css';
 
 interface HistoryProps {
-    inputHistory: {text: string, status: 'skipped' | 'found'}[];
+    inputHistory: {text: string, status: 'skipped' | 'found' | 'wrong'}[];
 }
 
 const History = ({ inputHistory }: HistoryProps) => {

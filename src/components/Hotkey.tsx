@@ -10,8 +10,8 @@ import './Hotkey.css';
     gameStarted: boolean;
     currentShortcutIndex: number;
     setCurrentShortcutIndex: React.Dispatch<React.SetStateAction<number>>;
-    inputHistory: {text: string, status: 'skipped' | 'found'}[];
-    setInputHistory: React.Dispatch<React.SetStateAction<{text: string, status: 'skipped' | 'found'}[]>>;
+    inputHistory: {text: string, status: 'skipped' | 'found' | 'wrong'}[];
+    setInputHistory: React.Dispatch<React.SetStateAction<{text: string, status: 'skipped' | 'found' | 'wrong'}[]>>;
 }
 
   const Hotkey = ({ gameStarted, currentShortcutIndex, setCurrentShortcutIndex,inputHistory,setInputHistory }: HotkeyProps) => {
