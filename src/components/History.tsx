@@ -11,6 +11,7 @@ const History = ({ inputHistory }: HistoryProps) => {
         <div className="history-section">
             
             {inputHistory.length > 0 ? (
+                <>
                 <ul className='history-list'>
                     {inputHistory.map((input, index) => {
                         const [shortcut, command] = input.text.split(' - ');
@@ -27,6 +28,9 @@ const History = ({ inputHistory }: HistoryProps) => {
                         );
                     })}
                 </ul>
+                <button>Download your results</button>
+
+                </>
                 
             ) : (
                 <p>No shortcuts used yet!</p>

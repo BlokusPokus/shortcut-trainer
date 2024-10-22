@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import LandingPage from './components/LandingPage'
-import Hotkeytest  from './components/hotkeytest'
+import Hotkey  from './components/Hotkey'
 import './components/Theme.css'
 import './components/LandingPage.css'
 

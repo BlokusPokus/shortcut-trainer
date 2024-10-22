@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { useHotkeys } from "react-hotkeys-hook"
 import { cursorShortcut,vsCodeShortchutMac } from "./shortcutData";
-import './hotkeytest.css';
+import './Hotkey.css';
 
 
 
   
-  interface HotkeytestProps {
+  interface HotkeyProps {
     gameStarted: boolean;
     currentShortcutIndex: number;
     setCurrentShortcutIndex: React.Dispatch<React.SetStateAction<number>>;
@@ -14,7 +14,7 @@ import './hotkeytest.css';
     setInputHistory: React.Dispatch<React.SetStateAction<{text: string, status: 'skipped' | 'found'}[]>>;
 }
 
-  const Hotkeytest = ({ gameStarted, currentShortcutIndex, setCurrentShortcutIndex,inputHistory,setInputHistory }: HotkeytestProps) => {
+  const Hotkey = ({ gameStarted, currentShortcutIndex, setCurrentShortcutIndex,inputHistory,setInputHistory }: HotkeyProps) => {
   
       const currentShortcut = vsCodeShortchutMac[currentShortcutIndex];
   
@@ -28,7 +28,7 @@ import './hotkeytest.css';
       }, [gameStarted, currentShortcut]);
   
       return (
-          <div className="hotkeytest-container">
+          <div className="Hotkey-container">
               {gameStarted ? (
                   <div className="flip-card">
                       <div className="flip-card-inner">
@@ -47,5 +47,5 @@ import './hotkeytest.css';
       );
   }
   
-  export default Hotkeytest;
+  export default Hotkey;
   

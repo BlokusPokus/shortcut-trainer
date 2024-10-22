@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './LandingPage.css';
-import Hotkeytest from './hotkeytest';
 import History from './History';
 import { cursorShortcut, vsCodeShortchutMac } from "./shortcutData";
 import BrowserShortcut from './BrowserShortcut';
+import ControlButtons from './ControlButtons';
+import Hero from './Hero';
+import Header from './Header';
+import Hotkey from './Hotkey';
 interface LandingPageProps {
     toggleTheme: () => void;
     isDarkTheme: boolean;
@@ -27,47 +30,38 @@ const LandingPage: React.FC<LandingPageProps> = ({ toggleTheme, isDarkTheme }) =
         setCurrentShortcutIndex((prevIndex) => (prevIndex + 1) % choosenShortcut.length);
         setInputHistory(prev => [...prev, {text: `${choosenShortcut[currentShortcutIndex].key} - ${choosenShortcut[currentShortcutIndex].command}`, status: 'skipped'}]);    };
 
+    const handlePickShortcutList = () => {}
+
     return (
         <>
+        <Header/>
         <BrowserShortcut />
+        
         <button className='theme-button' onClick={toggleTheme}>Toggle Theme</button>
-        <div className={`container  ${isDarkTheme ? 'dark-theme' : ''}`}>
-            
+        <div className={`container ${isDarkTheme ? 'dark-theme' : ''}`}>
             <div className='top-section'>
-                <div className="intro-text">don't bang your head too hard. your goal is to practice your shortcut skills.</div>
-            </div>
-            <div className='hotkey-section'>
-                <Hotkeytest
+                <Hero/>
+                            </div>
+            <div className='main-content'>
+                <div className='hotkey-section'>
+                    <Hotkey
+                        gameStarted={gameStarted}
+                        currentShortcutIndex={currentShortcutIndex}
+                        setCurrentShortcutIndex={setCurrentShortcutIndex}
+                        setInputHistory={setInputHistory} 
+                        inputHistory={inputHistory}
+                    />
+                </div>
+                <div className="control-buttons">
+                    <ControlButtons
+                    handlePickShortcutList={handlePickShortcutList}
+                    handleSkipShortcut={handleSkipShortcut}
+                    handleStartRecording={handleStartRecording}
+                    handleStopRecording={handleStopRecording}
                     gameStarted={gameStarted}
-                    currentShortcutIndex={currentShortcutIndex}
-                    setCurrentShortcutIndex={setCurrentShortcutIndex}
-                    setInputHistory={setInputHistory} 
-                    inputHistory={inputHistory}
-                />
-                            <div className="middle-section">
-                <button 
-                    onClick={handleStartRecording} 
-                    disabled={gameStarted}
-                    className={gameStarted ? 'disabled' : ''}
-                >
-                    Start
-                </button>
-                <button 
-                    onClick={handleStopRecording} 
-                    disabled={!gameStarted}
-                    className={!gameStarted ? 'disabled' : ''}
-                >
-                    Stop
-                </button>
-                <button 
-                    onClick={handleSkipShortcut} 
-                    disabled={!gameStarted}
-                    className={!gameStarted ? 'disabled' : ''}
-                >
-                    Skip
-                </button>
-            </div>
-
+                    
+                    />
+                   </div>
             </div>
             <div>
                 <History
