@@ -1,87 +1,91 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { vsCodeShortchutMac } from "./shortcutData";
 
-interface BadShortcutProps {
-    setInputHistory: React.Dispatch<React.SetStateAction<{text: string, status: 'skipped' | 'found' | 'wrong'}[]>>;
-    currentShortcutIndex: number;
-    gameStarted: boolean;
-  }
+interface KeySequenceListenerProps {
+  keySequence: string;
+  inputHistory: { text: string; status: "skipped" | "found" | "wrong" }[];
+  setInputHistory: React.Dispatch<
+    React.SetStateAction<
+      { text: string; status: "skipped" | "found" | "wrong" }[]
+    >
+  >;
+  currentShortcutIndex: number;
+  gameStarted: boolean;
+}
+
+const BadShortcut: React.FC<KeySequenceListenerProps> = ({
+  inputHistory,
+  setInputHistory,
+  currentShortcutIndex,
+  gameStarted,
+}) => {
+  let numberOfKeysStillPressed = 0;
+  let currentKeysSet = new Set<string>();
+  const currentShortcut = vsCodeShortchutMac[currentShortcutIndex];
+
+  useEffect(() => {
+    if (!gameStarted) return;
+
+    const getKeyRepresentation = (e: KeyboardEvent): string => {
+      switch (e.key) {
+        case 'Control':
+          return 'Ctrl';
+        case 'Meta':
+          return 'Cmd';
+        case 'Alt':
+          return 'Alt';
+        case ' ':
+          return 'Space';
+        default:
+          return e.key.length === 1 ? e.key.toUpperCase() : e.key;
+      }
+    };
+
+    const validateCombination = () => {
+      const currentKeys = Array.from(currentKeysSet).sort().join('+');
+      console.log(`Validating combination: ${currentKeys}`);
+      if (currentKeys !== currentShortcut.key) {
+        console.log(`Incorrect key sequence: ${currentKeys}`);
+        setInputHistory((prev) => [
+          ...prev,
+          { text: `${currentKeys} - (Wrong)`, status: "wrong" },
+        ]);
+        console.log("updated inputHistory");
+        console.log(inputHistory);
+      }
+      currentKeysSet.clear();
+      console.log("Reset currentKeysSet");
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      e.preventDefault();
+      const keyRepresentation = getKeyRepresentation(e);
+      currentKeysSet.add(keyRepresentation);
+      console.log(`Key down: ${keyRepresentation}, currentKeysSet: ${Array.from(currentKeysSet).join('+')}, numberOfKeysStillPressed: ${currentKeysSet.size}`);
+    };
+
+    const handleKeyUp = (e: KeyboardEvent) => {
+      e.preventDefault();
+      const keyRepresentation = getKeyRepresentation(e);
+      currentKeysSet.delete(keyRepresentation);
+      console.log(`Key up: ${keyRepresentation}, numberOfKeysStillPressed: ${currentKeysSet.size}`);
+      if (currentKeysSet.size === 0) {
+        validateCombination();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keyup", handleKeyUp);
+    
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [gameStarted, currentShortcut.key, setInputHistory]);
+
   
-  const BadShortcut: React.FC<BadShortcutProps> = ({
-    setInputHistory,
-    currentShortcutIndex,
-    gameStarted
-  }) => {
-    const currentShortcut = vsCodeShortchutMac[currentShortcutIndex];
-    const [pressedKeys, setPressedKeys] = useState(new Set<string>());
-    const combinationRef = useRef<string[]>([]);
+  return null;
+};
 
-    useEffect(() => {
-      if (!gameStarted) return;
 
-      const handleKeyDown = (event: KeyboardEvent) => {
-        event.preventDefault();
-        console.log('Key down:', event.key);
-        setPressedKeys(prev => {
-          const newSet = new Set(prev).add(event.key);
-          console.log('Pressed keys after keydown:', Array.from(newSet));
-          return newSet;
-        });
-        combinationRef.current = [...combinationRef.current, event.key];
-        console.log('Current combination:', combinationRef.current);
-      };
-
-      const handleKeyUp = (event: KeyboardEvent) => {
-        event.preventDefault();
-        console.log('Key up:', event.key);
-        setPressedKeys(prev => {
-          const newSet = new Set(prev);
-          newSet.delete(event.key);
-          console.log('Pressed keys after keyup:', Array.from(newSet));
-          return newSet;
-        });
-
-        console.log('Pressed keys size before check:', pressedKeys.size);
-        if (pressedKeys.size === 1) {
-          console.log('Validating combination');
-          validateCombination();
-        } else {
-          console.log('Not validating, pressedKeys.size =', pressedKeys.size);
-        }
-      };
-
-      const validateCombination = () => {
-        const pressedCombination = combinationRef.current.join(' + ');
-        const correctCombination = currentShortcut.key;
-
-        console.log('Validating combination:', pressedCombination);
-        console.log('Correct combination:', correctCombination);
-
-        if (pressedCombination !== correctCombination) {
-          console.log('Wrong key combination pressed:', pressedCombination);
-          setInputHistory(prev => [...prev, {
-            text: `${pressedCombination} - ${currentShortcut.command} (Wrong)`,
-            status: 'wrong'
-          }]);
-        } else {
-          console.log('Correct combination pressed');
-        }
-
-        // Reset the combination
-        combinationRef.current = [];
-        console.log('Combination reset');
-      };
-
-      document.addEventListener('keydown', handleKeyDown);
-      document.addEventListener('keyup', handleKeyUp);
-
-      return () => {
-        document.removeEventListener('keydown', handleKeyDown);
-        document.removeEventListener('keyup', handleKeyUp);
-      };
-    }, [gameStarted, currentShortcut, setInputHistory, pressedKeys]);
-
-    return null;
-  }
-
-  export default BadShortcut;
+export default BadShortcut;

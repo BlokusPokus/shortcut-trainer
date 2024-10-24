@@ -1,22 +1,22 @@
-import React from 'react'
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
-const BrowserShortcut = () => {
-useEffect(() => {
-    const preventDefaultShortcuts = (e:KeyboardEvent) => {
-        if ((e.metaKey || e.ctrlKey) &&
-    ['p','r','s','f','g'].includes(e.key.toLocaleLowerCase())){
-        e.preventDefault();
-    }
+const BrowserShortcut: React.FC = () => {
+  useEffect(() => {
+    // Function to prevent all keydown events
+    const preventAllKeydown = (e: KeyboardEvent) => {
+      e.preventDefault();
     };
-    window.addEventListener('keydown',preventDefaultShortcuts);
 
-  return () => {
-    window.removeEventListener('keydown',preventDefaultShortcuts);
-  };
-}, []);
+    // Add event listener to the document
+    document.addEventListener('keydown', preventAllKeydown);
 
-return null;
-}
+    // Cleanup function to remove the event listener
+    return () => {
+      document.removeEventListener('keydown', preventAllKeydown);
+    };
+  }, []);
 
-export default BrowserShortcut
+  return null;
+};
+
+export default BrowserShortcut;
