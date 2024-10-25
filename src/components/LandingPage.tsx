@@ -45,13 +45,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ toggleTheme, isDarkTheme }) =
         <>
         <Header/>
         <BrowserShortcut />
-        <BadShortcut
-            keySequence={choosenShortcut[currentShortcutIndex].key}
-            setInputHistory={setInputHistory}
-            currentShortcutIndex={currentShortcutIndex}
-            gameStarted={gameStarted}
-            inputHistory={inputHistory}
-                   />
+
 
         
         <button className='theme-button' onClick={toggleTheme}>Toggle Theme</button>
