@@ -1,5 +1,14 @@
+.history-wrapper {
+    color: var(--font-color);
+    background-color: var(--bg-color);
+}
+
+.history-title {
+    color: var(--font-color);
+}
+
 .history-section {
-    color: var(--text-color);
+    color: var(--font-color);
     width: 100%;
     max-height: 300px;
     min-width: 1000px;
@@ -20,11 +29,10 @@
 .singleInputHistory {
     width: 150px;
     height: 150px;
-    background: var(--bg-color);
+    background: var(--fg-color);
     border-radius: 15px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1),
                  -5px -5px 10px rgba(255, 255, 255, 0.1);
-    transition: 0.2s ease-in-out;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -42,15 +50,15 @@
 }
 
 .singleInputHistory.skipped .header {
-    background-color: #e8e268;
+    background-color: var(--hl-color);
 }
 
 .singleInputHistory.found .header {
-    background-color: rgb(161, 192, 161);
+    background-color: var(--hl-color);
 }
 
 .singleInputHistory.wrong .header {
-    background-color: rgb(226, 123, 123);
+    background-color: var(--hl-color);
 }
 
 .singleInputHistory .content {
@@ -67,13 +75,13 @@
     font-family: 'Inconsolata', monospace;
     font-size: 14px;
     font-weight: 600;
-    color: var(--text-color);
+    color: var(--font-color);
     margin-bottom: 5px;
 }
 
 .singleInputHistory .command {
     font-family: 'Inconsolata', monospace;
-    color: var(--text-color);
+    color: var(--font-color);
     font-size: 12px;
 }
 
@@ -81,6 +89,20 @@
     cursor: pointer;
     box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
     transform: translateY(-5px);
+}
+
+.download-button {
+    background-color: var(--hl-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.no-shortcuts {
+    color: var(--font-color);
 }
 
 /* Scrollbar styles */
@@ -93,6 +115,6 @@
 }
 
 .history-section::-webkit-scrollbar-thumb {
-    background-color: var(--text-color);
+    background-color: var(--hl-color);
     border-radius: 40px;
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from "react"
 import { useRecordHotkeys } from "react-hotkeys-hook"
 import { cursorShortcut, vsCodeShortchutMac } from "./shortcutData";
 import './Hotkey.css';
+import { usePalletContext } from "../PalletContext";
 
 
 
@@ -17,7 +18,7 @@ import './Hotkey.css';
   const Hotkey = ({ gameStarted, currentShortcutIndex, setCurrentShortcutIndex, inputHistory, setInputHistory }: HotkeyProps) => {
   
       const currentShortcut = vsCodeShortchutMac[currentShortcutIndex];
-  
+      const { theme } = usePalletContext();
       const [lastRecordedKeys, setLastRecordedKeys] = useState<string>('');
       const processingRef = useRef(false);
   
@@ -74,7 +75,7 @@ import './Hotkey.css';
       }, [gameStarted, recordedKeys, processRecordedKeys]);
 
       return (
-          <div className="Hotkey-container">
+          <div className={`Hotkey-container ${theme}`}>
               {gameStarted ? (
                   <div className="flip-card">
                       <div className="flip-card-inner">
@@ -87,7 +88,7 @@ import './Hotkey.css';
                       </div>
                   </div>
               ) : (
-                  <p className="start-message">Press Start to begin</p>
+                  <p className={`start-message ${theme}`}>Press Start to begin</p>
               )}
           </div>
       );

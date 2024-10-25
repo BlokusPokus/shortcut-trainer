@@ -65,6 +65,7 @@
     font-size: 1.5em;
     font-weight: 900;
     text-align: center;
+    color: var(--font-color);
     margin: 0;
     word-wrap: break-word;
     max-width: 100%;
@@ -72,7 +73,8 @@
 
 .start-message {
     font-size: 1.5rem;
-    color: var(--text-color);
+    color: var(--font-color);
+    background-color: var(--bg-color);
     text-align: center;
     width: 100%;
 }

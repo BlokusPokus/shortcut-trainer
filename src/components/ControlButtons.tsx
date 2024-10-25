@@ -1,4 +1,5 @@
 import React from 'react'
+import { usePalletContext } from '../PalletContext';
 
 interface ControlButtonsProps {
     handleStartRecording: () => void;
@@ -9,10 +10,10 @@ interface ControlButtonsProps {
 }
 
 const ControlButtons = ({handleStartRecording,handleStopRecording,handleSkipShortcut,handlePickShortcutList,gameStarted}:ControlButtonsProps) => {
-  
+    const { theme } = usePalletContext();
     return (
     <div>
-        <div className="control-buttons">
+        <div className={`control-buttons ${theme}`}>
     <button 
         onClick={handleStartRecording} 
         disabled={gameStarted}

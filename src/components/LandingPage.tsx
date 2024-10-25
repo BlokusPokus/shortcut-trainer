@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import './LandingPage.css';
 import History from './History';
 import { cursorShortcut, vsCodeShortchutMac } from "./shortcutData";
@@ -7,15 +7,17 @@ import ControlButtons from './ControlButtons';
 import Hero from './Hero';
 import Header from './Header';
 import Hotkey from './Hotkey';
-import BadShortcut from './BadShortcut';
-import { useCallback } from 'react';
+import Footer from './Footer';
+import { usePalletContext } from '../PalletContext'
+
 interface LandingPageProps {
-    toggleTheme: () => void;
-    isDarkTheme: boolean;
+
 }
 
 const choosenShortcut = vsCodeShortchutMac
-const LandingPage: React.FC<LandingPageProps> = ({ toggleTheme, isDarkTheme }) => {
+const LandingPage: React.FC<LandingPageProps> = () => {
+    const { theme } = usePalletContext();
+
     const [gameStarted, setGameStarted] = useState(false);
     const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0);
     const [inputHistory, setInputHistory] = useState<{text: string, status: 'skipped' | 'found' | 'wrong'}[]>([]);
@@ -42,17 +44,14 @@ const LandingPage: React.FC<LandingPageProps> = ({ toggleTheme, isDarkTheme }) =
     const handlePickShortcutList = () => {}
 
     return (
-        <>
-        <Header/>
+        <div className={theme}>
+        <Header  />
         <BrowserShortcut />
 
-
-        
-        <button className='theme-button' onClick={toggleTheme}>Toggle Theme</button>
-        <div className={`container ${isDarkTheme ? 'dark-theme' : ''}`}>
+        <div className={`container `}>
             <div className='top-section'>
                 <Hero/>
-                            </div>
+            </div>
             <div className='main-content'>
                 <div className='hotkey-section'>
                     <Hotkey
@@ -80,7 +79,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ toggleTheme, isDarkTheme }) =
                 />
             </div>
         </div>
-        </>
+        <Footer />
+        </div>
     );
 }
 

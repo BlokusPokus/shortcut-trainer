@@ -1,11 +1,19 @@
 import React from 'react'
 import CommandPallet from './CommandPallet'
+import { usePalletContext } from '../PalletContext';
 
-const Header = () => {
+interface HeaderProps {
+}
+
+const Header: React.FC<HeaderProps> = () => {
+  const { theme } = usePalletContext();
   return (
-    
-    <><div>Header</div><CommandPallet /></>
+    <div className={`header ${theme}`}>
+      <CommandPallet />
 
+
+
+    </div>
   )
 }
 

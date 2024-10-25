@@ -17,14 +17,17 @@
   body {
     background-color: var(--bg-color);
     color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
   
   .container {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
     padding: 1rem;
     box-sizing: border-box;
     max-width: 1000px;
@@ -51,7 +54,7 @@
   .theme-button {
     position: absolute;
     top: 10px;
-    left: 10px;
+    right: 10px;
   }
 
   .top-section {
@@ -107,4 +110,13 @@
 
 .control-buttons button {
     width: 100px;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
