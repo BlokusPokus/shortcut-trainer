@@ -1,3 +1,43 @@
+
+
+import React, { useState } from 'react'
+import Modal from './common/modal'
+import { usePalletContext } from '../PalletContext';
+import './themes.css'
+
+interface ShortcutDataProps {
+    setShortcutList: (list: { key: string; command: string; }[]) => void;
+}
+
+
+    
+const ShortcutData = ({setShortcutList}: ShortcutDataProps) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const shortcutLists = [
+        { name: "VS Code Shortcuts (Mac)", list: vsCodeShortchutMac },
+        { name: "macOS Shortcuts", list: macOsShortcut },
+        { name: "Cursor Shortcuts", list: cursorShortcut }
+      ];
+    const { theme, setTheme } = usePalletContext();
+
+
+    return (
+        <div>
+          <button onClick={() => setIsModalOpen(true)}>Pick your shortcut list</button>
+          <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Choose Theme">
+            {shortcutLists.map((item, index) => (
+              <button key={index} onClick={() => setShortcutList(item.list)}>
+                {item.name}
+              </button>
+            ))}
+          </Modal>
+        </div>
+      )
+    }
+
+export default ShortcutData;
+
+
 export const vsCodeShortchutMac = [
     { "key": "shift+meta+p", "command": "Show Command Palette" },
     { "key": "meta+p", "command": "Quick Open" },

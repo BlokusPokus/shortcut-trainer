@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import './LandingPage.css';
 import History from './History';
-import { cursorShortcut, vsCodeShortchutMac } from "./shortcutData";
+import { cursorShortcut, macOsShortcut, vsCodeShortchutMac } from "./shortcutData";
 import BrowserShortcut from './BrowserShortcut';
 import ControlButtons from './ControlButtons';
 import Hero from './Hero';
@@ -14,10 +14,9 @@ interface LandingPageProps {
 
 }
 
-const choosenShortcut = vsCodeShortchutMac
 const LandingPage: React.FC<LandingPageProps> = () => {
     const { theme } = usePalletContext();
-
+    const [shortcutList, setShortcutList] = useState<{ key: string; command: string; }[]>([]);
     const [gameStarted, setGameStarted] = useState(false);
     const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0);
     const [inputHistory, setInputHistory] = useState<{text: string, status: 'skipped' | 'found' | 'wrong'}[]>([]);
@@ -31,18 +30,26 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     }, [setGameStarted]);
     
     const handleSkipShortcut = useCallback(() => {
-        setCurrentShortcutIndex((prevIndex) => (prevIndex + 1) % choosenShortcut.length);
+        setCurrentShortcutIndex((prevIndex) => (prevIndex + 1) % shortcutList.length);
         setInputHistory(prev => [
             ...prev, 
             {
-                text: `${choosenShortcut[currentShortcutIndex].key} - ${choosenShortcut[currentShortcutIndex].command}`,
+                text: `${shortcutList[currentShortcutIndex].key} - ${shortcutList[currentShortcutIndex].command}`,
                 status: 'skipped'
             }
         ]);
-    }, [setCurrentShortcutIndex, setInputHistory, choosenShortcut, currentShortcutIndex]);
+    }, [setCurrentShortcutIndex, setInputHistory, shortcutList, currentShortcutIndex]);
     
-    const handlePickShortcutList = () => {}
-
+    const shortcutLists = [
+        { name: "VS Code Shortcuts (Mac)", list: vsCodeShortchutMac },
+        { name: "macOS Shortcuts", list: macOsShortcut },
+        { name: "Cursor Shortcuts", list: cursorShortcut }
+      ];
+    const handlePickShortcutList = (list: { key: string; command: string; }[]) => {
+        setShortcutList(list);
+        console.log(shortcutList);
+        
+    }
     return (
         <div className={theme}>
         <Header  />
@@ -60,16 +67,17 @@ const LandingPage: React.FC<LandingPageProps> = () => {
                         setCurrentShortcutIndex={setCurrentShortcutIndex}
                         setInputHistory={setInputHistory} 
                         inputHistory={inputHistory}
+                        shortcutList={shortcutList}
+                        
                     />
                 </div>
                 <div className="control-buttons">
                     <ControlButtons
-                    handlePickShortcutList={handlePickShortcutList}
-                    handleSkipShortcut={handleSkipShortcut}
-                    handleStartRecording={handleStartRecording}
-                    handleStopRecording={handleStopRecording}
-                    gameStarted={gameStarted}
-                    
+                        handlePickShortcutList={handlePickShortcutList}
+                        handleSkipShortcut={handleSkipShortcut}
+                        handleStartRecording={handleStartRecording}
+                        handleStopRecording={handleStopRecording}
+                        gameStarted={gameStarted}
                     />
                    </div>
             </div>
