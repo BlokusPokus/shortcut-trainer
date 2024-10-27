@@ -9,6 +9,7 @@ import Header from './Header';
 import Hotkey from './Hotkey';
 import Footer from './Footer';
 import { usePalletContext } from '../PalletContext'
+import Timer from './Timer';
 
 interface LandingPageProps {
 
@@ -53,6 +54,8 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     return (
         <div className={theme}>
         <Header  />
+        <Timer delayResend="180" gameStarted={gameStarted} setGameStarted={setGameStarted}/>
+
         <BrowserShortcut />
 
         <div className={`container `}>
