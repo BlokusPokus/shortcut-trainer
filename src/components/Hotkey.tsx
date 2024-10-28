@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback, useRef } from "react"
 import { useRecordHotkeys } from "react-hotkeys-hook"
 import './Hotkey.css';
 import { usePalletContext } from "../PalletContext";
-
+import { ThumbsDown } from 'lucide-react'
+import Timer from "./Timer";
 interface HotkeyProps {
     gameStarted: boolean;
     currentShortcutIndex: number;
@@ -10,6 +11,7 @@ interface HotkeyProps {
     inputHistory: {text: string, status: 'skipped' | 'found' | 'wrong'}[];
     setInputHistory: React.Dispatch<React.SetStateAction<{text: string, status: 'skipped' | 'found' | 'wrong'}[]>>;
     shortcutList: { key: string; command: string; }[]; // Add this line
+    setGameStarted: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Hotkey = ({ 
@@ -18,7 +20,8 @@ const Hotkey = ({
     setCurrentShortcutIndex, 
     inputHistory, 
     setInputHistory,
-    shortcutList // Add this line
+    shortcutList,
+    setGameStarted
 }: HotkeyProps) => {
   
     const currentShortcut = shortcutList[currentShortcutIndex]; // Use shortcutList instead of vsCodeShortchutMac
@@ -42,7 +45,7 @@ const Hotkey = ({
                 setCurrentShortcutIndex((prevIndex: number) => (prevIndex + 1) % shortcutList.length); // Use shortcutList.length
             } else {
                 console.log('Wrong combination entered');
-                setInputHistory(prev => [...prev, { text: `${keyCombo} - Wrong`, status: 'wrong' as const }]);
+                setInputHistory(prev => [...prev, { text: `${keyCombo} - ${currentShortcut.command} `, status: 'wrong' as const }]);
             }
           
             setLastRecordedKeys(keyCombo);
@@ -80,7 +83,12 @@ const Hotkey = ({
 
     return (
         <div className={`Hotkey-container ${theme}`}>
+
             {gameStarted ? (
+                
+                <>
+                            <Timer delayResend="180" gameStarted={gameStarted} setGameStarted={setGameStarted}/>
+
                 <div className="flip-card">
                     <div className="flip-card-inner">
                         <div className="flip-card-front">
@@ -91,6 +99,7 @@ const Hotkey = ({
                         </div>
                     </div>
                 </div>
+                </>
             ) : (
                 <p className={`start-message ${theme}`}>Press Start to begin</p>
             )}

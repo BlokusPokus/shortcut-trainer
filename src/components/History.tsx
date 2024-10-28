@@ -1,3 +1,4 @@
+import { ThumbsDown, ThumbsUp } from 'lucide-react';
 import { usePalletContext } from '../PalletContext';
 import './History.css';
 
@@ -9,18 +10,18 @@ const History = ({ inputHistory }: HistoryProps) => {
     const { theme } = usePalletContext();
     return (
         <div className={`history-wrapper ${theme}`}>
-            <h2 className="history-title">History of Inputs</h2>
+            {inputHistory.length > 0 && <h2 className="history-title">History of Inputs</h2>}
             <div className="history-section">
                 {inputHistory.length > 0 ? (
                     <>
                     <ul className='history-list'>
-                        {inputHistory.map((input, index) => {
+                    {[...inputHistory].reverse().map((input, index) => {
                             const [shortcut, command] = input.text.split(' - ');
                             return (
                                 <li 
                                     className={`singleInputHistory ${input.status}`}
                                     key={index}>
-                                    <div className="header">{input.status.toUpperCase()}</div>
+                                    <div className="header">{input.status === 'wrong' ? <ThumbsDown /> : <ThumbsUp />}</div>
                                     <div className="content">
                                         <div className="shortcut">{shortcut}</div>
                                         <div className="command">{command}</div>
@@ -32,7 +33,7 @@ const History = ({ inputHistory }: HistoryProps) => {
                     <button className="download-button">Download your results</button>
                     </>
                 ) : (
-                    <p className='no-shortcuts'>No shortcuts used yet!</p>
+                    <p className='no-shortcuts'></p>
                 )}
             </div>
         </div>

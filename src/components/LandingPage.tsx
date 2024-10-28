@@ -10,6 +10,7 @@ import Hotkey from './Hotkey';
 import Footer from './Footer';
 import { usePalletContext } from '../PalletContext'
 import Timer from './Timer';
+import CommandPallet from './CommandPallet';
 
 interface LandingPageProps {
 
@@ -17,8 +18,7 @@ interface LandingPageProps {
 
 const LandingPage: React.FC<LandingPageProps> = () => {
     const { theme } = usePalletContext();
-    const [shortcutList, setShortcutList] = useState<{ key: string; command: string; }[]>([]);
-    const [gameStarted, setGameStarted] = useState(false);
+    const [shortcutList, setShortcutList] = useState<{ key: string; command: string; }[]>(vsCodeShortchutMac);    const [gameStarted, setGameStarted] = useState(false);
     const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0);
     const [inputHistory, setInputHistory] = useState<{text: string, status: 'skipped' | 'found' | 'wrong'}[]>([]);
     
@@ -54,13 +54,14 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     return (
         <div className={theme}>
         <Header  />
-        <Timer delayResend="180" gameStarted={gameStarted} setGameStarted={setGameStarted}/>
 
         <BrowserShortcut />
 
         <div className={`container `}>
             <div className='top-section'>
-                <Hero/>
+            <CommandPallet />
+
+                <Hero gameStarted={gameStarted}/>
             </div>
             <div className='main-content'>
                 <div className='hotkey-section'>
@@ -71,6 +72,7 @@ const LandingPage: React.FC<LandingPageProps> = () => {
                         setInputHistory={setInputHistory} 
                         inputHistory={inputHistory}
                         shortcutList={shortcutList}
+                        setGameStarted={setGameStarted}
                         
                     />
                 </div>

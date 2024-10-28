@@ -9,7 +9,7 @@ const Header: React.FC<HeaderProps> = () => {
   const { theme } = usePalletContext();
   return (
     <div className={`header ${theme}`}>
-      <CommandPallet />
+
 
 
 

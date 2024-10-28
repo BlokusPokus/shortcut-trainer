@@ -1,5 +1,6 @@
 .Hotkey-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -62,7 +63,7 @@
 }
 
 .action-command, .action-key {
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: 900;
     text-align: center;
     color: var(--font-color);

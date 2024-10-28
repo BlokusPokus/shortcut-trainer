@@ -47,7 +47,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
+    font-weight: normal;
     color: var(--bg-color);
     text-align: center;
     padding: 5px;
@@ -78,7 +78,7 @@
 
 .singleInputHistory .shortcut {
     font-family: 'Inconsolata', monospace;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--font-color);
     margin-bottom: 5px;
@@ -114,7 +114,8 @@
 
 /* Scrollbar styles */
 .history-section::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
+    opacity: 0.5;
 }
 
 .history-section::-webkit-scrollbar-track {
