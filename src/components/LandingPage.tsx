@@ -21,7 +21,9 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     const [shortcutList, setShortcutList] = useState<{ key: string; command: string; }[]>(vsCodeShortchutMac);    const [gameStarted, setGameStarted] = useState(false);
     const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0);
     const [inputHistory, setInputHistory] = useState<{text: string, status: 'skipped' | 'found' | 'wrong'}[]>([]);
-    
+    const [initialTime, setInitialTime] = useState<number>(180);
+    const [currentTime, setCurrentTime] = useState(180);
+  
     const handleStartRecording = useCallback(() => {
         setGameStarted(true);
     }, [setGameStarted]);
@@ -60,8 +62,7 @@ const LandingPage: React.FC<LandingPageProps> = () => {
         <div className={`container `}>
             <div className='top-section'>
             <CommandPallet />
-
-                <Hero gameStarted={gameStarted}/>
+            <Hero gameStarted={gameStarted}/>
             </div>
             <div className='main-content'>
                 <div className='hotkey-section'>
@@ -73,7 +74,8 @@ const LandingPage: React.FC<LandingPageProps> = () => {
                         inputHistory={inputHistory}
                         shortcutList={shortcutList}
                         setGameStarted={setGameStarted}
-                        
+                        initialTime={initialTime}
+                        setInitialTime={setInitialTime}
                     />
                 </div>
                 <div className="control-buttons">
@@ -83,8 +85,10 @@ const LandingPage: React.FC<LandingPageProps> = () => {
                         handleStartRecording={handleStartRecording}
                         handleStopRecording={handleStopRecording}
                         gameStarted={gameStarted}
+                        initialTime={initialTime}
+                        setInitialTime={setInitialTime}
                     />
-                   </div>
+                </div>
             </div>
             <div>
                 <History

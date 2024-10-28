@@ -16,7 +16,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
     <div className={`modal-overlay ${theme}`}>
       <div className="modal-content">
         <h2 className="modal-title">{title}
-        <button onClick={onClose} className="modal-close-button">Close</button>
+        <button onClick={onClose} className="modal-close-button">Cancel</button>
         </h2>
         {children}
       </div>

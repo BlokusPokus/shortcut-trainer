@@ -8,9 +8,20 @@ interface HistoryProps {
 
 const History = ({ inputHistory }: HistoryProps) => {
     const { theme } = usePalletContext();
+    
+    // Add success rate calculation
+    const successRate = inputHistory.length > 0
+        ? Math.round((inputHistory.filter(input => input.status === 'found').length / inputHistory.length) * 100)
+        : 0;
+
     return (
         <div className={`history-wrapper ${theme}`}>
-            {inputHistory.length > 0 && <h2 className="history-title">History of Inputs</h2>}
+            {inputHistory.length > 0 && (
+                <>
+                    <h2 className="history-title">History of Inputs</h2>
+                    <div className="success-rate">Success Rate: {successRate}%</div>
+                </>
+            )}
             <div className="history-section">
                 {inputHistory.length > 0 ? (
                     <>

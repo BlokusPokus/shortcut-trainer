@@ -4,6 +4,7 @@ import './Hotkey.css';
 import { usePalletContext } from "../PalletContext";
 import { ThumbsDown } from 'lucide-react'
 import Timer from "./Timer";
+import { vsCodeShortchutMac, macOsShortcut, cursorShortcut } from "./shortcutData";
 interface HotkeyProps {
     gameStarted: boolean;
     currentShortcutIndex: number;
@@ -12,6 +13,8 @@ interface HotkeyProps {
     setInputHistory: React.Dispatch<React.SetStateAction<{text: string, status: 'skipped' | 'found' | 'wrong'}[]>>;
     shortcutList: { key: string; command: string; }[]; // Add this line
     setGameStarted: React.Dispatch<React.SetStateAction<boolean>>;
+    initialTime: number;
+    setInitialTime: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const Hotkey = ({ 
@@ -21,7 +24,9 @@ const Hotkey = ({
     inputHistory, 
     setInputHistory,
     shortcutList,
-    setGameStarted
+    setGameStarted,
+    initialTime,
+    setInitialTime
 }: HotkeyProps) => {
   
     const currentShortcut = shortcutList[currentShortcutIndex]; // Use shortcutList instead of vsCodeShortchutMac
@@ -81,27 +86,45 @@ const Hotkey = ({
         }
     }, [gameStarted, recordedKeys, processRecordedKeys]);
 
+    // Add this function to get current list name
+    const getCurrentListName = () => {
+        const shortcutLists = [
+            { name: "VS Code Shortcuts (Mac)", list: vsCodeShortchutMac },
+            { name: "macOS Shortcuts", list: macOsShortcut },
+            { name: "Cursor Shortcuts", list: cursorShortcut }
+        ];
+        
+        const currentList = shortcutLists.find(item => item.list === shortcutList);
+        return currentList ? currentList.name : "Selected Shortcuts";
+    };
+
     return (
         <div className={`Hotkey-container ${theme}`}>
-
             {gameStarted ? (
-                
                 <>
-                            <Timer delayResend="180" gameStarted={gameStarted} setGameStarted={setGameStarted}/>
-
-                <div className="flip-card">
-                    <div className="flip-card-inner">
-                        <div className="flip-card-front">
-                            <h2 className="action-command">{currentShortcut.command}</h2>
-                        </div>
-                        <div className="flip-card-back">
-                            <p className="action-key ">{currentShortcut.key}</p>
+                    <Timer 
+                        delayResend={initialTime}
+                        gameStarted={gameStarted}
+                        setGameStarted={setGameStarted}
+                        onTimeUpdate={setInitialTime}
+                    />
+                    <div className="current-list-name">{getCurrentListName()}</div>
+                    <div className="flip-card">
+                        <div className="flip-card-inner">
+                            <div className="flip-card-front">
+                                <h2 className="action-command">{currentShortcut.command}</h2>
+                            </div>
+                            <div className="flip-card-back">
+                                <p className="action-key ">{currentShortcut.key}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </>
             ) : (
-                <p className={`start-message ${theme}`}>Press Start to begin</p>
+                <>
+                    <p className={`start-message ${theme}`}>Press Start to begin</p>
+                    <div className="current-list-name">{getCurrentListName()}</div>
+                </>
             )}
         </div>
     );

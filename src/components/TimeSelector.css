@@ -1,0 +1,19 @@
+.time-selector {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.time-option {
+
+}
+
+.time-option:hover {
+  background: #f0f0f0;
+}
+
+.time-option.selected {
+  background:var(--primary-color);
+  color: white;
+  border-color:var(--primary-color);
+}
