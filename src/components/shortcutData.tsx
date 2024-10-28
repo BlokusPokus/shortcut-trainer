@@ -10,7 +10,14 @@ interface ShortcutDataProps {
     setShortcutList: (list: { key: string; command: string; }[]) => void;
 }
 
-
+export const shuffleArray = <T,>(array: T[]): T[] => {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+};
     
 const ShortcutData = ({setShortcutList}: ShortcutDataProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,23 +25,28 @@ const ShortcutData = ({setShortcutList}: ShortcutDataProps) => {
         { name: "VS Code Shortcuts (Mac)", list: vsCodeShortchutMac },
         { name: "macOS Shortcuts", list: macOsShortcut },
         { name: "Cursor Shortcuts", list: cursorShortcut }
-      ];
+    ];
     const { theme, setTheme } = usePalletContext();
-
 
     return (
         <div>
-          <button onClick={() => setIsModalOpen(true)}>Pick a shortcut list</button>
-          <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Pick list">
-            {shortcutLists.map((item, index) => (
-              <button key={index} onClick={() => {setShortcutList(item.list); setIsModalOpen(false)}}>
-                {item.name}
-              </button>
-            ))}
-          </Modal>
+            <button onClick={() => setIsModalOpen(true)}>Pick a shortcut list</button>
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Pick list">
+                {shortcutLists.map((item, index) => (
+                    <button 
+                        key={index} 
+                        onClick={() => {
+                            setShortcutList(shuffleArray(item.list)); 
+                            setIsModalOpen(false);
+                        }}
+                    >
+                        {item.name}
+                    </button>
+                ))}
+            </Modal>
         </div>
-      )
-    }
+    )
+}
 
 export default ShortcutData;
 

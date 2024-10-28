@@ -2,9 +2,10 @@ import React, { useState, useEffect, useCallback, useRef } from "react"
 import { useRecordHotkeys } from "react-hotkeys-hook"
 import './Hotkey.css';
 import { usePalletContext } from "../PalletContext";
-import { ThumbsDown } from 'lucide-react'
 import Timer from "./Timer";
 import { vsCodeShortchutMac, macOsShortcut, cursorShortcut } from "./shortcutData";
+import { shuffleArray } from "./shortcutData";
+
 interface HotkeyProps {
     gameStarted: boolean;
     currentShortcutIndex: number;
@@ -15,6 +16,7 @@ interface HotkeyProps {
     setGameStarted: React.Dispatch<React.SetStateAction<boolean>>;
     initialTime: number;
     setInitialTime: React.Dispatch<React.SetStateAction<number>>;
+    setShortcutList: React.Dispatch<React.SetStateAction<{ key: string; command: string; }[]>>;
 }
 
 const Hotkey = ({ 
@@ -26,7 +28,8 @@ const Hotkey = ({
     shortcutList,
     setGameStarted,
     initialTime,
-    setInitialTime
+    setInitialTime,
+    setShortcutList
 }: HotkeyProps) => {
   
     const currentShortcut = shortcutList[currentShortcutIndex]; // Use shortcutList instead of vsCodeShortchutMac
@@ -42,25 +45,39 @@ const Hotkey = ({
         if (gameStarted && recordedKeys.size > 0 && !processingRef.current) {
             processingRef.current = true;
             const keyCombo = Array.from(recordedKeys).join('+');
-            console.log('Processing recorded combination', { keyCombo, currentShortcut: currentShortcut.key });
-          
-            if (keyCombo === currentShortcut.key) {
+            
+            // Normalize both the input and expected shortcuts
+            const normalizeShortcut = (shortcut: string) => {
+                return shortcut.split('+').sort().join('+');
+            };
+
+            const normalizedInput = normalizeShortcut(keyCombo);
+            const normalizedExpected = normalizeShortcut(currentShortcut.key);
+            
+            if (normalizedInput === normalizedExpected) {
                 console.log(`Correct shortcut entered: ${currentShortcut.command}`);
                 setInputHistory(prev => [...prev, { text: `${keyCombo} - ${currentShortcut.command}`, status: 'found' as const }]);
-                setCurrentShortcutIndex((prevIndex: number) => (prevIndex + 1) % shortcutList.length); // Use shortcutList.length
+                
+                // Check if we've completed all shortcuts
+                const nextIndex = (currentShortcutIndex + 1) % shortcutList.length;
+                if (nextIndex === 0) {
+                    // Reshuffle the list when we complete all shortcuts
+                    setShortcutList(shuffleArray([...shortcutList]));
+                }
+                setCurrentShortcutIndex(nextIndex);
             } else {
                 console.log('Wrong combination entered');
                 setInputHistory(prev => [...prev, { text: `${keyCombo} - ${currentShortcut.command} `, status: 'wrong' as const }]);
             }
-          
+            
             setLastRecordedKeys(keyCombo);
             resetKeys();
-          
+            
             setTimeout(() => {
                 processingRef.current = false;
             }, 300);
         }
-    }, [gameStarted, recordedKeys, currentShortcut, setInputHistory, setCurrentShortcutIndex, resetKeys, shortcutList]); // Add shortcutList to dependencies
+    }, [gameStarted, recordedKeys, currentShortcut, setInputHistory, setCurrentShortcutIndex, resetKeys, shortcutList, currentShortcutIndex, setShortcutList]);
 
     useEffect(() => {
         console.log('Game state changed', { gameStarted });

@@ -76,6 +76,7 @@ const LandingPage: React.FC<LandingPageProps> = () => {
                         setGameStarted={setGameStarted}
                         initialTime={initialTime}
                         setInitialTime={setInitialTime}
+                        setShortcutList={setShortcutList}
                     />
                 </div>
                 <div className="control-buttons">

@@ -1,4 +1,4 @@
-import { ThumbsDown, ThumbsUp } from 'lucide-react';
+import { ThumbsDown, ThumbsUp, Minus } from 'lucide-react';
 import { usePalletContext } from '../PalletContext';
 import './History.css';
 
@@ -32,7 +32,11 @@ const History = ({ inputHistory }: HistoryProps) => {
                                 <li 
                                     className={`singleInputHistory ${input.status}`}
                                     key={index}>
-                                    <div className="header">{input.status === 'wrong' ? <ThumbsDown /> : <ThumbsUp />}</div>
+                                    <div className="header">
+                                        {input.status === 'wrong' ? <ThumbsDown /> : 
+                                         input.status === 'skipped' ? <Minus /> : 
+                                         <ThumbsUp />}
+                                    </div>
                                     <div className="content">
                                         <div className="shortcut">{shortcut}</div>
                                         <div className="command">{command}</div>
