@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import LandingPage from './components/LandingPage'
 import Hotkey  from './components/Hotkey'
-import './components/Theme.css'
+import './components/themes.css'
 import './components/LandingPage.css'
 import PalletProvider from './PalletContext'
 

@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Modal from './common/modal'
 import { usePalletContext } from '../PalletContext';
 import './themes.css'
+import './ShortcutData.css'
 
 interface ShortcutDataProps {
     setShortcutList: (list: { key: string; command: string; }[]) => void;
@@ -23,10 +24,10 @@ const ShortcutData = ({setShortcutList}: ShortcutDataProps) => {
 
     return (
         <div>
-          <button onClick={() => setIsModalOpen(true)}>Pick your shortcut list</button>
-          <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Choose Theme">
+          <button onClick={() => setIsModalOpen(true)}>Pick a shortcut list</button>
+          <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Pick list">
             {shortcutLists.map((item, index) => (
-              <button key={index} onClick={() => setShortcutList(item.list)}>
+              <button key={index} onClick={() => {setShortcutList(item.list); setIsModalOpen(false)}}>
                 {item.name}
               </button>
             ))}

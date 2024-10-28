@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Modal from './common/modal'
 import { usePalletContext } from '../PalletContext';
 import './themes.css'
-
+import './CommandPallet.css'
 const CommandPallet = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { theme, setTheme } = usePalletContext();
@@ -15,12 +15,14 @@ const CommandPallet = () => {
     }
 
     return (
-      <div>
+      <div className="command-pallet">
         <button onClick={() => setIsModalOpen(true)}>Change theme</button>
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Choose Theme">
-          {AllPallets.map((pallet) => (
-            <button key={pallet} onClick={() => handlePalletSelection(pallet)}>{pallet}</button>
-          ))}
+          <ul className='command-pallet-list'>
+            {AllPallets.map((pallet) => (
+              <button key={pallet} onClick={() => handlePalletSelection(pallet)}>{pallet}</button>
+            ))}
+          </ul>
         </Modal>
       </div>
     )
