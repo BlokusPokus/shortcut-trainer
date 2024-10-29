@@ -8,28 +8,29 @@
 }
 
 .history-section {
-    color: var(--font-color);
     width: 100%;
-    max-height: 400px;
+    max-height: 25vh;
+    min-height: 25vh; /* Add this line */
     min-width: 1000px;
-    min-height: 300px;
     overflow-y: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 0 20px;
+    display: flex;           /* Add this line */
+    flex-direction: column;  /* Add this line */
 }
 
 .history-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
     list-style-type: none;
     padding: 0;
     justify-items: center;
 }
 
 .singleInputHistory {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     background: var(--fg-color);
     border-radius: 15px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1),
@@ -105,13 +106,17 @@
     padding: 10px 20px;
     margin-top: 20px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 1rem;
 }
 
+/* Update the no-shortcuts class */
 .no-shortcuts {
     color: var(--font-color);
+    height: 100%;           /* Add this line */
+    display: flex;          /* Add this line */
+    align-items: center;    /* Add this line */
+    justify-content: center;/* Add this line */
 }
-
 /* Scrollbar styles */
 .history-section::-webkit-scrollbar {
     width: 4px;

@@ -18,7 +18,6 @@ const History = ({ inputHistory }: HistoryProps) => {
         <div className={`history-wrapper ${theme}`}>
             {inputHistory.length > 0 && (
                 <>
-                    <h2 className="history-title">History of Inputs</h2>
                     <div className="success-rate">Success Rate: {successRate}%</div>
                 </>
             )}
@@ -45,7 +44,7 @@ const History = ({ inputHistory }: HistoryProps) => {
                             );
                         })}
                     </ul>
-                    <button className="download-button">Download your results</button>
+                    {/* <button className="download-button">Download your results</button> */}
                     </>
                 ) : (
                     <p className='no-shortcuts'></p>

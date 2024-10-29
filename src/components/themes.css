@@ -6,7 +6,7 @@ body {
 .default {
     --bg-color: black;
     --font-color: lightslategray;
-    --hl-color: orange;
+    --hl-color: rgb(210, 207, 202);
     --fg-color: #292f34;
 }
 
@@ -24,12 +24,7 @@ body {
     --fg-color: #5c3d2e;
 }
 
-.coral {
-    --bg-color: #fdd2bf;
-    --font-color: #df5e5e;
-    --hl-color: #492f10;
-    --fg-color: #e98580;
-}
+
 
 .ocean {
     --bg-color: #dddddd;
@@ -52,26 +47,6 @@ body {
     --fg-color: #34656d;
 }
 
-.rose-milk {
-    --bg-color: #ffffff;
-    --font-color: #111111;
-    --hl-color: #b33838;
-    --fg-color: #3b8792;
-}
-
-.amethyst {
-    --bg-color: #e2caea;
-    --font-color: #480c51;
-    --hl-color: #ab395f;
-    --fg-color: #9774aa;
-}
-
-.amber {
-    --bg-color: #feb204;
-    --font-color: #d53600;
-    --hl-color: #700e01;
-    --fg-color: #ff8503;
-}
 
 .terminal {
     --bg-color: #000000;
@@ -80,7 +55,7 @@ body {
     --fg-color: #00ff00;
 }
 
-.vscode {
+.belgian-train {
     --bg-color: #1e1e1e;
     --font-color: #d4d4d4;
     --hl-color: #ce9178;
@@ -94,17 +69,3 @@ body {
     --fg-color: #485e2c;
 }
 
-
-.red-season {
-    --bg-color:#1e1c1c;
-    --font-color:#e73535;
-    --hl-color: #d4d4d4;
-    --fg-color: #593b3e;
-}
-
-.pink-sky {
-    --bg-color: #23049D;
-    --font-color: #FF79CD;
-    --hl-color: #FFDF6B;
-    --fg-color: #AA2EE6;
-}

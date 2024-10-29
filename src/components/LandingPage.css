@@ -1,20 +1,4 @@
-:root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --top-section-bg: antiquewhite;
-    --middle-section-bg: #a2d6f6;
-    --bottom-section-bg: #485e2c;
-  }
-
-  .dark-theme {
-    --bg-color: #333333;
-    --text-color: #ffffff;
-    --top-section-bg: #4a4a4a;
-    --middle-section-bg: #2a2a2a;
-    --bottom-section-bg: #3a3a3a;
-  }
-  
-  body {
+body {
     background-color: var(--bg-color);
     color: var(--text-color);
     min-height: 100vh;
@@ -23,16 +7,16 @@
   }
   
   .container {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 1rem;
     box-sizing: border-box;
     max-width: 1000px;
     margin: 0 auto;
-    text-align: center;
+    min-height: calc(100vh - 120px);
+    position: relative;
   }
   
   .middle-section {
@@ -57,29 +41,37 @@
     right: 10px;
   }
 
+  .theme-button:hover {
+    opacity: 1;
+    border: none;
+    color: var(--hl-color);
+  }
+
   .top-section {
     margin-bottom: 20px;
   }
 
   .intro-text {
     text-align: center;
-    font-size: 1.2em;
-    margin-bottom: 20px;
+    font-size: 1rem;
+    color: var(--text-color);
   }
 
   .hotkey-section {
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 600px;
   }
 
 .main-content {
-    display: flex;
     justify-content: center;
-    align-items: center;
     width: 100%;
-    gap: 20px;
     position: relative;
+    flex: 1;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
 }
 
 .hotkey-wrapper {
@@ -94,18 +86,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 600px;
+    max-width: 800px;
+    height: 100%;
 }
 
 .control-buttons {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
+  position: absolute;
+  right: -120px;
+  transform: translateY(-70%);
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  z-index: 1;
 }
 
 .control-buttons button {
@@ -119,4 +111,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.intro-text-container {
+    height: 20px;  /* Reduced from 30px to 20px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.intro-text-container.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--hl-color);
+}
+
+.history-section {
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    margin-bottom: 20px;
 }

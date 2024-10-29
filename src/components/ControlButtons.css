@@ -1,0 +1,33 @@
+.control-buttons {
+    position: absolute;
+    right: -120px;
+    top: 60%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1;
+    height: 300px;
+    justify-content: space-between;
+}
+
+.control-buttons button {
+    border: none;
+    padding: 5px;
+    margin: 0;
+    background: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-buttons button:hover {
+    color: var(--hl-color);
+}
+
+.control-buttons button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

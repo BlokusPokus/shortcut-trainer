@@ -1,12 +1,10 @@
 .modal-overlay {
-    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: var(--bg-color);
-    opacity: 0.8;
-    display: flex;
+    opacity: 0.9;
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -22,7 +20,20 @@
 }
 
 .command-pallet {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.command-pallet button {
+    border: none;
+    padding: 5px;
+    margin: 0;
+    background: none;
+}
+
+.command-pallet button:hover {
+    border: none;
+    color: var(--hl-color);
 }

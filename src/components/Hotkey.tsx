@@ -5,6 +5,7 @@ import { usePalletContext } from "../PalletContext";
 import Timer from "./Timer";
 import { vsCodeShortchutMac, macOsShortcut, cursorShortcut } from "./shortcutData";
 import { shuffleArray } from "./shortcutData";
+import { List, Play, Timer as TimerIcon } from "lucide-react";
 
 interface HotkeyProps {
     gameStarted: boolean;
@@ -136,10 +137,13 @@ const Hotkey = ({
                             </div>
                         </div>
                     </div>
+                    
                 </>
             ) : (
                 <>
-                    <p className={`start-message ${theme}`}>Press Start to begin</p>
+                    <p className={`start-message ${theme}`}>Press <Play/> to begin</p>
+                    <p className={`start-message ${theme}`}> Press <List/> to pick a shortcut list</p>
+                    <p className={`start-message ${theme}`}> Press <TimerIcon/> to set the timer</p>
                     <div className="current-list-name">{getCurrentListName()}</div>
                 </>
             )}

@@ -22,7 +22,6 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0);
     const [inputHistory, setInputHistory] = useState<{text: string, status: 'skipped' | 'found' | 'wrong'}[]>([]);
     const [initialTime, setInitialTime] = useState<number>(180);
-    const [currentTime, setCurrentTime] = useState(180);
   
     const handleStartRecording = useCallback(() => {
         setGameStarted(true);

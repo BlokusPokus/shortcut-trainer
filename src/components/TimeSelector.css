@@ -1,19 +1,45 @@
 .time-selector {
   display: grid;
-  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+  justify-items: center;
   margin-bottom: 20px;
 }
 
 .time-option {
-
+  border: none;
+  padding: 5px;
+  margin: 0;
+  background: none;
+  color: var(--font-color);
 }
 
 .time-option:hover {
-  background: #f0f0f0;
+  border: none;
+  color: var(--hl-color);
 }
 
 .time-option.selected {
-  background:var(--primary-color);
-  color: white;
-  border-color:var(--primary-color);
+  color: var(--hl-color);
+}
+
+.time-selector-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.time-selector-container button {
+  border: none;
+  padding: 5px;
+  margin: 0;
+  background: none;
+}
+
+.time-selector-container button:hover {
+  border: none;
+  color: var(--hl-color);
 }

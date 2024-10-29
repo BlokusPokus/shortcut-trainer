@@ -5,6 +5,7 @@ import Modal from './common/modal'
 import { usePalletContext } from '../PalletContext';
 import './themes.css'
 import './ShortcutData.css'
+import { List } from 'lucide-react';
 
 interface ShortcutDataProps {
     setShortcutList: (list: { key: string; command: string; }[]) => void;
@@ -30,7 +31,7 @@ const ShortcutData = ({setShortcutList}: ShortcutDataProps) => {
 
     return (
         <div>
-            <button onClick={() => setIsModalOpen(true)}>Pick a shortcut list</button>
+            <button onClick={() => setIsModalOpen(true)}><List/></button>
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Pick list">
                 {shortcutLists.map((item, index) => (
                     <button 
@@ -61,9 +62,9 @@ export const vsCodeShortchutMac = [
     { "key": "meta+x", "command": "Cut" },
     { "key": "meta+c", "command": "Copy" },
     { "key": "alt+arrowdown", "command": "Move Lines Down" },
-    { "key": "alt+arrowup", "command": "Move Lines Up" },
+    { "key": "alt+up", "command": "Move Lines Up" },
     { "key": "shift+alt+arrowdown", "command": "Copy Lines Down" },
-    { "key": "shift+alt+arrowup", "command": "Copy Lines Up" },
+    { "key": "shift+alt+up", "command": "Copy Lines Up" },
     { "key": "shift+meta+k", "command": "Delete Lines" },
     { "key": "meta+enter", "command": "Insert Line Below" },
     { "key": "shift+meta+enter", "command": "Insert Line Above" },
@@ -72,7 +73,7 @@ export const vsCodeShortchutMac = [
     { "key": "meta+[", "command": "Outdent Line" },
     { "key": "home", "command": "Go to Line Start" },
     { "key": "end", "command": "Go to Line End" },
-    { "key": "meta+arrowup", "command": "Go to File Top" },
+    { "key": "meta+up", "command": "Go to File Top" },
     { "key": "meta+arrowdown", "command": "Go to File Bottom" },
     { "key": "⌃pgup", "command": "Scroll Line Up" },
     { "key": "⌃pgdn", "command": "Scroll Line Down" },
@@ -90,7 +91,7 @@ export const vsCodeShortchutMac = [
     { "key": "shift+alt+a", "command": "Toggle Block Comment" },
     { "key": "alt+z", "command": "Toggle Word Wrap" },
     { "key": "alt++click", "command": "Add Cursor" },
-    { "key": "alt+meta+arrowup", "command": "Add Cursor Above" },
+    { "key": "alt+meta+up", "command": "Add Cursor Above" },
     { "key": "alt+meta+arrowdown", "command": "Add Cursor Below" },
     { "key": "meta+u", "command": "Undo Cursor Position" },
     { "key": "shift+alt+i", "command": "Add Cursors to Line Ends" },
@@ -1675,7 +1676,7 @@ export const cursorShortcut = [
                                           "when": "!accessibilityHelpIsShown && !accessibleViewIsShown" },
     { "key": "down",                  "command": "workbench.action.interactivePlayground.arrowDown",
                                           "when": "interactivePlaygroundFocus && !editorTextFocus" },
-    { "key": "up",                    "command": "workbench.action.interactivePlayground.arrowUp",
+    { "key": "up",                    "command": "workbench.action.interactivePlayground.up",
                                           "when": "interactivePlaygroundFocus && !editorTextFocus" },
     { "key": "pagedown",              "command": "workbench.action.interactivePlayground.pageDown",
                                           "when": "interactivePlaygroundFocus && !editorTextFocus" },

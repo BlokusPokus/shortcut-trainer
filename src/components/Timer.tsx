@@ -13,31 +13,41 @@ const Timer = ({ delayResend = 180, gameStarted, setGameStarted, onTimeUpdate }:
 
   // Reset timer when delayResend changes
   useEffect(() => {
+    console.log('delayResend changed:', delayResend);
     setDelay(delayResend);
   }, [delayResend]);
 
   useEffect(() => {
+    console.log('Timer effect - gameStarted:', gameStarted, 'delay:', delay, 'delayResend:', delayResend);
     if(!gameStarted) return;
 
     const timer = setInterval(() => {
       setDelay((prevDelay) => {
+        const newDelay = prevDelay - 1;
+        console.log('Timer tick - newDelay:', newDelay);
         // Notify parent component of time change
         if (onTimeUpdate) {
-          onTimeUpdate(prevDelay - 1);
+          onTimeUpdate(newDelay);
         }
-        return prevDelay - 1;
+        return newDelay;
       });
     }, 1000);
 
     if (delay === 0) {
+      console.log('Timer reached 0 - resetting');
       clearInterval(timer);
       setGameStarted(false);
+      setDelay(delayResend);
+      if (onTimeUpdate) {
+        console.log('Updating parent with delayResend:', delayResend);
+        onTimeUpdate(delayResend);
+      }
     }
 
     return () => {
       clearInterval(timer);
     };
-  }, [delay, gameStarted, setGameStarted, onTimeUpdate]);
+  }, [delay, gameStarted, setGameStarted, onTimeUpdate, delayResend]);
 
   // Format seconds with leading zero
   const minutes = Math.floor(delay / 60);

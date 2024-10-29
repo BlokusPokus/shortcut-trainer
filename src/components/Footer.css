@@ -4,26 +4,31 @@
   align-items: center;
   padding: 15px 30px;
   background-color: var(--bg-color);
-  color: var(--text-color);
-  border-top: 1px solid var(--text-color);
+  color: var(--hl-color);
+  border-top: 1px solid var(--hl-color);
 }
 
 .footer-item {
   flex: 1;
   text-align: center;
+  color: var(--hl-color);
 }
 
 .footer-item:first-child {
   text-align: left;
+  color: var(--hl-color);
+
 }
 
 .footer-item:last-child {
   text-align: right;
+  color: var(--hl-color);
+
 }
 
 .footer a {
-  color: var(--text-color);
-  text-decoration: none;
+    color: var(--hl-color);
+    text-decoration: none;
 }
 
 .footer a:hover {
@@ -40,16 +45,3 @@
   font-weight: bold;
 }
 
-.contributors-button {
-  background: none;
-  border: 1px solid var(--text-color);
-  color: var(--text-color);
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.contributors-button:hover {
-  background-color: var(--text-color);
-  color: var(--bg-color);
-}

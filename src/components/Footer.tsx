@@ -12,9 +12,9 @@ const Footer: React.FC = () => {
         </a>
       </div>
       <div className="footer-item">
-        <span>
+       
           created by <a href="https://github.com/blokuspokus" target="_blank" rel="noreferrer">@blokuspokus</a>
-        </span>
+        
       </div>
       <div className="footer-item">
         <a href="https://twitter.com/ian_le_blanc" target="_blank" rel="noreferrer" className="x-handle">
