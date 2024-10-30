@@ -140,12 +140,12 @@ const Hotkey = ({
                     
                 </>
             ) : (
-                <>
-                    <p className={`start-message ${theme}`}>Press <Play/> to begin</p>
-                    <p className={`start-message ${theme}`}> Press <List/> to pick a shortcut list</p>
-                    <p className={`start-message ${theme}`}> Press <TimerIcon/> to set the timer</p>
+                <div >
+                    <p className={`${theme}`}>Press <Play/> to begin</p>
+                    <p className={`${theme}`}> Press <List/> to pick a shortcut list</p>
+                    <p className={`${theme}`}> Press <TimerIcon/> to set the timer</p>
                     <div className="current-list-name">{getCurrentListName()}</div>
-                </>
+                </div>
             )}
         </div>
     );

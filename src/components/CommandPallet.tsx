@@ -9,7 +9,7 @@ const CommandPallet = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { theme, setTheme } = usePalletContext();
 
-    const AllPallets = ['belgian-train', 'mountain', 'default', 'mkbhd', 'mocha', 'ocean', 'azure', 'forest', 'terminal']
+    const AllPallets = ['belgian-train', 'mountain', 'default', 'mkbhd', 'more-coffee', 'ocean', 'dirty-purple', 'forest', 'terminal']
   
     const handlePalletSelection = (pallet: string): void => {
       setTheme(pallet);

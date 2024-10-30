@@ -15,10 +15,10 @@ body {
 }
 
 #root {
+    min-height: 10vh;
     display: flex;
-    height: 100vh;
     flex-direction: column;
-    align-items: center;
+    width: 100%;
     justify-content: space-between;
     color: var(--font-color);
     background-color: var(--bg-color);

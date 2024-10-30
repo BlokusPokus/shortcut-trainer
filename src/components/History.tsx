@@ -4,9 +4,10 @@ import './History.css';
 
 interface HistoryProps {
     inputHistory: {text: string, status: 'skipped' | 'found' | 'wrong'}[];
+    shortcutList: { key: string; command: string; }[];
 }
 
-const History = ({ inputHistory }: HistoryProps) => {
+const History = ({ inputHistory, shortcutList }: HistoryProps) => {
     const { theme } = usePalletContext();
     
     // Add success rate calculation
@@ -18,7 +19,11 @@ const History = ({ inputHistory }: HistoryProps) => {
         <div className={`history-wrapper ${theme}`}>
             {inputHistory.length > 0 && (
                 <>
-                    <div className="success-rate">Success Rate: {successRate}%</div>
+                <div className="success-rate">
+                    <div >Success Rate: {successRate}%</div>
+                    <div className="length">Total tries: {inputHistory.length}</div>
+                    <div className="completed">Completed Shortcuts: {inputHistory.filter(input => input.status === 'found').length}/{shortcutList.length}</div>
+                </div>
                 </>
             )}
             <div className="history-section">

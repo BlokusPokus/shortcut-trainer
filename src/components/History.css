@@ -9,17 +9,16 @@
 
 .history-section {
     width: 100%;
-    max-height: 25vh;
-    min-height: 25vh; /* Add this line */
+    min-height: 40vh;
     min-width: 1000px;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
     margin-top: 10px;
-    padding: 0 20px;
-    display: flex;           /* Add this line */
-    flex-direction: column;  /* Add this line */
 }
 
 .history-list {
+    max-height: 30vh;
+    min-height: 30vh;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 10px;

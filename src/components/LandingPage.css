@@ -10,15 +10,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
     box-sizing: border-box;
     max-width: 1000px;
     margin: 0 auto;
-    min-height: calc(100vh - 120px);
-    position: relative;
   }
-  
   .middle-section {
     display: flex;
     flex-direction: column;
@@ -51,11 +46,7 @@ body {
     margin-bottom: 20px;
   }
 
-  .intro-text {
-    text-align: center;
-    font-size: 1rem;
-    color: var(--text-color);
-  }
+
 
   .hotkey-section {
     display: flex;
@@ -129,8 +120,9 @@ body {
 }
 
 .intro-text {
+  padding-top: 30px;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: var(--hl-color);
 }
 
