@@ -112,7 +112,16 @@ const Hotkey = ({
             { name: "Cursor Shortcuts", list: cursorShortcut }
         ];
         
-        const currentList = shortcutLists.find(item => item.list === shortcutList);
+        const currentList = shortcutLists.find(item => {
+            // Compare the first few items to identify the list
+            return item.list.some(shortcut => 
+                shortcutList.some(currentShortcut => 
+                    currentShortcut.key === shortcut.key && 
+                    currentShortcut.command === shortcut.command
+                )
+            );
+        });
+        
         return currentList ? currentList.name : "Selected Shortcuts";
     };
 
