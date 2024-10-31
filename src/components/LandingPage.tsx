@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import './LandingPage.css';
+import './styles/LandingPage.css';
 import History from './History';
-import { cursorShortcut, macOsShortcut, vsCodeShortchutMac } from "./shortcutData";
 import BrowserShortcut from './BrowserShortcut';
 import ControlButtons from './ControlButtons';
 import Header from './Header';
@@ -9,6 +8,7 @@ import Hotkey from './Hotkey';
 import Footer from './Footer';
 import { usePalletContext } from '../PalletContext'
 import CommandPallet from './CommandPallet';
+import { vsCodeShortchutMac, macOsShortcut, cursorShortcut } from './shortcutLists';
 interface LandingPageProps {
 
 }
@@ -18,7 +18,6 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     const [shortcutList, setShortcutList] = useState<{ key: string; command: string; }[]>(vsCodeShortchutMac);    const [gameStarted, setGameStarted] = useState(false);
     const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0);
     const [inputHistory, setInputHistory] = useState<{text: string, status: 'skipped' | 'found' | 'wrong'}[]>([]);
-    
     const [initialTime, setInitialTime] = useState<number>(180);
   
     const handleStartRecording = useCallback(() => {
@@ -40,11 +39,7 @@ const LandingPage: React.FC<LandingPageProps> = () => {
         ]);
     }, [setCurrentShortcutIndex, setInputHistory, shortcutList, currentShortcutIndex]);
     
-    const shortcutLists = [
-        { name: "VS Code Shortcuts (Mac)", list: vsCodeShortchutMac },
-        { name: "macOS Shortcuts", list: macOsShortcut },
-        { name: "Cursor Shortcuts", list: cursorShortcut }
-      ];
+
     const handlePickShortcutList = (list: { key: string; command: string; }[]) => {
         setShortcutList(list);
         console.log(shortcutList);

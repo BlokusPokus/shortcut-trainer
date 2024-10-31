@@ -35,16 +35,23 @@ body {
 
 .dirty-purple {
     --bg-color: #383e56;
-    --font-color: #eedad1;
-    --hl-color: #f69e7b;
+    --font-color: #ede3de;
+    --hl-color: #e08f6f;
     --fg-color: #d4b5b0;
 }
 
 .forest {
     --bg-color: #334443;
     --font-color: #fff8df;
-    --hl-color: #c6ffc1;
+    --hl-color: #50C878;  /* Changed to emerald green */
     --fg-color: #34656d;
+}
+
+.dont-try-that-one {
+    --bg-color: #ff00ff;      /* Hot pink */
+    --font-color: #00ff00;    /* Neon green */
+    --hl-color: #ffff00;      /* Bright yellow */
+    --fg-color: #00ffff;      /* Cyan */
 }
 
 
@@ -65,7 +72,7 @@ body {
 .mountain {
     --bg-color: #10271e;
     --font-color: #d1ac3f;
-    --hl-color: #a2d6f6;
+    --hl-color: #dae9d9;
     --fg-color: #485e2c;
 }
 

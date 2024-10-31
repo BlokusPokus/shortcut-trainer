@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import Modal from './common/modal'
 import { usePalletContext } from '../PalletContext';
-import './themes.css'
-import './CommandPallet.css'
+import './styles/themes.css'
+import './styles/CommandPallet.css'
 import { Palette } from 'lucide-react';
 
 const CommandPallet = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const { theme, setTheme } = usePalletContext();
+    const {setTheme } = usePalletContext();
 
-    const AllPallets = ['belgian-train', 'mountain', 'default', 'mkbhd', 'more-coffee', 'ocean', 'dirty-purple', 'forest', 'terminal']
+    const AllPallets = ['belgian-train', 'mountain', 'default', 'mkbhd', 'more-coffee', 'ocean', 'dirty-purple', 'forest', 'terminal','dont-try-that-one']
   
     const handlePalletSelection = (pallet: string): void => {
       setTheme(pallet);

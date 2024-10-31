@@ -2,8 +2,8 @@ import React from 'react'
 import { usePalletContext } from '../PalletContext';
 import ShortcutData from './shortcutData';
 import TimeSelector from './TimeSelector';
-import { Play, StopCircle, SkipForward, Square } from 'lucide-react';
-import './ControlButtons.css'
+import { Play, Square, SkipForward } from 'lucide-react';
+import './styles/ControlButtons.css'
 
 interface ControlButtonsProps {
     handleStartRecording: () => void;
@@ -11,7 +11,6 @@ interface ControlButtonsProps {
     gameStarted: boolean;
     handleSkipShortcut: () => void;
     handlePickShortcutList: (list: { key: string; command: string; }[]) => void;
-    // Add time-related props
     initialTime: number;
     setInitialTime: (time: number) => void;
 }
@@ -27,7 +26,7 @@ const ControlButtons = ({
 }: ControlButtonsProps) => {
     const { theme } = usePalletContext();
     
-    console.log('ControlButtons render - initialTime:', initialTime, 'gameStarted:', gameStarted);
+    
     
     return (
         <div className={`control-buttons ${theme}`}>

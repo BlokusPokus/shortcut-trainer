@@ -1,23 +1,18 @@
-import React from 'react'
-import './Footer.css'
-import { usePalletContext } from '../PalletContext';
+import './styles/Footer.css'
 
-const Footer: React.FC = () => {
-    const { theme } = usePalletContext();
+const Footer = () => {
   return (
-    <footer className={`footer ${theme}`}>
+    <footer className='footer' >
       <div className="footer-item">
-        <a href="https://github.com/blokuspokus/shortcut-trainer" target="_blank" rel="noreferrer">
+        <a href="https://github.com/blokuspokus/shortcut-trainer" >
           <span>&lt;/&gt;</span> github
         </a>
       </div>
       <div className="footer-item">
-       
-          created by <a href="https://github.com/blokuspokus" target="_blank" rel="noreferrer">@blokuspokus</a>
-        
+          created by <a href="https://github.com/blokuspokus">@blokuspokus</a>
       </div>
       <div className="footer-item">
-        <a href="https://twitter.com/ian_le_blanc" target="_blank" rel="noreferrer" className="x-handle">
+        <a href="https://twitter.com/ian_le_blanc" className="x-handle">
           <span>𝕏</span> @ian_le_blanc
         </a>
       </div>

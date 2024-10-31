@@ -3,9 +3,6 @@
     background-color: var(--bg-color);
 }
 
-.history-title {
-    color: var(--font-color);
-}
 
 .history-section {
     width: 100%;
@@ -32,8 +29,8 @@
     height: 120px;
     background: var(--fg-color);
     border-radius: 15px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1),
-                 -5px -5px 10px rgba(255, 255, 255, 0.1);
+    box-shadow: 2px 2px 8px color-mix(in srgb, var(--bg-color) 85%, black),
+                -1px -1px 4px color-mix(in srgb, var(--bg-color) 90%, white);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -48,21 +45,10 @@
     align-items: center;
     justify-content: center;
     font-weight: normal;
-    color: var(--bg-color);
+    color: var(--font-color);  /* Change this to use theme color */
     text-align: center;
     padding: 5px;
-}
-
-.singleInputHistory.skipped .header {
-    background-color: var(--hl-color);
-}
-
-.singleInputHistory.found .header {
-    background-color: var(--hl-color);
-}
-
-.singleInputHistory.wrong .header {
-    background-color: var(--hl-color);
+    background-color: var(--fg-color);
 }
 
 .singleInputHistory .content {
@@ -74,6 +60,8 @@
     align-items: center;
     text-align: center;
     overflow: hidden;
+    background-color: var(--hl-color);
+
 }
 
 .singleInputHistory .shortcut {
@@ -94,28 +82,11 @@
 
 .singleInputHistory:hover {
     cursor: pointer;
-    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 15px color-mix(in srgb, var(--bg-color) 70%, black);
     transform: translateY(-5px);
 }
 
-.download-button {
-    background-color: var(--hl-color);
-    color: var(--bg-color);
-    border: none;
-    padding: 10px 20px;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 1rem;
-}
 
-/* Update the no-shortcuts class */
-.no-shortcuts {
-    color: var(--font-color);
-    height: 100%;           /* Add this line */
-    display: flex;          /* Add this line */
-    align-items: center;    /* Add this line */
-    justify-content: center;/* Add this line */
-}
 /* Scrollbar styles */
 .history-section::-webkit-scrollbar {
     width: 4px;

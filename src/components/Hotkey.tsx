@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback, useRef } from "react"
 import { useRecordHotkeys } from "react-hotkeys-hook"
-import './Hotkey.css';
+import './styles/Hotkey.css';
 import { usePalletContext } from "../PalletContext";
 import Timer from "./Timer";
-import { vsCodeShortchutMac, macOsShortcut, cursorShortcut } from "./shortcutData";
+import { vsCodeShortchutMac, macOsShortcut, cursorShortcut } from "./shortcutLists";
 import { shuffleArray } from "./shortcutData";
 import { List, Play, Timer as TimerIcon } from "lucide-react";
 
@@ -34,7 +34,6 @@ const Hotkey = ({
 }: HotkeyProps) => {
   
     const currentShortcut = shortcutList[currentShortcutIndex]; // Use shortcutList instead of vsCodeShortchutMac
-    const { theme } = usePalletContext();
     const [lastRecordedKeys, setLastRecordedKeys] = useState<string>('');
     const processingRef = useRef(false);
 
@@ -126,7 +125,7 @@ const Hotkey = ({
     };
 
     return (
-        <div className={`Hotkey-container ${theme}`}>
+        <div className={`Hotkey-container`}>
             {gameStarted ? (
                 <>
                     <Timer 
@@ -150,9 +149,9 @@ const Hotkey = ({
                 </>
             ) : (
                 <div >
-                    <p className={`${theme}`}>Press <Play/> to begin</p>
-                    <p className={`${theme}`}> Press <List/> to pick a shortcut list</p>
-                    <p className={`${theme}`}> Press <TimerIcon/> to set the timer</p>
+                    <p >Press <Play/> to begin</p>
+                    <p > Press <List/> to pick a shortcut list</p>
+                    <p > Press <TimerIcon/> to set the timer</p>
                     <div className="current-list-name">{getCurrentListName()}</div>
                 </div>
             )}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './TimeSelector.css';
+import './styles/TimeSelector.css';
 import Modal from './common/modal';
 import { usePalletContext } from '../PalletContext';
 import { Timer } from 'lucide-react';
@@ -12,7 +12,6 @@ interface TimeSelectorProps {
 
 const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedTime, onTimeSelect, gameStarted }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const { theme, setTheme } = usePalletContext();
 
     const handleTimeSelect = (time: number) => {
         onTimeSelect(time);
@@ -20,6 +19,7 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedTime, onTimeSelect,
     };
 
     const timeOptions = [
+        { label: '30 sec', value: 30 },
         { label: '1 min', value: 60 },
         { label: '2 min', value: 120 },
         { label: '3 min', value: 180 },
@@ -28,7 +28,7 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedTime, onTimeSelect,
     ];
 
     return (
-        <div className={theme}>
+        <div >
             <button 
                 className={gameStarted ? 'disabled' : ''} 
                 onClick={() => !gameStarted && setIsModalOpen(true)}

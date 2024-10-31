@@ -1,6 +1,6 @@
 import { ThumbsDown, ThumbsUp, Minus } from 'lucide-react';
 import { usePalletContext } from '../PalletContext';
-import './History.css';
+import './styles/History.css';
 
 interface HistoryProps {
     inputHistory: {text: string, status: 'skipped' | 'found' | 'wrong'}[];
@@ -8,7 +8,6 @@ interface HistoryProps {
 }
 
 const History = ({ inputHistory, shortcutList }: HistoryProps) => {
-    const { theme } = usePalletContext();
     
     // Add success rate calculation
     const successRate = inputHistory.length > 0
@@ -16,7 +15,7 @@ const History = ({ inputHistory, shortcutList }: HistoryProps) => {
         : 0;
 
     return (
-        <div className={`history-wrapper ${theme}`}>
+        <div className={`history-wrapper `}>
             {inputHistory.length > 0 && (
                 <>
                 <div className="success-rate">
@@ -49,10 +48,9 @@ const History = ({ inputHistory, shortcutList }: HistoryProps) => {
                             );
                         })}
                     </ul>
-                    {/* <button className="download-button">Download your results</button> */}
                     </>
                 ) : (
-                    <p className='no-shortcuts'></p>
+                    <p></p>
                 )}
             </div>
         </div>
