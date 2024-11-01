@@ -2967,7 +2967,7 @@ export const gitShortcuts = [
         { "key": "git bisect visualize", "command": "visualize the bisect process" },
         { "key": "git bisect replay", "command": "replay the bisect session" }
     ];
-    export const windowsShortcuts = [
+export const windowsShortcuts = [
         // Entering Data I
         { "key": "Ctrl + N", "command": "Create a new document" },
         { "key": "Ctrl + O", "command": "Open an existing document" },
@@ -3098,4 +3098,40 @@ export const gitShortcuts = [
         { "key": "Ctrl + Shift + 5", "command": "Apply percentage format" },
         { "key": "Ctrl + Shift + P", "command": "Open the font size menu" },
     ];
+
+export const browserShortcuts = [
+        // Navigation
+        { "key": "Ctrl + T", "command": "Open a new tab" },
+        { "key": "Ctrl + W", "command": "Close the current tab" },
+        { "key": "Ctrl + Shift + T", "command": "Reopen the last closed tab" },
+        { "key": "Ctrl + Tab", "command": "Switch to the next tab" },
+        { "key": "Ctrl + Shift + Tab", "command": "Switch to the previous tab" },
+        { "key": "Ctrl + L", "command": "Focus the address bar" },
+        { "key": "Alt + Home", "command": "Open your homepage" },
+    
+        // Bookmarking
+        { "key": "Ctrl + D", "command": "Bookmark the current page" },
+        { "key": "Ctrl + Shift + B", "command": "Show or hide the bookmarks bar" },
+        { "key": "Ctrl + Shift + O", "command": "Open the bookmarks manager" },
+    
+        // Page Navigation
+        { "key": "Space", "command": "Scroll down the page" },
+        { "key": "Shift + Space", "command": "Scroll up the page" },
+        { "key": "Home", "command": "Go to the top of the page" },
+        { "key": "End", "command": "Go to the bottom of the page" },
+        
+        // History
+        { "key": "Ctrl + H", "command": "Open the browsing history" },
+        { "key": "Backspace", "command": "Go back to the previous page" },
+        { "key": "Shift + Backspace", "command": "Go forward to the next page" },
+    
+        // Miscellaneous
+        { "key": "F5", "command": "Refresh the current page" },
+        { "key": "Ctrl + F", "command": "Open the Find bar" },
+        { "key": "F11", "command": "Toggle fullscreen mode" },
+        { "key": "Ctrl + P", "command": "Print the current page" },
+        { "key": "Ctrl + U", "command": "View page source" },
+        { "key": "Ctrl + Shift + I", "command": "Open Developer Tools" },
+    ];
+    
     

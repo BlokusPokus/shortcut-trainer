@@ -1,33 +1,44 @@
-import React, { useState } from 'react'
-import Modal from './common/modal'
-import { usePalletContext } from '../PalletContext';
-import './styles/themes.css'
-import './styles/CommandPallet.css'
+import React from 'react';
 import { Palette } from 'lucide-react';
+import { useCommandPalette } from './hooks/useCommandPalette';
+import { ThemeList } from './ThemeList';
+import Modal from './common/modal';
+import { CommandPaletteProps } from './types/types';
+import { DEFAULT_THEMES } from './constants/defaultThemes';
+import './styles/CommandPalette.css';
 
-const CommandPallet = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const {setTheme } = usePalletContext();
+export const CommandPalette: React.FC<CommandPaletteProps> = ({ 
+  themes = DEFAULT_THEMES,
+  onThemeChange,
+  currentTheme 
+}) => {
+  const {
+    isModalOpen,
+    handleThemeSelection,
+    openModal,
+    closeModal,
+  } = useCommandPalette({ onThemeChange });
 
-    const AllPallets = ['belgian-train', 'mountain', 'default', 'mkbhd', 'more-coffee', 'ocean', 'dirty-purple', 'forest', 'terminal','dont-try-that-one']
-  
-    const handlePalletSelection = (pallet: string): void => {
-      setTheme(pallet);
-      setIsModalOpen(false);
-    }
-
-    return (
-      <div className="command-pallet">
-        <button onClick={() => setIsModalOpen(true)}><Palette/></button>
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Choose Theme">
-          <ul className='command-pallet-list'>
-            {AllPallets.map((pallet) => (
-              <button key={pallet} onClick={() => handlePalletSelection(pallet)}>{pallet}</button>
-            ))}
-          </ul>
-        </Modal>
-      </div>
-    )
-}
-
-export default CommandPallet
+  return (
+    <div className="command-palette">
+      <button 
+        className="palette-trigger"
+        aria-label="Open theme selector"
+        onClick={openModal}
+      >
+        <Palette />
+      </button>
+      
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+        title="Choose Theme"
+      >
+        <ThemeList 
+          themes={themes}
+          onSelect={handleThemeSelection}
+        />
+      </Modal>
+    </div>
+  );
+};

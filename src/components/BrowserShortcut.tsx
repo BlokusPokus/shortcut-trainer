@@ -1,6 +1,15 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
-const BrowserShortcut: React.FC = () => {
+// interface KeyboardEvent {
+//   key: string;          // The actual key value ("a", "Enter", etc.)
+//   code: string;         // Physical key code ("KeyA", "Enter", etc.)
+//   altKey: boolean;      // Whether Alt/Option was pressed
+//   ctrlKey: boolean;     // Whether Control was pressed
+//   shiftKey: boolean;    // Whether Shift was pressed
+//   metaKey: boolean;     // Whether Command (Mac) or Windows key was pressed
+//   repeat: boolean;      // Whether key is being held down
+// }
+const BrowserShortcut = () => {
   useEffect(() => {
     // Function to prevent all keydown events
     const preventAllKeydown = (e: KeyboardEvent) => {

@@ -7,14 +7,17 @@ import Header from './Header';
 import Hotkey from './Hotkey';
 import Footer from './Footer';
 import { usePalletContext } from '../PalletContext'
-import CommandPallet from './CommandPallet';
+import { CommandPalette } from './CommandPallet';
 import { vsCodeShortchutMac, macOsShortcut, cursorShortcut } from './shortcutLists';
+import { Theme } from './types/types';
+import { DEFAULT_THEMES } from './constants/defaultThemes';
+
 interface LandingPageProps {
 
 }
 
 const LandingPage: React.FC<LandingPageProps> = () => {
-    const { theme } = usePalletContext();
+    const { theme, setTheme } = usePalletContext();
     const [shortcutList, setShortcutList] = useState<{ key: string; command: string; }[]>(vsCodeShortchutMac);    const [gameStarted, setGameStarted] = useState(false);
     const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0);
     const [inputHistory, setInputHistory] = useState<{text: string, status: 'skipped' | 'found' | 'wrong'}[]>([]);
@@ -45,6 +48,13 @@ const LandingPage: React.FC<LandingPageProps> = () => {
         console.log(shortcutList);
         
     }
+    const handleThemeChange = (themeId: string) => {
+        const selectedTheme = DEFAULT_THEMES.find(theme => theme.id === themeId);
+        if (selectedTheme?.className) {
+            setTheme(selectedTheme.className);
+            localStorage.setItem('theme', selectedTheme.className);
+        }
+    };
     return (
         <div className={theme}>
         <Header gameStarted={gameStarted} />
@@ -53,8 +63,10 @@ const LandingPage: React.FC<LandingPageProps> = () => {
 
         <div className={`container `}>
             <div className='top-section'>
-            <CommandPallet />
-            </div>
+            <CommandPalette 
+                    onThemeChange={handleThemeChange}
+                    currentTheme={theme}
+                />            </div>
             <div className='main-content'>
                 <div className='hotkey-section'>
                     <Hotkey
