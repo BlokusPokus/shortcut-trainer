@@ -24,7 +24,7 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedTime, onTimeSelect,
         { label: '2 min', value: 120 },
         { label: '3 min', value: 180 },
         { label: '5 min', value: 300 },
-        { label: 'None', value: Infinity },
+        { label: 'No limit', value: Infinity },
     ];
 
     return (

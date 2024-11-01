@@ -5,6 +5,11 @@
     z-index: 1;
     height: 300px;
     justify-content: space-between;
+    position: absolute;
+    right: 0px;
+    top: 57%;
+    transform: translateY(-50%);
+    width: 40px;
 }
 
 .control-buttons button {
@@ -16,6 +21,7 @@
     height: 40px;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .control-buttons button:hover {

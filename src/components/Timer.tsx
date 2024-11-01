@@ -18,7 +18,11 @@ const Timer = ({ delayResend, gameStarted, setGameStarted, onTimeUpdate }: Timer
     }
   });
 
-  return <span>{formattedTime}</span>;
+  return (
+    <div className="timer-container">
+      <span>{delayResend === Infinity ? '' : formattedTime}</span>
+    </div>
+  );
 };
 
 export default Timer;

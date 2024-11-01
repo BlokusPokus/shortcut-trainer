@@ -1,13 +1,12 @@
-
-
 import React, { useState } from 'react'
 import Modal from './common/modal'
 import './styles/ShortcutData.css'
 import { List } from 'lucide-react';
-import { vsCodeShortchutMac, macOsShortcut, cursorShortcut, vimShortcuts, excelShortcuts, commandLineShortcuts, gitShortcuts, windowsShortcuts } from './shortcutLists';
+import { vsCodeShortchutMac, macOsShortcut, cursorShortcut, vimShortcuts, excelShortcuts, commandLineShortcuts, gitShortcuts, windowsShortcuts } from './constants/shortcutLists';
+import { Shortcut } from './types/types';
 
 interface ShortcutDataProps {
-    setShortcutList: (list: { key: string; command: string; }[]) => void;
+    setShortcutList: (list: Shortcut[]) => void;
 }
 
 export const shuffleArray = <T,>(array: T[]): T[] => {
@@ -22,25 +21,33 @@ export const shuffleArray = <T,>(array: T[]): T[] => {
 const ShortcutData = ({setShortcutList}: ShortcutDataProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const shortcutLists = [
-        { name: "VS Code Shortcuts (Mac)", list: vsCodeShortchutMac },
-        { name: "macOS Shortcuts", list: macOsShortcut },
-        { name: "Cursor Shortcuts", list: cursorShortcut },
-        { name: "vimShortcuts", list: vimShortcuts },
-        { name: "excelShortcuts", list: excelShortcuts },
-        { name: "commandLineShortcuts", list: commandLineShortcuts },
-        { name: "gitShortcuts", list: gitShortcuts },
-        { name: "windowsShortcuts", list: windowsShortcuts }
+        { 
+            id: 'VS_CODE', 
+            name: "VS Code Shortcuts (Mac)", 
+            list: vsCodeShortchutMac.map(item => ({ ...item, listId: 'VS_CODE' }))
+        },
+        { 
+            id: 'MACOS', 
+            name: "macOS Shortcuts", 
+            list: macOsShortcut.map(item => ({ ...item, listId: 'MACOS' }))
+        },
+        { id: 'CURSOR', name: "Cursor Shortcuts", list: cursorShortcut.map(item => ({ ...item, listId: 'CURSOR' })) },
+        { id: 'VIM', name: "Vim Shortcuts", list: vimShortcuts.map(item => ({ ...item, listId: 'VIM' })) },
+        { id: 'EXCEL', name: "Excel Shortcuts", list: excelShortcuts.map(item => ({ ...item, listId: 'EXCEL' })) },
+        { id: 'COMMAND_LINE', name: "Command Line Shortcuts", list: commandLineShortcuts.map(item => ({ ...item, listId: 'COMMAND_LINE' })) },
+        { id: 'GIT', name: "Git Shortcuts", list: gitShortcuts.map(item => ({ ...item, listId: 'GIT' })) },
+        { id: 'WINDOWS', name: "Windows Shortcuts", list: windowsShortcuts.map(item => ({ ...item, listId: 'WINDOWS' })) }
     ];
 
     return (
         <div>
             <button onClick={() => setIsModalOpen(true)}><List/></button>
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Pick list">
-                {shortcutLists.map((item, index) => (
+                {shortcutLists.map((item) => (
                     <button 
-                        key={index} 
+                        key={item.id}
                         onClick={() => {
-                            setShortcutList(shuffleArray(item.list)); 
+                            setShortcutList(shuffleArray(item.list));
                             setIsModalOpen(false);
                         }}
                     >

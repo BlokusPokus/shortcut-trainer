@@ -1,21 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { Play, Square, SkipForward } from 'lucide-react';
+
+import './styles/ControlButtons.css';
+import { ControlButtonsProps } from './types/types';
 import { usePalletContext } from '../PalletContext';
+import { GameButton } from './common/gameButtons';
 import ShortcutData from './shortcutData';
 import TimeSelector from './TimeSelector';
-import { Play, Square, SkipForward } from 'lucide-react';
-import './styles/ControlButtons.css'
 
-interface ControlButtonsProps {
-    handleStartRecording: () => void;
-    handleStopRecording: () => void;
-    gameStarted: boolean;
-    handleSkipShortcut: () => void;
-    handlePickShortcutList: (list: { key: string; command: string; }[]) => void;
-    initialTime: number;
-    setInitialTime: (time: number) => void;
-}
-
-const ControlButtons = ({
+const ControlButtons: React.FC<ControlButtonsProps> = ({
     handleStartRecording,
     handleStopRecording,
     handleSkipShortcut,
@@ -23,34 +16,26 @@ const ControlButtons = ({
     gameStarted,
     initialTime,
     setInitialTime
-}: ControlButtonsProps) => {
+}) => {
     const { theme } = usePalletContext();
-    
-    
-    
+
     return (
         <div className={`control-buttons ${theme}`}>
-            <button 
-                onClick={handleStartRecording} 
+            <GameButton 
+                onClick={handleStartRecording}
                 disabled={gameStarted}
-                className={gameStarted ? 'disabled' : ''}
-            >
-                <Play />
-            </button>
-            <button 
-                onClick={handleStopRecording} 
+                Icon={Play}
+            />
+            <GameButton 
+                onClick={handleStopRecording}
                 disabled={!gameStarted}
-                className={!gameStarted ? 'disabled' : ''}
-            >
-                <Square />
-            </button>
-            <button 
-                onClick={handleSkipShortcut} 
+                Icon={Square}
+            />
+            <GameButton 
+                onClick={handleSkipShortcut}
                 disabled={!gameStarted}
-                className={!gameStarted ? 'disabled' : ''}
-            >
-                <SkipForward />
-            </button>
+                Icon={SkipForward}
+            />
             <ShortcutData setShortcutList={handlePickShortcutList}/>
             <TimeSelector 
                 selectedTime={initialTime}
@@ -61,4 +46,4 @@ const ControlButtons = ({
     );
 };
 
-export default ControlButtons
+export default ControlButtons;

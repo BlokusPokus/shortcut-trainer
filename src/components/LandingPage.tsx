@@ -8,8 +8,8 @@ import Hotkey from './Hotkey';
 import Footer from './Footer';
 import { usePalletContext } from '../PalletContext'
 import { CommandPalette } from './CommandPallet';
-import { vsCodeShortchutMac, macOsShortcut, cursorShortcut } from './shortcutLists';
-import { Theme } from './types/types';
+import { vsCodeShortchutMac, macOsShortcut, cursorShortcut } from './constants/shortcutLists';
+import { Shortcut, Theme } from './types/types';
 import { DEFAULT_THEMES } from './constants/defaultThemes';
 
 interface LandingPageProps {
@@ -18,7 +18,13 @@ interface LandingPageProps {
 
 const LandingPage: React.FC<LandingPageProps> = () => {
     const { theme, setTheme } = usePalletContext();
-    const [shortcutList, setShortcutList] = useState<{ key: string; command: string; }[]>(vsCodeShortchutMac);    const [gameStarted, setGameStarted] = useState(false);
+    const [shortcutList, setShortcutList] = useState<Shortcut[]>(
+        vsCodeShortchutMac.map(item => ({
+            ...item,
+            listId: 'VS_CODE'
+        }))
+    );
+    const [gameStarted, setGameStarted] = useState(false);
     const [currentShortcutIndex, setCurrentShortcutIndex] = useState(0);
     const [inputHistory, setInputHistory] = useState<{text: string, status: 'skipped' | 'found' | 'wrong'}[]>([]);
     const [initialTime, setInitialTime] = useState<number>(180);
@@ -43,11 +49,10 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     }, [setCurrentShortcutIndex, setInputHistory, shortcutList, currentShortcutIndex]);
     
 
-    const handlePickShortcutList = (list: { key: string; command: string; }[]) => {
+    const handlePickShortcutList = (list: Shortcut[]) => {
         setShortcutList(list);
-        console.log(shortcutList);
-        
-    }
+        setCurrentShortcutIndex(0);
+    };
     const handleThemeChange = (themeId: string) => {
         const selectedTheme = DEFAULT_THEMES.find(theme => theme.id === themeId);
         if (selectedTheme?.className) {

@@ -1,19 +1,20 @@
+/* Container styles */
 .history-wrapper {
     color: var(--font-color);
     background-color: var(--bg-color);
-}
-
-
-.history-section {
+  }
+  
+  .history-section {
     width: 100%;
     min-height: 40vh;
     min-width: 1000px;
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-}
-
-.history-list {
+  }
+  
+  /* List styles */
+  .history-list {
     max-height: 30vh;
     min-height: 30vh;
     display: grid;
@@ -22,36 +23,42 @@
     list-style-type: none;
     padding: 0;
     justify-items: center;
-}
-
-.singleInputHistory {
+  }
+  
+  /* History item styles */
+  .singleInputHistory {
     width: 120px;
     height: 120px;
     background: var(--fg-color);
     border-radius: 15px;
-    box-shadow: 2px 2px 8px color-mix(in srgb, var(--bg-color) 85%, black),
-                -1px -1px 4px color-mix(in srgb, var(--bg-color) 90%, white);
+    box-shadow: 
+      2px 2px 8px color-mix(in srgb, var(--bg-color) 85%, black),
+      -1px -1px 4px color-mix(in srgb, var(--bg-color) 90%, white);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.singleInputHistory .header {
+  }
+  
+  .singleInputHistory:hover {
+    cursor: pointer;
+    box-shadow: 0px 5px 15px color-mix(in srgb, var(--bg-color) 70%, black);
+    transform: translateY(-5px);
+  }
+  
+  /* Header and content styles */
+  .singleInputHistory .header {
     height: 40%;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-radius: 15px 15px 0 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: normal;
-    color: var(--font-color);  /* Change this to use theme color */
-    text-align: center;
+    color: var(--font-color);
     padding: 5px;
     background-color: var(--fg-color);
-}
-
-.singleInputHistory .content {
+  }
+  
+  .singleInputHistory .content {
     height: 60%;
     padding: 10px;
     display: flex;
@@ -61,49 +68,43 @@
     text-align: center;
     overflow: hidden;
     background-color: var(--hl-color);
-
-}
-
-.singleInputHistory .shortcut {
+  }
+  
+  /* Typography */
+  .singleInputHistory .shortcut {
     font-family: 'Inconsolata', monospace;
     font-size: 20px;
     font-weight: 600;
     color: var(--font-color);
     margin-bottom: 5px;
     word-break: break-all;
-}
-
-.singleInputHistory .command {
+  }
+  
+  .singleInputHistory .command {
     font-family: 'Inconsolata', monospace;
     color: var(--font-color);
     font-size: 12px;
     word-break: break-all;
-}
-
-.singleInputHistory:hover {
-    cursor: pointer;
-    box-shadow: 0px 5px 15px color-mix(in srgb, var(--bg-color) 70%, black);
-    transform: translateY(-5px);
-}
-
-
-/* Scrollbar styles */
-.history-section::-webkit-scrollbar {
-    width: 4px;
-    opacity: 0.5;
-}
-
-.history-section::-webkit-scrollbar-track {
-    background: var(--bg-color);
-}
-
-.history-section::-webkit-scrollbar-thumb {
-    background-color: var(--hl-color);
-    border-radius: 40px;
-}
-
-.success-rate {
+  }
+  
+  /* Stats section */
+  .success-rate {
     text-align: center;
     margin-bottom: 1rem;
     font-weight: 500;
-}
+  }
+  
+  /* Scrollbar styles */
+  .history-section::-webkit-scrollbar {
+    width: 4px;
+    opacity: 0.5;
+  }
+  
+  .history-section::-webkit-scrollbar-track {
+    background: var(--bg-color);
+  }
+  
+  .history-section::-webkit-scrollbar-thumb {
+    background-color: var(--hl-color);
+    border-radius: 40px;
+  }
