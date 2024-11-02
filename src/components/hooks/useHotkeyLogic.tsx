@@ -45,7 +45,7 @@ export const useHotkeyLogic = ({
       
       setTimeout(() => {
         processingRef.current = false;
-      }, 300);
+      }, 100);
     }
   }, [gameStarted, recordedKeys, currentShortcutIndex, setInputHistory, setCurrentShortcutIndex, resetKeys, shortcutList, setShortcutList]);
 
@@ -61,7 +61,7 @@ export const useHotkeyLogic = ({
 
   useEffect(() => {
     if (gameStarted && recordedKeys.size > 0) {
-      const timeoutId = setTimeout(processRecordedKeys, 300);
+      const timeoutId = setTimeout(processRecordedKeys, 400);
       return () => clearTimeout(timeoutId);
     }
   }, [gameStarted, recordedKeys, processRecordedKeys]);

@@ -37,6 +37,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         <ThemeList 
           themes={themes}
           onSelect={handleThemeSelection}
+          currentTheme={currentTheme}
         />
       </Modal>
     </div>

@@ -8,7 +8,7 @@ interface PalletContextType {
 const PalletContext = createContext<PalletContextType | undefined>(undefined);
 
 const PalletProvider = ({ children }: { children: React.ReactNode }) => {
-    const [theme, setTheme] = useState("default");
+    const [theme, setTheme] = useState("belgian-train");
 
     useEffect(() => {
       document.body.className = theme;

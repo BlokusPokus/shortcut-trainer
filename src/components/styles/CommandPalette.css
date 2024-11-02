@@ -48,6 +48,6 @@
   color: var(--hl-color);
 }
 
-.theme-option.active {
+.theme-option.selected {
   color: var(--hl-color);
 }

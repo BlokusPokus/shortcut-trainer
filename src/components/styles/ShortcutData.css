@@ -1,10 +1,37 @@
-
-
-
-
 .shortcut-data-container {
   position: fixed;
   top: 20px;
   right: 20px;
   z-index: 100;
+}
+
+.shortcut-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+  justify-items: center;
+  margin-bottom: 20px;
+}
+
+.shortcut-option {
+  border: none;
+  padding: 5px;
+  margin: 0;
+  background: none;
+  color: var(--font-color);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shortcut-option:hover {
+  color: var(--hl-color);
+}
+
+.shortcut-option.selected {
+  color: var(--hl-color);
 }

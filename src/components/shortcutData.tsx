@@ -20,6 +20,8 @@ export const shuffleArray = <T,>(array: T[]): T[] => {
     
 const ShortcutData = ({setShortcutList}: ShortcutDataProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedList, setSelectedList] = useState<string | null>(null);
+
     const shortcutLists = [
         { 
             id: 'VS_CODE', 
@@ -39,24 +41,30 @@ const ShortcutData = ({setShortcutList}: ShortcutDataProps) => {
         { id: 'WINDOWS', name: "Windows Shortcuts", list: windowsShortcuts.map(item => ({ ...item, listId: 'WINDOWS' })) }
     ];
 
+    const handleListSelect = (list: Shortcut[], id: string) => {
+        setSelectedList(id);
+        setShortcutList(shuffleArray(list));
+        setIsModalOpen(false);
+    };
+
     return (
         <div>
             <button onClick={() => setIsModalOpen(true)}><List/></button>
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Pick list">
-                {shortcutLists.map((item) => (
-                    <button 
-                        key={item.id}
-                        onClick={() => {
-                            setShortcutList(shuffleArray(item.list));
-                            setIsModalOpen(false);
-                        }}
-                    >
-                        {item.name}
-                    </button>
-                ))}
+                <div className="shortcut-list">
+                    {shortcutLists.map((item) => (
+                        <button 
+                            key={item.id}
+                            className={`shortcut-option ${selectedList === item.id ? 'selected' : ''}`}
+                            onClick={() => handleListSelect(item.list, item.id)}
+                        >
+                            {item.name}
+                        </button>
+                    ))}
+                </div>
             </Modal>
         </div>
-    )
-}
+    );
+};
 
 export default ShortcutData;

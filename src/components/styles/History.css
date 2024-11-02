@@ -6,7 +6,7 @@
   
   .history-section {
     width: 100%;
-    min-height: 40vh;
+    min-height: 25vh;
     min-width: 1000px;
     display: flex;
     flex-direction: column;
