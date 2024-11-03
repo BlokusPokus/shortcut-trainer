@@ -1,11 +1,19 @@
+//#region Imports
+// React and Third-party Libraries
 import React, { useReducer, useEffect } from 'react';
+// Hooks and Context
 import { useHotkeyLogic } from './hooks/useHotkeyLogic';
+// Components
 import { FlipCard } from './FlipCard';
 import Timer from './Timer';
 import { Instructions } from './Instructions';
+// Types
 import { HotkeyProps } from './types/types';
+// Styles
 import './styles/Hotkey.css';
+// Utilities
 import { listNameReducer } from './utils/utils';
+//#endregion
 
 const Hotkey: React.FC<HotkeyProps> = ({
   gameStarted,

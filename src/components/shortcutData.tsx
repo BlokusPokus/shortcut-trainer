@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
-import Modal from './common/modal'
-import './styles/ShortcutData.css'
-import { List } from 'lucide-react';
-import { vsCodeShortchutMac, macOsShortcut, cursorShortcut, vimShortcuts, excelShortcuts, commandLineShortcuts, gitShortcuts, windowsShortcuts } from './constants/shortcutLists';
-import { Shortcut } from './types/types';
+//#region Imports
+// React and Third-party Libraries
+import React, { useState } from 'react';
+import { Menu } from 'lucide-react';
+// Components
+import Modal from './common/modal';
+// Styles
+import './styles/ShortcutData.css';
+// Constants
+import { vsCodeShortchutMac, macOsShortcut, cursorShortcut, vimShortcuts, excelShortcuts, commandLineShortcuts, gitShortcuts, windowsShortcuts, browserShortcuts } from './constants/shortcutLists';
+// Types
+import { Shortcut, ShortcutDataProps } from './types/types';
 
-interface ShortcutDataProps {
-    setShortcutList: (list: Shortcut[]) => void;
-}
+//#endregion
+
 
 export const shuffleArray = <T,>(array: T[]): T[] => {
     const newArray = [...array];
@@ -38,7 +43,8 @@ const ShortcutData = ({setShortcutList}: ShortcutDataProps) => {
         { id: 'EXCEL', name: "Excel Shortcuts", list: excelShortcuts.map(item => ({ ...item, listId: 'EXCEL' })) },
         { id: 'COMMAND_LINE', name: "Command Line Shortcuts", list: commandLineShortcuts.map(item => ({ ...item, listId: 'COMMAND_LINE' })) },
         { id: 'GIT', name: "Git Shortcuts", list: gitShortcuts.map(item => ({ ...item, listId: 'GIT' })) },
-        { id: 'WINDOWS', name: "Windows Shortcuts", list: windowsShortcuts.map(item => ({ ...item, listId: 'WINDOWS' })) }
+        { id: 'WINDOWS', name: "Windows Shortcuts", list: windowsShortcuts.map(item => ({ ...item, listId: 'WINDOWS' })) },
+        { id: 'BROWSER', name: "Browser Shortcuts", list: browserShortcuts.map(item => ({ ...item, listId: 'BROWSER' })) }
     ];
 
     const handleListSelect = (list: Shortcut[], id: string) => {
@@ -49,7 +55,7 @@ const ShortcutData = ({setShortcutList}: ShortcutDataProps) => {
 
     return (
         <div>
-            <button onClick={() => setIsModalOpen(true)}><List/></button>
+            <button onClick={() => setIsModalOpen(true)}><Menu/></button>
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Pick list">
                 <div className="shortcut-list">
                     {shortcutLists.map((item) => (

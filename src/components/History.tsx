@@ -1,10 +1,16 @@
+//#region Imports and Third-party Libraries
 import React, { useMemo } from 'react';
+// Components
 import { HistoryStats } from './HistoryStats';
 import { HistoryItem } from './HistoryItem';
+// Types
 import { HistoryProps } from './types/types';
+// Styles
 import './styles/History.css';
-
-const History: React.FC<HistoryProps> = ({ inputHistory, shortcutList }) => {
+// Hooks and Context
+import { useGameEnd } from './hooks/useGameEnd';
+//#endregion
+const History: React.FC<HistoryProps> = ({ inputHistory, shortcutList, gameStarted, setGameStarted }) => {
   const stats = useMemo(() => {
     const completedCount = inputHistory.filter(input => input.status === 'found').length;
     return {
@@ -16,6 +22,8 @@ const History: React.FC<HistoryProps> = ({ inputHistory, shortcutList }) => {
       totalShortcuts: shortcutList.length
     };
   }, [inputHistory, shortcutList]);
+
+  useGameEnd({ inputHistory, shortcutList, gameStarted, setGameStarted });
 
   return (
     <div className="history-wrapper">

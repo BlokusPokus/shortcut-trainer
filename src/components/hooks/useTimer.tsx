@@ -1,17 +1,7 @@
 import { useState, useEffect } from 'react';
-
-interface UseTimerProps {
-  initialTime: number;
-  gameStarted: boolean;
-  onTimeEnd?: () => void;
-}
-
-interface UseTimerReturn {
-  currentTime: number;
-  formattedTime: string;
-  setTime: (time: number) => void;
-  resetTimer: () => void;
-}
+// Types
+import { UseTimerProps, UseTimerReturn } from '../types/types';
+//#endregion
 
 export const useTimer = ({ initialTime, gameStarted, onTimeEnd }: UseTimerProps): UseTimerReturn => {
   const [currentTime, setCurrentTime] = useState(initialTime);

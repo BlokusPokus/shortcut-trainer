@@ -84,6 +84,8 @@ export interface HistoryInput {
   export interface HistoryProps {
     inputHistory: HistoryInput[];
     shortcutList: { key: string; command: string; }[];
+    gameStarted: boolean;
+    setGameStarted: Dispatch<SetStateAction<boolean>>;
   }
   
   export interface HistoryStatsProps {
@@ -98,3 +100,57 @@ export interface HistoryInput {
     command: string;
     status: HistoryInput['status'];
   }
+
+export interface TimeSelectorProps {
+  selectedTime: number;
+  onTimeSelect: (time: number) => void;
+  gameStarted: boolean;
+}
+export interface ShortcutDataProps {
+  setShortcutList: (list: Shortcut[]) => void;
+}
+
+export interface TimerProps {
+  delayResend: number;
+  gameStarted: boolean;
+  setGameStarted: React.Dispatch<React.SetStateAction<boolean>>;
+  onTimeUpdate?: (remainingTime: number) => void;
+}
+export interface ThemeListProps {
+  themes: Theme[];
+  onSelect: (themeId: string) => void;
+  currentTheme?: string;
+}
+
+export interface HeaderProps {
+  gameStarted: boolean;
+}
+
+export interface FooterProps {
+  githubUrl?: string;
+  twitterHandle?: string;
+  authorGithub?: string;
+}
+
+export interface UseCommandPaletteProps {
+  onThemeChange?: (themeId: string) => void;
+}
+
+export interface UseTimerProps {
+  initialTime: number;
+  gameStarted: boolean;
+  onTimeEnd?: () => void;
+}
+
+export interface UseTimerReturn {
+  currentTime: number;
+  formattedTime: string;
+  setTime: (time: number) => void;
+  resetTimer: () => void;
+}
+export interface UseGameEndProps {
+  inputHistory: { text: string; status: string }[];
+  shortcutList: any[];
+  gameStarted: boolean;
+  setGameStarted: (value: boolean) => void;
+}

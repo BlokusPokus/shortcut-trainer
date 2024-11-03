@@ -1,7 +1,9 @@
+//#region Imports and Third-party Libraries
 import React from 'react';
 import { ThumbsDown, ThumbsUp, Minus } from 'lucide-react';
+// Types
 import { HistoryItemProps } from './types/types';
-
+//#endregion
 export const HistoryItem: React.FC<HistoryItemProps> = ({
   shortcut,
   command,

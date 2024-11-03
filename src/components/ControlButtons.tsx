@@ -1,12 +1,19 @@
+//#region Imports
+// React and Third-party Libraries
 import React from 'react';
 import { Play, Square, SkipForward } from 'lucide-react';
-
-import './styles/ControlButtons.css';
-import { ControlButtonsProps } from './types/types';
+// Hooks and Context
 import { usePalletContext } from '../PalletContext';
+// Components
 import { GameButton } from './common/gameButtons';
 import ShortcutData from './shortcutData';
 import TimeSelector from './TimeSelector';
+// Types
+import { ControlButtonsProps } from './types/types';
+// Styles
+import './styles/ControlButtons.css';
+//#endregion
+
 
 const ControlButtons: React.FC<ControlButtonsProps> = ({
     handleStartRecording,

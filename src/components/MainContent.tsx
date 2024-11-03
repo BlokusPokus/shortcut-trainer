@@ -1,10 +1,15 @@
+//#region Imports
+// React and Third-party Libraries
 import React from 'react';
+// Components
 import { CommandPalette } from './CommandPallet';
 import ControlButtons from './ControlButtons';
 import Hotkey from './Hotkey';
+// Types
 import { MainContentProps, Shortcut } from './types/types';
-
-
+// Styles
+import './styles/MainContent.css';
+//#endregion
 export const MainContent: React.FC<MainContentProps> = ({
   theme,
   handleThemeChange,

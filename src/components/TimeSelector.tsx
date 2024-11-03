@@ -1,14 +1,19 @@
+//#region Imports
+// React and Third-party Libraries
 import React, { useState } from 'react';
-import './styles/TimeSelector.css';
-import Modal from './common/modal';
-import { usePalletContext } from '../PalletContext';
 import { Timer } from 'lucide-react';
+// Styles
+import './styles/TimeSelector.css';
+// Constants
+import { TIME_OPTIONS } from './constants/timeOptions';
+// Components
+import Modal from './common/modal';
+// Hooks and Context
+import { usePalletContext } from '../PalletContext';
+// Types
+import { TimeSelectorProps } from './types/types';
+//#endregion
 
-interface TimeSelectorProps {
-  selectedTime: number;
-  onTimeSelect: (time: number) => void;
-  gameStarted: boolean;
-}
 
 const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedTime, onTimeSelect, gameStarted }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,15 +22,6 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedTime, onTimeSelect,
         onTimeSelect(time);
         setIsModalOpen(false);
     };
-
-    const timeOptions = [
-        { label: '30 sec', value: 30 },
-        { label: '1 min', value: 60 },
-        { label: '2 min', value: 120 },
-        { label: '3 min', value: 180 },
-        { label: '5 min', value: 300 },
-        { label: 'No limit', value: Infinity },
-    ];
 
     return (
         <div >
@@ -38,7 +34,7 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedTime, onTimeSelect,
 
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Set Timer">
                 <div className="time-selector">
-                    {timeOptions.map((option) => (
+                    {TIME_OPTIONS.map((option) => (
                         <button
                             key={option.value}
                             className={`time-option ${selectedTime === option.value ? 'selected' : ''}`}

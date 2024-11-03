@@ -1,13 +1,10 @@
+//#region Imports
 import React from 'react';
+// Types
+import { ThemeListProps } from './types/types';
+// Styles
+//#endregion
 
-import { Theme } from './types/types';
-import './styles/CommandPalette.css';
-
-interface ThemeListProps {
-  themes: Theme[];
-  onSelect: (themeId: string) => void;
-  currentTheme?: string;
-}
 
 export const ThemeList: React.FC<ThemeListProps> = ({ themes, onSelect, currentTheme }) => (
   <ul className="theme-list">

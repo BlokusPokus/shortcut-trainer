@@ -1,8 +1,9 @@
+//#region Imports
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useRecordHotkeys } from 'react-hotkeys-hook';
 import { shuffleArray } from '../shortcutData';
 import { HotkeyProps } from '../types/types';
-
+//#endregion
 export const useHotkeyLogic = ({
   gameStarted,
   currentShortcutIndex,

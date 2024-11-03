@@ -1,20 +1,27 @@
+//#region Imports and Third-party Libraries
+
+// React and Third-party Libraries
 import React, { useState, useCallback } from 'react';
+// Hooks and Context
+import { usePalletContext } from '../PalletContext';
+// Types
+import { LandingPageProps, Shortcut, Theme } from './types/types';
+// Constants
+import { DEFAULT_THEMES } from './constants/defaultThemes';
+import { vsCodeShortchutMac, macOsShortcut, cursorShortcut } from './constants/shortcutLists';
+// Styles
 import './styles/LandingPage.css';
+// Components
 import History from './History';
 import BrowserShortcut from './BrowserShortcut';
 import ControlButtons from './ControlButtons';
 import Header from './Header';
 import Hotkey from './Hotkey';
 import Footer from './Footer';
-import { usePalletContext } from '../PalletContext'
 import { CommandPalette } from './CommandPallet';
-import { vsCodeShortchutMac, macOsShortcut, cursorShortcut } from './constants/shortcutLists';
-import { Shortcut, Theme } from './types/types';
-import { DEFAULT_THEMES } from './constants/defaultThemes';
+//#endregion
 
-interface LandingPageProps {
 
-}
 
 const LandingPage: React.FC<LandingPageProps> = () => {
     const { theme, setTheme } = usePalletContext();
@@ -104,6 +111,8 @@ const LandingPage: React.FC<LandingPageProps> = () => {
                 <History
                     inputHistory={inputHistory}
                     shortcutList={shortcutList}
+                    gameStarted={gameStarted}
+                    setGameStarted={setGameStarted}
                 />
             </div>
         </div>

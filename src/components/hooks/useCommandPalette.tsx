@@ -1,9 +1,8 @@
+//#region Imports
 import { useState, useCallback } from 'react';
-
-interface UseCommandPaletteProps {
-  onThemeChange?: (themeId: string) => void;
-}
-
+// Types
+import { UseCommandPaletteProps } from '../types/types';
+//#endregion
 export const useCommandPalette = ({ onThemeChange }: UseCommandPaletteProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 

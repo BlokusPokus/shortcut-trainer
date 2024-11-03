@@ -1,16 +1,17 @@
+//#region Imports
+// React and Third-party Libraries
 import React from 'react';
 import { List, Play, Timer as TimerIcon } from 'lucide-react';
+// Types
 import { InstructionsProps } from './types/types';
+// Constants
+import { TIME_OPTIONS } from './constants/timeOptions';
+// Styles
 import './styles/Instructions.css';
-
-const getTimeLabel = (time: number): string => {
-  if (time === Infinity) return 'No limit';
-  if (time === 30) return '30 sec';
-  if (time === 60) return '1 min';
-  if (time === 120) return '2 min';
-  if (time === 180) return '3 min';
-  if (time === 300) return '5 min';
-  return `${time}s`;
+//#endregion
+export const getTimeLabel = (time: number): string => {
+  const option = TIME_OPTIONS.find(opt => opt.value === time);
+  return option?.label || `${time}s`;
 };
 
 export const Instructions: React.FC<InstructionsProps> = ({ listName, initialTime }) => (

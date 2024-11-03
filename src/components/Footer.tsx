@@ -1,16 +1,20 @@
+//#region Imports
+// React and Third-party Libraries
 import React from 'react';
+// Styles
 import './styles/Footer.css';
+// Constants
+import { SOCIAL_MEDIA } from './constants/socialMediat';
+// Types
+import { FooterProps } from './types/types';
+//#endregion
 
-interface FooterProps {
-  githubUrl?: string;
-  twitterHandle?: string;
-  authorGithub?: string;
-}
+
 
 const Footer: React.FC<FooterProps> = ({
-  githubUrl = "https://github.com/blokuspokus/shortcut-trainer",
-  twitterHandle = "@ian_le_blanc",
-  authorGithub = "@blokuspokus"
+  githubUrl = SOCIAL_MEDIA.GITHUB_URL,
+  twitterHandle = SOCIAL_MEDIA.TWITTER_HANDLE,
+  authorGithub = SOCIAL_MEDIA.AUTHOR_GITHUB
 }) => {
   return (
     <footer className='footer'>

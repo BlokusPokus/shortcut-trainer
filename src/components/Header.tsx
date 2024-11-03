@@ -1,7 +1,8 @@
-interface HeaderProps {
-  gameStarted: boolean;
-
-}
+//#region Imports and Third-party Libraries
+import React from 'react';
+// Types
+import { HeaderProps } from './types/types';
+//#endregion
 
 const Header = ({ gameStarted }: HeaderProps) => {
   return (

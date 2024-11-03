@@ -1,12 +1,13 @@
+//#region Imports and Third-party Libraries
 import React from "react";
+// Hooks and Context
 import { useTimer } from './hooks/useTimer';
+// Styles
 
-interface TimerProps {
-  delayResend: number;
-  gameStarted: boolean;
-  setGameStarted: React.Dispatch<React.SetStateAction<boolean>>;
-  onTimeUpdate?: (remainingTime: number) => void;
-}
+// Types
+import { TimerProps } from './types/types';
+//#endregion
+
 
 const Timer = ({ delayResend, gameStarted, setGameStarted, onTimeUpdate }: TimerProps) => {
   const { formattedTime } = useTimer({
