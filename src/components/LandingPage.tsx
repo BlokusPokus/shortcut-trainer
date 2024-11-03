@@ -5,7 +5,7 @@ import React, { useState, useCallback } from 'react';
 // Hooks and Context
 import { usePalletContext } from '../PalletContext';
 // Types
-import { LandingPageProps, Shortcut, Theme } from './types/types';
+import { Shortcut, Theme } from './types/types';
 // Constants
 import { DEFAULT_THEMES } from './constants/defaultThemes';
 import { vsCodeShortchutMac, macOsShortcut, cursorShortcut } from './constants/shortcutLists';
@@ -23,7 +23,7 @@ import { CommandPalette } from './CommandPallet';
 
 
 
-const LandingPage: React.FC<LandingPageProps> = () => {
+const LandingPage: React.FC = () => {
     const { theme, setTheme } = usePalletContext();
     const [shortcutList, setShortcutList] = useState<Shortcut[]>(
         vsCodeShortchutMac.map(item => ({

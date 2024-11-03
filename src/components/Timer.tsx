@@ -13,6 +13,7 @@ const Timer = ({ delayResend, gameStarted, setGameStarted, onTimeUpdate }: Timer
   const { formattedTime } = useTimer({
     initialTime: delayResend,
     gameStarted,
+    setGameStarted,
     onTimeEnd: () => {
       setGameStarted(false);
       onTimeUpdate?.(delayResend);

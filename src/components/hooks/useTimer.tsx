@@ -4,7 +4,7 @@ import { UseTimerProps, UseTimerReturn } from '../types/types';
 //#endregion
 
 export const useTimer = ({ initialTime, gameStarted, onTimeEnd }: UseTimerProps): UseTimerReturn => {
-  const [currentTime, setCurrentTime] = useState(initialTime);
+  const [currentTime, setCurrentTime] = useState<number>(initialTime);
 
   useEffect(() => {
     setCurrentTime(initialTime);
