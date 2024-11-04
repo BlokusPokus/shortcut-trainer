@@ -29,13 +29,13 @@ const History: React.FC<HistoryProps> = ({ inputHistory, shortcutList, gameStart
     <div className="history-wrapper">
       {inputHistory.length > 0 && <HistoryStats {...stats} />}
       <div className="history-section">
-        {inputHistory.length > 0 && (
+        {inputHistory.length > 0 ? (
           <ul className='history-list'>
             {[...inputHistory].reverse().map((input, index) => {
               const [shortcut, command] = input.text.split(' - ');
               return (
                 <HistoryItem
-                  key={index}
+                  key={`history-${index}-${shortcut}`}
                   shortcut={shortcut}
                   command={command}
                   status={input.status}
@@ -43,6 +43,10 @@ const History: React.FC<HistoryProps> = ({ inputHistory, shortcutList, gameStart
               );
             })}
           </ul>
+        ) : (
+          <div className="empty-history">
+            <p>No history yet. Start typing shortcuts!</p>
+          </div>
         )}
       </div>
     </div>

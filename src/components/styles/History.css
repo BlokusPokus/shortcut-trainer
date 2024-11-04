@@ -1,110 +1,190 @@
 /* Container styles */
 .history-wrapper {
-    color: var(--font-color);
-    background-color: var(--bg-color);
-  }
-  
-  .history-section {
-    width: 100%;
-    min-height: 25vh;
-    min-width: 1000px;
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-  }
-  
-  /* List styles */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+
+}
+
+.history-section {
+  width: 100%;
+  min-height: 25vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  overflow-x: hidden;
+
+}
+
+/* List styles */
+.history-list {
+  max-height: 30vh;
+  min-height: 30vh;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  list-style-type: none;
+  margin: 0;
+  justify-items: center;
+  width: calc(100% - 40px);
+  max-width: 1000px;
+  box-sizing: border-box;
+}
+
+/* Media queries for different screen sizes */
+@media screen and (max-width: 1200px) {
   .history-list {
-    max-height: 30vh;
-    min-height: 30vh;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    /* 5 columns */
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .history-list {
+    /* 4 columns */
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .history-list {
+    /* 3 columns */
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 10px;
     gap: 10px;
-    list-style-type: none;
-    padding: 0;
-    justify-items: center;
+    width: calc(100% - 20px);
   }
-  
-  /* History item styles */
+}
+
+@media screen and (max-width: 576px) {
+  .history-list {
+    /* 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .history-list {
+    /* 1 column */
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Add media queries for different screen sizes */
+@media screen and (max-width: 768px) {
   .singleInputHistory {
-    width: 120px;
-    height: 120px;
-    background: var(--fg-color);
-    border-radius: 15px;
-    box-shadow: 
-      2px 2px 8px color-mix(in srgb, var(--bg-color) 85%, black),
-      -1px -1px 4px color-mix(in srgb, var(--bg-color) 90%, white);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100px;
+    height: 100px;
   }
-  
-  .singleInputHistory:hover {
-    cursor: pointer;
-    box-shadow: 0px 5px 15px color-mix(in srgb, var(--bg-color) 70%, black);
-    transform: translateY(-5px);
-  }
-  
-  /* Header and content styles */
-  .singleInputHistory .header {
-    height: 40%;
-    border-radius: 15px 15px 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--font-color);
-    padding: 5px;
-    background-color: var(--fg-color);
-  }
-  
-  .singleInputHistory .content {
-    height: 60%;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    background-color: var(--hl-color);
-  }
-  
-  /* Typography */
+
   .singleInputHistory .shortcut {
-    font-family: 'Inconsolata', monospace;
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--font-color);
-    margin-bottom: 5px;
-    word-break: break-all;
+    font-size: 16px;
   }
-  
+
   .singleInputHistory .command {
-    font-family: 'Inconsolata', monospace;
-    color: var(--font-color);
-    font-size: 12px;
-    word-break: break-all;
+    font-size: 10px;
   }
-  
-  /* Stats section */
-  .success-rate {
-    text-align: center;
-    margin-bottom: 1rem;
-    font-weight: 500;
+}
+
+@media screen and (max-width: 480px) {
+  .history-wrapper {
+    padding: 0 10px;
   }
-  
-  /* Scrollbar styles */
-  .history-section::-webkit-scrollbar {
-    width: 4px;
-    opacity: 0.5;
+
+  .history-list {
+    margin: 0 5px;
+    gap: 5px;
+    width: calc(100% - 10px);
   }
-  
-  .history-section::-webkit-scrollbar-track {
-    background: var(--bg-color);
+
+  .singleInputHistory {
+    width: 90px;
+    height: 90px;
   }
-  
-  .history-section::-webkit-scrollbar-thumb {
-    background-color: var(--hl-color);
-    border-radius: 40px;
-  }
+}
+
+/* History item styles */
+.singleInputHistory {
+  width: 120px;
+  height: 120px;
+  background: var(--fg-color);
+  border-radius: 15px;
+  box-shadow: 
+    2px 2px 8px color-mix(in srgb, var(--bg-color) 85%, black),
+    -1px -1px 4px color-mix(in srgb, var(--bg-color) 90%, white);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.singleInputHistory:hover {
+  cursor: pointer;
+  box-shadow: 0px 5px 15px color-mix(in srgb, var(--bg-color) 70%, black);
+  transform: translateY(-5px);
+}
+
+/* Header and content styles */
+.singleInputHistory .header {
+  height: 40%;
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--font-color);
+  padding: 5px;
+  background-color: var(--fg-color);
+}
+
+.singleInputHistory .content {
+  height: 60%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  background-color: var(--hl-color);
+}
+
+/* Typography */
+.singleInputHistory .shortcut {
+  font-family: 'Inconsolata', monospace;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--font-color);
+  margin-bottom: 5px;
+  word-break: break-all;
+}
+
+.singleInputHistory .command {
+  font-family: 'Inconsolata', monospace;
+  color: var(--font-color);
+  font-size: 12px;
+  word-break: break-all;
+}
+
+/* Stats section */
+.success-rate {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+/* Scrollbar styles */
+.history-section::-webkit-scrollbar {
+  width: 4px;
+  opacity: 0.5;
+}
+
+.history-section::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+.history-section::-webkit-scrollbar-thumb {
+  background-color: var(--hl-color);
+  border-radius: 40px;
+}
