@@ -1,0 +1,14 @@
+# Build files
+build
+dist
+coverage
+
+# Node modules
+node_modules
+
+# Package files
+package-lock.json
+yarn.lock
+
+# Other
+.DS_Store

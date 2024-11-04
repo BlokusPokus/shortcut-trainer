@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface PalletContextType {
   theme: string;
@@ -8,18 +8,18 @@ interface PalletContextType {
 const PalletContext = createContext<PalletContextType | undefined>(undefined);
 
 const PalletProvider = ({ children }: { children: React.ReactNode }) => {
-    const [theme, setTheme] = useState("belgian-train");
+  const [theme, setTheme] = useState('belgian-train');
 
-    useEffect(() => {
-      document.body.className = theme;
-    }, [theme]);
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
-    return (
-      <PalletContext.Provider value={{theme, setTheme}}>
-        {children}
-      </PalletContext.Provider>
-    )
-}
+  return (
+    <PalletContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </PalletContext.Provider>
+  );
+};
 
 export const usePalletContext = () => {
   const context = useContext(PalletContext);
@@ -27,6 +27,6 @@ export const usePalletContext = () => {
     throw new Error('usePalletContext must be used within a PalletProvider');
   }
   return context;
-}
+};
 
 export default PalletProvider;
