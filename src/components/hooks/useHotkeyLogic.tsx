@@ -1,7 +1,7 @@
 //#region Imports
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useRecordHotkeys } from 'react-hotkeys-hook';
-import { shuffleArray } from '../shortcutData';
+import { shuffleArray } from '../hotkeys/shortcutData';
 import { HotkeyProps } from '../types/types';
 //#endregion
 export const useHotkeyLogic = ({
@@ -11,16 +11,27 @@ export const useHotkeyLogic = ({
   setInputHistory,
   shortcutList,
   setShortcutList,
-}: Pick<HotkeyProps, 'gameStarted' | 'currentShortcutIndex' | 'setCurrentShortcutIndex' | 'setInputHistory' | 'shortcutList' | 'setShortcutList'>) => {
+}: Pick<
+  HotkeyProps,
+  | 'gameStarted'
+  | 'currentShortcutIndex'
+  | 'setCurrentShortcutIndex'
+  | 'setInputHistory'
+  | 'shortcutList'
+  | 'setShortcutList'
+>) => {
   const [lastRecordedKeys, setLastRecordedKeys] = useState<string>('');
   const processingRef = useRef(false);
-  const [recordedKeys, { start: startRecording, stop: stopRecording, resetKeys }] = useRecordHotkeys();
+  const [
+    recordedKeys,
+    { start: startRecording, stop: stopRecording, resetKeys },
+  ] = useRecordHotkeys();
 
   const processRecordedKeys = useCallback(() => {
     if (gameStarted && recordedKeys.size > 0 && !processingRef.current) {
       processingRef.current = true;
       const keyCombo = Array.from(recordedKeys).join('+');
-      
+
       const normalizeShortcut = (shortcut: string) => {
         return shortcut.split('+').sort().join('+');
       };
@@ -28,27 +39,45 @@ export const useHotkeyLogic = ({
       const currentShortcut = shortcutList[currentShortcutIndex];
       const normalizedInput = normalizeShortcut(keyCombo);
       const normalizedExpected = normalizeShortcut(currentShortcut.key);
-      
+
       if (normalizedInput === normalizedExpected) {
-        setInputHistory(prev => [...prev, { text: `${keyCombo} - ${currentShortcut.command}`, status: 'found' }]);
-        
+        setInputHistory(prev => [
+          ...prev,
+          { text: `${keyCombo} - ${currentShortcut.command}`, status: 'found' },
+        ]);
+
         const nextIndex = (currentShortcutIndex + 1) % shortcutList.length;
         if (nextIndex === 0) {
           setShortcutList(shuffleArray([...shortcutList]));
         }
         setCurrentShortcutIndex(nextIndex);
       } else {
-        setInputHistory(prev => [...prev, { text: `${keyCombo} - ${currentShortcut.command} `, status: 'wrong' }]);
+        setInputHistory(prev => [
+          ...prev,
+          {
+            text: `${keyCombo} - ${currentShortcut.command} `,
+            status: 'wrong',
+          },
+        ]);
       }
-      
+
       setLastRecordedKeys(keyCombo);
       resetKeys();
-      
+
       setTimeout(() => {
         processingRef.current = false;
       }, 100);
     }
-  }, [gameStarted, recordedKeys, currentShortcutIndex, setInputHistory, setCurrentShortcutIndex, resetKeys, shortcutList, setShortcutList]);
+  }, [
+    gameStarted,
+    recordedKeys,
+    currentShortcutIndex,
+    setInputHistory,
+    setCurrentShortcutIndex,
+    resetKeys,
+    shortcutList,
+    setShortcutList,
+  ]);
 
   useEffect(() => {
     if (gameStarted) {

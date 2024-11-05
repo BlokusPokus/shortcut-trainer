@@ -1,15 +1,19 @@
 //#region Imports and Third-party Libraries
-import React from "react";
+import React from 'react';
 // Hooks and Context
-import { useTimer } from './hooks/useTimer';
+import { useTimer } from '../hooks/useTimer';
 // Styles
 
 // Types
-import { TimerProps } from './types/types';
+import { TimerProps } from '../types/types';
 //#endregion
 
-
-const Timer = ({ delayResend, gameStarted, setGameStarted, onTimeUpdate }: TimerProps) => {
+const Timer = ({
+  delayResend,
+  gameStarted,
+  setGameStarted,
+  onTimeUpdate,
+}: TimerProps) => {
   const { formattedTime } = useTimer({
     initialTime: delayResend,
     gameStarted,
@@ -17,7 +21,7 @@ const Timer = ({ delayResend, gameStarted, setGameStarted, onTimeUpdate }: Timer
     onTimeEnd: () => {
       setGameStarted(false);
       onTimeUpdate?.(delayResend);
-    }
+    },
   });
 
   return (

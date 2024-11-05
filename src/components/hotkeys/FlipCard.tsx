@@ -1,6 +1,6 @@
 //#region Imports
 import React from 'react';
-import { FlipCardProps } from './types/types';
+import { FlipCardProps } from '../types/types';
 //#endregion
 
 export const FlipCard: React.FC<FlipCardProps> = ({ command, shortcutKey }) => (

@@ -2,11 +2,11 @@
 // React and Third-party Libraries
 import React from 'react';
 // Components
-import { CommandPalette } from './CommandPallet';
-import ControlButtons from './ControlButtons';
-import Hotkey from './Hotkey';
+import { CommandPalette } from '../themes/CommandPallet';
+import ControlButtons from '../hotkeys/ControlButtons';
+import Hotkey from '../hotkeys/Hotkey';
 // Types
-import { MainContentProps, Shortcut } from './types/types';
+import { MainContentProps, Shortcut } from '../types/types';
 // Styles
 import './styles/MainContent.css';
 //#endregion
@@ -26,15 +26,15 @@ export const MainContent: React.FC<MainContentProps> = ({
 }) => {
   const handleStartRecording = () => setGameStarted(true);
   const handleStopRecording = () => setGameStarted(false);
-  
+
   const handleSkipShortcut = () => {
-    setCurrentShortcutIndex((prevIndex) => (prevIndex + 1) % shortcutList.length);
+    setCurrentShortcutIndex(prevIndex => (prevIndex + 1) % shortcutList.length);
     setInputHistory(prev => [
-      ...prev, 
+      ...prev,
       {
         text: `${shortcutList[currentShortcutIndex].key} - ${shortcutList[currentShortcutIndex].command}`,
-        status: 'skipped'
-      }
+        status: 'skipped',
+      },
     ]);
   };
 
@@ -45,7 +45,7 @@ export const MainContent: React.FC<MainContentProps> = ({
   return (
     <div className="main-content">
       <div className="top-section">
-        <CommandPalette 
+        <CommandPalette
           onThemeChange={handleThemeChange}
           currentTheme={theme}
         />
@@ -55,7 +55,7 @@ export const MainContent: React.FC<MainContentProps> = ({
           gameStarted={gameStarted}
           currentShortcutIndex={currentShortcutIndex}
           setCurrentShortcutIndex={setCurrentShortcutIndex}
-          setInputHistory={setInputHistory} 
+          setInputHistory={setInputHistory}
           inputHistory={inputHistory}
           shortcutList={shortcutList}
           setGameStarted={setGameStarted}

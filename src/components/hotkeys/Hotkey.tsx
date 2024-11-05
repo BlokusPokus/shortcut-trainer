@@ -2,17 +2,17 @@
 // React and Third-party Libraries
 import React, { useReducer, useEffect } from 'react';
 // Hooks and Context
-import { useHotkeyLogic } from './hooks/useHotkeyLogic';
+import { useHotkeyLogic } from '../hooks/useHotkeyLogic';
 // Components
 import { FlipCard } from './FlipCard';
-import Timer from './Timer';
+import Timer from '../time/Timer';
 import { Instructions } from './Instructions';
 // Types
-import { HotkeyProps } from './types/types';
+import { HotkeyProps } from '../types/types';
 // Styles
-import './styles/Hotkey.css';
+import '../styles/Hotkey.css';
 // Utilities
-import { listNameReducer } from './utils/utils';
+import { listNameReducer } from '../utils/utils';
 //#endregion
 
 const Hotkey: React.FC<HotkeyProps> = ({
@@ -29,14 +29,14 @@ const Hotkey: React.FC<HotkeyProps> = ({
 }) => {
   const currentShortcut = shortcutList[currentShortcutIndex];
   const [listName, dispatch] = useReducer(listNameReducer, 'Custom Shortcuts');
-  
+
   useEffect(() => {
-    dispatch({ 
-      type: 'SET_LIST_NAME', 
+    dispatch({
+      type: 'SET_LIST_NAME',
       payload: {
         shortcuts: shortcutList,
-        listId: shortcutList[0]?.listId || 'CUSTOM'
-      }
+        listId: shortcutList[0]?.listId || 'CUSTOM',
+      },
     });
   }, [shortcutList]);
 
@@ -53,14 +53,14 @@ const Hotkey: React.FC<HotkeyProps> = ({
     <div className="Hotkey-container">
       {gameStarted ? (
         <>
-          <Timer 
+          <Timer
             delayResend={initialTime}
             gameStarted={gameStarted}
             setGameStarted={setGameStarted}
             onTimeUpdate={setInitialTime}
           />
           <div className="current-list-name">{listName}</div>
-          <FlipCard 
+          <FlipCard
             command={currentShortcut.command}
             shortcutKey={currentShortcut.key}
           />

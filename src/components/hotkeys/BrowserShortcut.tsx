@@ -1,9 +1,7 @@
 //#region Imports
-// React and Third-party Libraries
-import React, { useEffect } from 'react';
+
+import { useEffect } from 'react';
 //#endregion
-
-
 
 // interface KeyboardEvent {
 //   key: string;          // The actual key value ("a", "Enter", etc.)
@@ -22,7 +20,6 @@ const BrowserShortcut = () => {
       e.stopPropagation();
     };
 
-    
     // Add event listener to the document
     document.addEventListener('keydown', preventAllKeydown);
 
