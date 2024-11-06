@@ -78,7 +78,7 @@ const LandingPage: React.FC = () => {
       <BrowserShortcut />
 
       <div className={`container `}>
-        <div className="top-section">
+        <div>
           <CommandPalette
             onThemeChange={handleThemeChange}
             currentTheme={theme}

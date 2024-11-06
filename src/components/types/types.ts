@@ -84,7 +84,7 @@ export type GameHistoryProps = {
   shortcutList: Shortcut[];
   gameStarted: boolean;
   setGameStarted: Dispatch<SetStateAction<boolean>>;
-}
+};
 
 // Used in: HistoryStats component
 export interface HistoryStatsProps {
@@ -99,6 +99,7 @@ export interface HistoryItemProps {
   shortcut: string;
   command: string;
   status: InputHistoryItem['status'];
+  isLatest?: boolean;
 }
 
 // Used in: TimeSelector component

@@ -1,0 +1,42 @@
+.item-a {
+    grid-area: a;
+    justify-self: stretch;
+
+    background-color: aliceblue;
+}
+
+.item-b {
+    grid-area: b;
+    align-self: stretch;
+    background-color: aquamarine;
+}
+
+.item-c {
+    grid-area: c;
+    align-self: stretch;
+    background-color: aqua;
+}
+
+.item-d {
+    grid-area: d;
+    background-color: azure;
+}
+
+.item-e {
+    grid-area: e;
+    background-color: antiquewhite;
+}
+
+.container {
+    display: grid;
+    column-gap: 10px;
+    row-gap: 10px;
+    min-height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        " a a a a a a"
+        ". . b b . ."
+        ". . c c . ."
+        ". . d e . .";
+}

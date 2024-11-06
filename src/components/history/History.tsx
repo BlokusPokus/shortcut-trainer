@@ -48,6 +48,7 @@ const History: React.FC<HistoryProps> = ({
                   shortcut={shortcut}
                   command={command}
                   status={input.status}
+                  isLatest={index === 0}
                 />
               );
             })}
