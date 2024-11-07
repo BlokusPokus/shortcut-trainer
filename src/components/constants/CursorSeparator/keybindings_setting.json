@@ -1,0 +1,65 @@
+[
+  {
+    "key": "shift+cmd+j",
+    "command": "aiSettings.action.openhidden",
+    "when": "!isSettingsPaneOpen"
+  },
+  {
+    "key": "escape",
+    "command": "settings.action.clearSearchResults",
+    "when": "inSettingsEditor && inSettingsSearch"
+  },
+  {
+    "key": "down",
+    "command": "settings.action.focusSettingsFile",
+    "when": "inSettingsSearch && !suggestWidgetVisible"
+  },
+  {
+    "key": "cmd+f",
+    "command": "settings.action.search",
+    "when": "inSettingsEditor"
+  },
+  {
+    "key": "escape",
+    "command": "settings.action.focusLevelUp",
+    "when": "inSettingsEditor && !inSettingsJSONEditor && !inSettingsSearch"
+  },
+  {
+    "key": "enter",
+    "command": "settings.action.focusSettingControl",
+    "when": "inSettingsEditor && settingRowFocus"
+  },
+  {
+    "key": "down",
+    "command": "settings.action.focusSettingsFromSearch",
+    "when": "inSettingsSearch && !suggestWidgetVisible"
+  },
+  {
+    "key": "enter",
+    "command": "settings.action.focusSettingsList",
+    "when": "inSettingsEditor && settingsTocRowFocus"
+  },
+  {
+    "key": "left",
+    "command": "settings.action.focusTOC",
+    "when": "inSettingsEditor && settingRowFocus"
+  },
+  {
+    "key": "shift+f9",
+    "command": "settings.action.showContextMenu",
+    "when": "inSettingsEditor"
+  },
+  {
+    "key": "cmd+,",
+    "command": "workbench.action.openSettings"
+  },
+  {
+    "key": "shift+cmd+j",
+    "command": "aiSettings.action.open",
+    "when": "!isSettingsPaneOpen"
+  },
+  {
+    "key": "shift+cmd+0",
+    "command": "aiSettings.usingOpenAIKey.toggle"
+  }
+]

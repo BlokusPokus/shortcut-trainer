@@ -1,0 +1,68 @@
+[
+  {
+    "key": "cmd+up",
+    "command": "chat.action.focus",
+    "when": "inChatInput && isLinux || inChatInput && isWindows"
+  },
+  {
+    "key": "shift+enter",
+    "command": "interactive.execute",
+    "when": "config.interactiveWindow.executeWithShiftEnter && activeEditor == 'workbench.editor.interactive'"
+  },
+  {
+    "key": "enter",
+    "command": "interactive.execute",
+    "when": "!config.interactiveWindow.executeWithShiftEnter && activeEditor == 'workbench.editor.interactive'"
+  },
+  {
+    "key": "shift+enter",
+    "command": "repl.execute",
+    "when": "config.interactiveWindow.executeWithShiftEnter && activeEditor == 'workbench.editor.repl'"
+  },
+  {
+    "key": "enter",
+    "command": "repl.execute",
+    "when": "!config.interactiveWindow.executeWithShiftEnter && activeEditor == 'workbench.editor.repl'"
+  },
+  {
+    "key": "shift+cmd+w",
+    "command": "workbench.action.closeWindow"
+  },
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.closeWindow",
+    "when": "!editorIsOpen && !multipleEditorGroups"
+  },
+  {
+    "key": "cmd+r o",
+    "command": "workbench.action.copyEditorToNewWindow",
+    "when": "activeEditor"
+  },
+  {
+    "key": "cmd+r r",
+    "command": "workbench.action.files.revealActiveFileInWindows"
+  },
+  {
+    "key": "shift+cmd+n",
+    "command": "workbench.action.newWindow"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.switchWindow"
+  },
+  {
+    "key": "cmd+r z",
+    "command": "workbench.action.toggleZenMode",
+    "when": "!isAuxiliaryWindowFocusedContext"
+  },
+  {
+    "key": "shift+cmd+r",
+    "command": "workbench.action.reloadWindow",
+    "when": "isDevelopment"
+  },
+  {
+    "key": "enter",
+    "command": "python.execInREPLEnter",
+    "when": "!config.interactiveWindow.executeWithShiftEnter && activeEditor == 'workbench.editor.interactive'"
+  }
+]

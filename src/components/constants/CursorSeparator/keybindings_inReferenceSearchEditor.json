@@ -1,0 +1,67 @@
+[
+  {
+    "key": "shift+escape",
+    "command": "closeReferenceSearch",
+    "when": "inReferenceSearchEditor && !config.editor.stablePeek"
+  },
+  {
+    "key": "escape",
+    "command": "closeReferenceSearch",
+    "when": "inReferenceSearchEditor && !config.editor.stablePeek"
+  },
+  {
+    "key": "f12",
+    "command": "goToNextReference",
+    "when": "inReferenceSearchEditor || referenceSearchVisible"
+  },
+  {
+    "key": "f4",
+    "command": "goToNextReference",
+    "when": "inReferenceSearchEditor || referenceSearchVisible"
+  },
+  {
+    "key": "shift+f12",
+    "command": "goToPreviousReference",
+    "when": "inReferenceSearchEditor || referenceSearchVisible"
+  },
+  {
+    "key": "shift+f4",
+    "command": "goToPreviousReference",
+    "when": "inReferenceSearchEditor || referenceSearchVisible"
+  },
+  {
+    "key": "shift+f12",
+    "command": "editor.action.goToReferences",
+    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  {
+    "key": "alt+f12",
+    "command": "editor.action.peekDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  {
+    "key": "shift+cmd+f12",
+    "command": "editor.action.peekImplementation",
+    "when": "editorHasImplementationProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  {
+    "key": "cmd+r f2",
+    "command": "togglePeekWidgetFocus",
+    "when": "inReferenceSearchEditor || referenceSearchVisible"
+  },
+  {
+    "key": "shift+alt+h",
+    "command": "editor.showCallHierarchy",
+    "when": "editorHasCallHierarchyProvider && editorTextFocus && !inReferenceSearchEditor"
+  },
+  {
+    "key": "escape",
+    "command": "quokka.clearValue",
+    "when": "editorTextFocus && quokka.isActiveEditorRunningQuokka && quokka.lineHasRemovableInlineValues && !findWidgetVisible && !inReferenceSearchEditor && !parameterHintsVisible && !quickFixWidgetVisible && !referenceSearchVisible && !renameInputVisible && !suggestWidgetVisible && !vim.active || editorTextFocus && quokka.isActiveEditorRunningQuokka && quokka.lineHasRemovableInlineValues && !findWidgetVisible && !inReferenceSearchEditor && !parameterHintsVisible && !quickFixWidgetVisible && !referenceSearchVisible && !renameInputVisible && !suggestWidgetVisible && vim.mode == 'Normal'"
+  },
+  {
+    "key": "escape escape",
+    "command": "quokka.clearFileValues",
+    "when": "editorTextFocus && quokka.fileHasRemovableInlineValues && quokka.isActiveEditorRunningQuokka && !editorHasSelection && !findWidgetVisible && !inReferenceSearchEditor && !parameterHintsVisible && !quickFixWidgetVisible && !quokka.lineHasRemovableInlineValues && !referenceSearchVisible && !renameInputVisible && !suggestWidgetVisible && !vim.active || editorTextFocus && quokka.fileHasRemovableInlineValues && quokka.isActiveEditorRunningQuokka && !editorHasSelection && !findWidgetVisible && !inReferenceSearchEditor && !parameterHintsVisible && !quickFixWidgetVisible && !quokka.lineHasRemovableInlineValues && !referenceSearchVisible && !renameInputVisible && !suggestWidgetVisible && vim.mode == 'Normal'"
+  }
+]

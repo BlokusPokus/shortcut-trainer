@@ -1,0 +1,115 @@
+[
+  {
+    "key": "escape",
+    "command": "editor.closeTestPeek",
+    "when": "testing.isInPeek && !config.editor.stablePeek || testing.isPeekVisible && !config.editor.stablePeek"
+  },
+  {
+    "key": "alt+enter",
+    "command": "testing.editFocusedTest",
+    "when": "focusedView == 'workbench.view.testing'"
+  },
+  {
+    "key": "alt+f8",
+    "command": "testing.goToNextMessage",
+    "when": "editorFocus && testing.isPeekVisible"
+  },
+  {
+    "key": "shift+alt+f8",
+    "command": "testing.goToPreviousMessage",
+    "when": "editorFocus && testing.isPeekVisible"
+  },
+  {
+    "key": "cmd+; cmd+x",
+    "command": "testing.cancelRun"
+  },
+  {
+    "key": "cmd+; shift+cmd+a",
+    "command": "testing.coverageAll"
+  },
+  {
+    "key": "cmd+; shift+cmd+c",
+    "command": "testing.coverageAtCursor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+; shift+cmd+f",
+    "command": "testing.coverageCurrentFile",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+; shift+cmd+l",
+    "command": "testing.coverageLastRun"
+  },
+  {
+    "key": "cmd+; cmd+a",
+    "command": "testing.debugAll"
+  },
+  {
+    "key": "cmd+; cmd+c",
+    "command": "testing.debugAtCursor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+; cmd+f",
+    "command": "testing.debugCurrentFile",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+; cmd+e",
+    "command": "testing.debugFailTests"
+  },
+  {
+    "key": "cmd+; cmd+l",
+    "command": "testing.debugLastRun"
+  },
+  {
+    "key": "cmd+; cmd+m",
+    "command": "testing.openOutputPeek"
+  },
+  {
+    "key": "cmd+; e",
+    "command": "testing.reRunFailTests"
+  },
+  {
+    "key": "cmd+; l",
+    "command": "testing.reRunLastRun"
+  },
+  {
+    "key": "cmd+; cmd+r",
+    "command": "testing.refreshTests",
+    "when": "testing.canRefresh"
+  },
+  {
+    "key": "cmd+; a",
+    "command": "testing.runAll"
+  },
+  {
+    "key": "cmd+; c",
+    "command": "testing.runAtCursor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+; f",
+    "command": "testing.runCurrentFile",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+; cmd+o",
+    "command": "testing.showMostRecentOutput",
+    "when": "testing.hasAnyResults"
+  },
+  {
+    "key": "cmd+; shift+cmd+i",
+    "command": "testing.toggleInlineCoverage"
+  },
+  {
+    "key": "cmd+; cmd+i",
+    "command": "testing.toggleInlineTestOutput"
+  },
+  {
+    "key": "alt+h",
+    "command": "testing.toggleTestingPeekHistory",
+    "when": "testing.isPeekVisible"
+  }
+]

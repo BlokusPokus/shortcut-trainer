@@ -1,0 +1,27 @@
+[
+  {
+    "key": "escape",
+    "command": "workbench.banner.focusBanner",
+    "when": "bannerFocused"
+  },
+  {
+    "key": "down",
+    "command": "workbench.banner.focusNextAction",
+    "when": "bannerFocused"
+  },
+  {
+    "key": "right",
+    "command": "workbench.banner.focusNextAction",
+    "when": "bannerFocused"
+  },
+  {
+    "key": "up",
+    "command": "workbench.banner.focusPreviousAction",
+    "when": "bannerFocused"
+  },
+  {
+    "key": "left",
+    "command": "workbench.banner.focusPreviousAction",
+    "when": "bannerFocused"
+  }
+]

@@ -1,0 +1,132 @@
+[
+  {
+    "key": "ctrl+enter",
+    "command": "explorer.openToSide",
+    "when": "explorerViewletFocus && foldersViewVisible && !inputFocus"
+  },
+  {
+    "key": "shift+alt+f",
+    "command": "filesExplorer.findInFolder",
+    "when": "explorerResourceIsFolder && filesExplorerFocus && foldersViewVisible && !inputFocus"
+  },
+  {
+    "key": "cmd+r e",
+    "command": "workbench.files.action.focusOpenEditorsView",
+    "when": "workbench.explorer.openEditorsView.active"
+  },
+  {
+    "key": "shift+cmd+e",
+    "command": "workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled"
+  },
+  {
+    "key": "cmd+v",
+    "command": "filesExplorer.paste",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "alt+cmd+backspace",
+    "command": "deleteFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "deleteFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "cmd+down",
+    "command": "explorer.openAndPassFocus",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsFolder && !inputFocus"
+  },
+  {
+    "key": "escape",
+    "command": "filesExplorer.cancelCut",
+    "when": "explorerResourceCut && filesExplorerFocus && foldersViewVisible && !inputFocus"
+  },
+  {
+    "key": "cmd+c",
+    "command": "filesExplorer.copy",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !inputFocus"
+  },
+  {
+    "key": "cmd+x",
+    "command": "filesExplorer.cut",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "space",
+    "command": "filesExplorer.openFilePreserveFocus",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsFolder && !inputFocus"
+  },
+  {
+    "key": "home",
+    "command": "firstCompressedFolder",
+    "when": "explorerViewletCompressedFocus && filesExplorerFocus && foldersViewVisible && !explorerViewletCompressedFirstFocus && !inputFocus"
+  },
+  {
+    "key": "end",
+    "command": "lastCompressedFolder",
+    "when": "explorerViewletCompressedFocus && filesExplorerFocus && foldersViewVisible && !explorerViewletCompressedLastFocus && !inputFocus"
+  },
+  {
+    "key": "delete",
+    "command": "moveFileToTrash",
+    "when": "explorerResourceMoveableToTrash && filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "moveFileToTrash",
+    "when": "explorerResourceMoveableToTrash && filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "right",
+    "command": "nextCompressedFolder",
+    "when": "explorerViewletCompressedFocus && filesExplorerFocus && foldersViewVisible && !explorerViewletCompressedLastFocus && !inputFocus"
+  },
+  {
+    "key": "left",
+    "command": "previousCompressedFolder",
+    "when": "explorerViewletCompressedFocus && filesExplorerFocus && foldersViewVisible && !explorerViewletCompressedFirstFocus && !inputFocus"
+  },
+  {
+    "key": "enter",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "alt+cmd+r",
+    "command": "java.view.package.revealFileInOS",
+    "when": "focusedView == 'javaProjectExplorer' && java:serverMode == 'Standard'"
+  },
+  {
+    "key": "alt+cmd+c",
+    "command": "java.view.package.copyFilePath",
+    "when": "focusedView == 'javaProjectExplorer' && java:serverMode == 'Standard'"
+  },
+  {
+    "key": "shift+alt+cmd+c",
+    "command": "java.view.package.copyRelativeFilePath",
+    "when": "focusedView == 'javaProjectExplorer' && java:serverMode == 'Standard'"
+  },
+  {
+    "key": "shift+cmd+v",
+    "command": "java.action.filesExplorerPasteAction",
+    "when": "config.editor.pasteAs.enabled && explorerViewletFocus"
+  },
+  {
+    "key": "enter",
+    "command": "java.view.package.renameFile",
+    "when": "focusedView == 'javaProjectExplorer' && java:serverMode == 'Standard'"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "java.view.package.moveFileToTrash",
+    "when": "explorerResourceMoveableToTrash && focusedView == 'javaProjectExplorer' && java:serverMode == 'Standard'"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "java.view.package.deleteFilePermanently",
+    "when": "!explorerResourceMoveableToTrash && focusedView == 'javaProjectExplorer' && java:serverMode == 'Standard'"
+  }
+]

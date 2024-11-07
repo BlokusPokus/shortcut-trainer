@@ -1,0 +1,274 @@
+[
+  {
+    "key": "escape",
+    "command": "editor.debug.action.closeExceptionWidget",
+    "when": "exceptionWidgetVisible"
+  },
+  {
+    "key": "cmd+r cmd+i",
+    "command": "editor.debug.action.showDebugHover",
+    "when": "editorTextFocus && inDebugMode"
+  },
+  {
+    "key": "f9",
+    "command": "editor.debug.action.toggleBreakpoint",
+    "when": "debuggersAvailable && disassemblyViewFocus || debuggersAvailable && editorTextFocus"
+  },
+  {
+    "key": "enter",
+    "command": "repl.action.acceptInput",
+    "when": "inDebugRepl && textInputFocus"
+  },
+  {
+    "key": "cmd+f",
+    "command": "repl.action.filter",
+    "when": "inDebugRepl && textInputFocus"
+  },
+  {
+    "key": "alt+cmd+f",
+    "command": "repl.action.find",
+    "when": "inDebugRepl || inDebugRepl && focusedView == 'workbench.panel.repl.view'"
+  },
+  {
+    "key": "alt+enter",
+    "command": "debug.openBreakpointToSide",
+    "when": "breakpointsFocused"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "debug.openBreakpointToSide",
+    "when": "breakpointsFocused"
+  },
+  {
+    "key": "cmd+f5",
+    "command": "debug.openView",
+    "when": "!debuggersAvailable"
+  },
+  {
+    "key": "f5",
+    "command": "debug.openView",
+    "when": "!debuggersAvailable"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "debug.removeBreakpoint",
+    "when": "breakpointsFocused && !breakpointInputFocused"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "debug.removeWatchExpression",
+    "when": "watchExpressionsFocused && !expressionSelected"
+  },
+  {
+    "key": "shift+f9",
+    "command": "editor.debug.action.toggleInlineBreakpoint",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+; cmd+a",
+    "command": "testing.debugAll"
+  },
+  {
+    "key": "cmd+; cmd+c",
+    "command": "testing.debugAtCursor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+; cmd+f",
+    "command": "testing.debugCurrentFile",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+; cmd+e",
+    "command": "testing.debugFailTests"
+  },
+  {
+    "key": "cmd+; cmd+l",
+    "command": "testing.debugLastRun"
+  },
+  {
+    "key": "shift+f5",
+    "command": "workbench.action.debug.disconnect",
+    "when": "focusedSessionIsAttach && inDebugMode"
+  },
+  {
+    "key": "shift+cmd+f5",
+    "command": "workbench.action.debug.restart",
+    "when": "inDebugMode"
+  },
+  {
+    "key": "ctrl+f5",
+    "command": "workbench.action.debug.run",
+    "when": "debuggersAvailable && debugState != 'initializing'"
+  },
+  {
+    "key": "f5",
+    "command": "workbench.action.debug.start",
+    "when": "debuggersAvailable && debugState == 'inactive'"
+  },
+  {
+    "key": "cmd+f11",
+    "command": "workbench.action.debug.stepIntoTarget",
+    "when": "inDebugMode && stepIntoTargetsSupported && debugState == 'stopped'"
+  },
+  {
+    "key": "shift+f11",
+    "command": "workbench.action.debug.stepOut",
+    "when": "debugState == 'stopped'"
+  },
+  {
+    "key": "f10",
+    "command": "workbench.action.debug.stepOver",
+    "when": "debugState == 'stopped'"
+  },
+  {
+    "key": "shift+f5",
+    "command": "workbench.action.debug.stop",
+    "when": "inDebugMode && !focusedSessionIsAttach"
+  },
+  {
+    "key": "shift+alt+cmd+y",
+    "command": "workbench.debug.action.toggleRepl",
+    "when": "workbench.panel.repl.view.active"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "workbench.view.debug",
+    "when": "viewContainer.workbench.view.debug.enabled"
+  },
+  {
+    "key": "shift+cmd+]",
+    "command": "workbench.action.debug.nextConsole",
+    "when": "inDebugRepl"
+  },
+  {
+    "key": "shift+cmd+[",
+    "command": "workbench.action.debug.prevConsole",
+    "when": "inDebugRepl"
+  },
+  {
+    "key": "cmd+k",
+    "command": "workbench.debug.panel.action.clearReplAction",
+    "when": "focusedView == 'workbench.panel.repl.view'"
+  },
+  {
+    "key": "f6",
+    "command": "workbench.action.debug.pause",
+    "when": "debugState == 'running'"
+  },
+  {
+    "key": "enter",
+    "command": "debug.renameWatchExpression",
+    "when": "watchExpressionsFocused"
+  },
+  {
+    "key": "enter",
+    "command": "debug.setVariable",
+    "when": "variablesFocused"
+  },
+  {
+    "key": "space",
+    "command": "debug.toggleBreakpoint",
+    "when": "breakpointsFocused && !inputFocus"
+  },
+  {
+    "key": "f5",
+    "command": "workbench.action.debug.continue",
+    "when": "debugState == 'stopped'"
+  },
+  {
+    "key": "f11",
+    "command": "workbench.action.debug.stepInto",
+    "when": "debugState != 'inactive'"
+  },
+  {
+    "key": "f10",
+    "command": "extension.node-debug.startWithStopOnEntry",
+    "when": "!inDebugMode && debugConfigurationType == 'node' || !inDebugMode && debugConfigurationType == 'pwa-extensionHost' || !inDebugMode && debugConfigurationType == 'pwa-node'"
+  },
+  {
+    "key": "f11",
+    "command": "extension.node-debug.startWithStopOnEntry",
+    "when": "!inDebugMode && activeViewlet == 'workbench.view.debug' && debugConfigurationType == 'node' || !inDebugMode && activeViewlet == 'workbench.view.debug' && debugConfigurationType == 'pwa-extensionHost' || !inDebugMode && activeViewlet == 'workbench.view.debug' && debugConfigurationType == 'pwa-node'"
+  },
+  {
+    "key": "alt+d",
+    "command": "aidebug.autodebugterminal",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "shift+f5",
+    "command": "quokka.stopTraceNavigation",
+    "when": "activeEditor && quokka.isActiveEditorRunningQuokka && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient || activeEditor && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient && resourceScheme == 'quokka-code-timeline'"
+  },
+  {
+    "key": "shift+f5",
+    "command": "quokka.debug",
+    "when": "activeEditor && quokka.isActiveEditorRunningQuokka && !inDebugMode && !quokka.isLiveShareClient && !quokka.traceBeingNavigated || activeEditor && !inDebugMode && !quokka.isLiveShareClient && !quokka.traceBeingNavigated && resourceScheme == 'quokka-code-timeline'"
+  },
+  {
+    "key": "shift+alt+f5",
+    "command": "quokka.debugAutoPlay",
+    "when": "activeEditor && quokka.isActiveEditorRunningQuokka && !inDebugMode && !quokka.isLiveShareClient && !quokka.traceBeingNavigated || activeEditor && !inDebugMode && !quokka.isLiveShareClient && !quokka.traceBeingNavigated && resourceScheme == 'quokka-code-timeline'"
+  },
+  {
+    "key": "f11",
+    "command": "quokka.playTraceNextStep",
+    "when": "activeEditor && quokka.isActiveEditorRunningQuokka && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient || activeEditor && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient && resourceScheme == 'quokka-code-timeline'"
+  },
+  {
+    "key": "f5",
+    "command": "quokka.playTraceForwardToSelection",
+    "when": "activeEditor && quokka.isActiveEditorRunningQuokka && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient || activeEditor && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient && resourceScheme == 'quokka-code-timeline'"
+  },
+  {
+    "key": "f8",
+    "command": "quokka.playTraceForwardToBreakpoint",
+    "when": "activeEditor && quokka.isActiveEditorRunningQuokka && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient || activeEditor && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient && resourceScheme == 'quokka-code-timeline'"
+  },
+  {
+    "key": "f10",
+    "command": "quokka.playTraceNextStepOver",
+    "when": "activeEditor && quokka.isActiveEditorRunningQuokka && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient || activeEditor && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient && resourceScheme == 'quokka-code-timeline'"
+  },
+  {
+    "key": "shift+f11",
+    "command": "quokka.playTraceNextStepOut",
+    "when": "activeEditor && quokka.isActiveEditorRunningQuokka && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient || activeEditor && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient && resourceScheme == 'quokka-code-timeline'"
+  },
+  {
+    "key": "ctrl+shift+enter",
+    "command": "jupyter.runAndDebugCell",
+    "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+  },
+  {
+    "key": "ctrl+f11",
+    "command": "quokka.playTracePrevStep",
+    "when": "activeEditor && quokka.isActiveEditorRunningQuokka && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient || activeEditor && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient && resourceScheme == 'quokka-code-timeline'"
+  },
+  {
+    "key": "f10",
+    "command": "jupyter.runByLine",
+    "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+  },
+  {
+    "key": "ctrl+f5",
+    "command": "quokka.playTraceBackwardToSelection",
+    "when": "activeEditor && quokka.isActiveEditorRunningQuokka && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient || activeEditor && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient && resourceScheme == 'quokka-code-timeline'"
+  },
+  {
+    "key": "ctrl+f8",
+    "command": "quokka.playTraceBackwardToBreakpoint",
+    "when": "activeEditor && quokka.isActiveEditorRunningQuokka && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient || activeEditor && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient && resourceScheme == 'quokka-code-timeline'"
+  },
+  {
+    "key": "ctrl+f10",
+    "command": "quokka.playTracePrevStepOver",
+    "when": "activeEditor && quokka.isActiveEditorRunningQuokka && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient || activeEditor && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient && resourceScheme == 'quokka-code-timeline'"
+  },
+  {
+    "key": "ctrl+shift+f11",
+    "command": "quokka.playTracePrevStepOut",
+    "when": "activeEditor && quokka.isActiveEditorRunningQuokka && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient || activeEditor && quokka.traceBeingNavigated && !inDebugMode && !quokka.isLiveShareClient && resourceScheme == 'quokka-code-timeline'"
+  }
+]

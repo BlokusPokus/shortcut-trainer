@@ -1,0 +1,7 @@
+[
+  {
+    "key": "cmd+r shift+cmd+\\",
+    "command": "workbench.action.joinEditorInGroup",
+    "when": "sideBySideEditorActive"
+  }
+]

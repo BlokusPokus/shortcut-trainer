@@ -1,0 +1,22 @@
+[
+  {
+    "key": "delete",
+    "command": "remote.tunnel.closeInline",
+    "when": "tunnelCloseable && tunnelViewFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "remote.tunnel.closeInline",
+    "when": "tunnelCloseable && tunnelViewFocus"
+  },
+  {
+    "key": "cmd+c",
+    "command": "remote.tunnel.copyAddressInline",
+    "when": "tunnelViewFocus && tunnelType == 'Detected' && tunnelViewMultiSelection == 'undefined' || tunnelViewFocus && tunnelType == 'Forwarded' && tunnelViewMultiSelection == 'undefined'"
+  },
+  {
+    "key": "enter",
+    "command": "remote.tunnel.label",
+    "when": "tunnelViewFocus && tunnelType == 'Forwarded' && tunnelViewMultiSelection == 'undefined'"
+  }
+]
