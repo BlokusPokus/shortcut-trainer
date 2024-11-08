@@ -39,6 +39,7 @@
     /* 5 columns */
     grid-template-columns: repeat(5, 1fr);
   }
+
 }
 
 @media screen and (max-width: 992px) {
@@ -240,11 +241,32 @@
   }
 }
 
-.singleInputHistory.latest:not(.wrong):not(.skipped) {
-  animation: correctAnswer 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+.container-history {}
+
+.singleInputHistory.latest {
+  animation: scaleDownUp 0.6s ease forwards;
+  border: 1px solid white;
 }
 
-.singleInputHistory.latest.wrong {
+@keyframes scaleDownUp {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* .singleInputHistory.latest:not(.wrong):not(.skipped) {
+  animation: correctAnswer 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+} */
+
+/* .singleInputHistory.latest.wrong {
   animation: wrongAnswer 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 
-}
+} */

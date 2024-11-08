@@ -12,19 +12,21 @@ export const HistoryItem: React.FC<HistoryItemProps> = ({
   status,
   isLatest,
 }) => (
-  <li className={`singleInputHistory ${isLatest ? 'latest' : ''} ${status}`}>
-    <div className={`header `}>
-      {status === 'wrong' ? (
-        <ThumbsDown />
-      ) : status === 'skipped' ? (
-        <Minus />
-      ) : (
-        <ThumbsUp />
-      )}
-    </div>
-    <div className={`content }`}>
-      <div className="shortcut">{shortcut}</div>
-      <div className="command">{command}</div>
-    </div>
-  </li>
+  <div className="container-history">
+    <li className={`singleInputHistory ${isLatest ? 'latest' : ''} ${status}`}>
+      <div className={`header `}>
+        {status === 'wrong' ? (
+          <ThumbsDown />
+        ) : status === 'skipped' ? (
+          <Minus />
+        ) : (
+          <ThumbsUp />
+        )}
+      </div>
+      <div className={`content }`}>
+        <div className="shortcut">{shortcut}</div>
+        <div className="command">{command}</div>
+      </div>
+    </li>
+  </div>
 );
