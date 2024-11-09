@@ -55,7 +55,7 @@ const History: React.FC<HistoryProps> = ({
           </ul>
         ) : (
           <div className="empty-history">
-            <p>No history yet. Start typing shortcuts!</p>
+            <p></p>
           </div>
         )}
       </div>

@@ -8,6 +8,7 @@ import { SOCIAL_MEDIA } from '../constants/socialMediat';
 
 // Types
 import { FooterProps } from '../types/types';
+import { Coffee } from 'lucide-react';
 //#endregion
 
 const Footer: React.FC<FooterProps> = ({
@@ -21,16 +22,17 @@ const Footer: React.FC<FooterProps> = ({
         <a href={githubUrl} target="_blank" rel="noopener noreferrer">
           <span>&lt;/&gt;</span> github
         </a>
-      </div>
-      <div className="footer-item">
-        created by{' '}
-        <a
-          href={`https://github.com/${authorGithub.replace('@', '')}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {authorGithub}
-        </a>
+        {' • '}
+        <span className="created-by">
+          by{' '}
+          <a
+            href={`https://github.com/${authorGithub.replace('@', '')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {authorGithub}
+          </a>
+        </span>
       </div>
       <div className="footer-item">
         <a
@@ -40,6 +42,16 @@ const Footer: React.FC<FooterProps> = ({
           rel="noopener noreferrer"
         >
           <span>𝕏</span> {twitterHandle}
+        </a>
+      </div>
+      <div className="footer-item">
+        <a
+          className="buy-me-a-coffee"
+          href="https://www.buymeacoffee.com/ianleblanc"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Coffee /> buy me a coffee
         </a>
       </div>
     </footer>

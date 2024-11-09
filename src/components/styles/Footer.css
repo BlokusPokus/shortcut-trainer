@@ -5,12 +5,14 @@
   transform: translateX(-50%);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 15px 30px;
   background-color: var(--bg-color);
   color: var(--hl-color);
   border-top: 1px solid var(--hl-color);
   max-width: 1000px;
   width: 90%;
+  gap: 20px;
 }
 
 .footer-item {
@@ -21,19 +23,14 @@
 
 .footer-item:first-child {
   text-align: left;
-
-
 }
 
 .footer-item:last-child {
   text-align: right;
-
-
 }
 
 .footer a {
   color: var(--hl-color);
-
 }
 
 .footer a:hover {
@@ -48,4 +45,24 @@
 
 .x-handle span {
   font-weight: bold;
+}
+
+.buy-me-a-coffee {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Add icon size control */
+.footer-item svg,
+.footer-item span {
+  font-size: 0.9em;
+  width: 16px;
+  height: 16px;
+}
+
+/* If you want to specifically target just the Coffee icon */
+.buy-me-a-coffee svg {
+  width: 14px;
+  height: 14px;
 }
