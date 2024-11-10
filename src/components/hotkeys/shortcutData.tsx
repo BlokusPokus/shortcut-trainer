@@ -14,7 +14,7 @@ import {
   vimShortcuts,
   excelShortcuts,
   commandLineShortcuts,
-  gitShortcuts,
+  // gitShortcuts,
   windowsShortcuts,
   browserShortcuts,
 } from '../constants/shortcutLists';
@@ -70,11 +70,11 @@ const ShortcutData = ({ setShortcutList }: ShortcutDataProps) => {
         listId: 'COMMAND_LINE',
       })),
     },
-    {
-      id: 'GIT',
-      name: 'Git Shortcuts',
-      list: gitShortcuts.map(item => ({ ...item, listId: 'GIT' })),
-    },
+    // {
+    //   id: 'GIT',
+    //   name: 'Git Shortcuts',
+    //   list: gitShortcuts.map(item => ({ ...item, listId: 'GIT' })),
+    // },
     {
       id: 'WINDOWS',
       name: 'Windows Shortcuts',

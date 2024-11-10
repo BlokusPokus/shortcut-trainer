@@ -19,6 +19,7 @@ import Header from './Header';
 import Hotkey from '../hotkeys/Hotkey';
 import Footer from './Footer';
 import { CommandPalette } from '../themes/CommandPallet';
+import { Shortcutsublist } from '../hotkeys/Shortcutsublist';
 //#endregion
 
 const LandingPage: React.FC = () => {
@@ -78,6 +79,7 @@ const LandingPage: React.FC = () => {
       <BrowserShortcut />
 
       <div className={`container `}>
+        <Shortcutsublist />
         <div>
           <CommandPalette
             onThemeChange={handleThemeChange}

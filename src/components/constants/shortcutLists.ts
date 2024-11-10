@@ -5316,489 +5316,6 @@ export const cursorShortcut = [
   },
 ];
 
-export const cursorWhenTextInputFocus = [
-  {
-    key: 'shift+escape',
-    command: 'cancelSelection',
-    when: 'editorHasSelection && textInputFocus',
-  },
-  {
-    key: 'escape',
-    command: 'cancelSelection',
-    when: 'editorHasSelection && textInputFocus',
-  },
-  {
-    key: 'cmd+down',
-    command: 'cursorBottom',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+cmd+down',
-    command: 'cursorBottomSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+alt+cmd+down',
-    command: 'cursorColumnSelectDown',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+alt+cmd+left',
-    command: 'cursorColumnSelectLeft',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+alt+cmd+pagedown',
-    command: 'cursorColumnSelectPageDown',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+alt+cmd+pageup',
-    command: 'cursorColumnSelectPageUp',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+alt+cmd+right',
-    command: 'cursorColumnSelectRight',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+alt+cmd+up',
-    command: 'cursorColumnSelectUp',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+n',
-    command: 'cursorDown',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'down',
-    command: 'cursorDown',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+down',
-    command: 'cursorDownSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'cmd+right',
-    command: 'cursorEnd',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'end',
-    command: 'cursorEnd',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+cmd+right',
-    command: 'cursorEndSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+end',
-    command: 'cursorEndSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'cmd+left',
-    command: 'cursorHome',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'home',
-    command: 'cursorHome',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+cmd+left',
-    command: 'cursorHomeSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+home',
-    command: 'cursorHomeSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+b',
-    command: 'cursorLeft',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'left',
-    command: 'cursorLeft',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+left',
-    command: 'cursorLeftSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+e',
-    command: 'cursorLineEnd',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+shift+e',
-    command: 'cursorLineEndSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+a',
-    command: 'cursorLineStart',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+shift+a',
-    command: 'cursorLineStartSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'pagedown',
-    command: 'cursorPageDown',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+pagedown',
-    command: 'cursorPageDownSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'pageup',
-    command: 'cursorPageUp',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+pageup',
-    command: 'cursorPageUpSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+f',
-    command: 'cursorRight',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'right',
-    command: 'cursorRight',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+right',
-    command: 'cursorRightSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'cmd+up',
-    command: 'cursorTop',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+cmd+up',
-    command: 'cursorTopSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+p',
-    command: 'cursorUp',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'up',
-    command: 'cursorUp',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+up',
-    command: 'cursorUpSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+backspace',
-    command: 'deleteLeft',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+h',
-    command: 'deleteLeft',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+backspace',
-    command: 'deleteLeft',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'backspace',
-    command: 'deleteLeft',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+delete',
-    command: 'deleteRight',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+d',
-    command: 'deleteRight',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'delete',
-    command: 'deleteRight',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'cmd+p',
-    command: 'expandLineSelection',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+o',
-    command: 'lineBreakInsert',
-    when: 'textInputFocus && !editorReadonly',
-  },
-  {
-    key: 'ctrl+pagedown',
-    command: 'scrollLineDown',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+pageup',
-    command: 'scrollLineUp',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'cmd+pagedown',
-    command: 'scrollPageDown',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'cmd+pageup',
-    command: 'scrollPageUp',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'cmd+u',
-    command: 'cursorUndo',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'alt+right',
-    command: 'cursorWordEndRight',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+alt+right',
-    command: 'cursorWordEndRightSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'alt+left',
-    command: 'cursorWordLeft',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'shift+alt+left',
-    command: 'cursorWordLeftSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+alt+left',
-    command: 'cursorWordPartLeft',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+shift+alt+left',
-    command: 'cursorWordPartLeftSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+alt+right',
-    command: 'cursorWordPartRight',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'ctrl+shift+alt+right',
-    command: 'cursorWordPartRightSelect',
-    when: 'textInputFocus',
-  },
-  {
-    key: 'cmd+backspace',
-    command: 'deleteAllLeft',
-    when: 'textInputFocus && !editorReadonly',
-  },
-  {
-    key: 'cmd+delete',
-    command: 'deleteAllRight',
-    when: 'textInputFocus && !editorReadonly',
-  },
-  {
-    key: 'ctrl+k',
-    command: 'deleteAllRight',
-    when: 'textInputFocus && !editorReadonly',
-  },
-  {
-    key: 'alt+backspace',
-    command: 'deleteWordLeft',
-    when: 'textInputFocus && !editorReadonly',
-  },
-  {
-    key: 'ctrl+alt+backspace',
-    command: 'deleteWordPartLeft',
-    when: 'textInputFocus && !editorReadonly',
-  },
-  {
-    key: 'ctrl+alt+delete',
-    command: 'deleteWordPartRight',
-    when: 'textInputFocus && !editorReadonly',
-  },
-  {
-    key: 'alt+delete',
-    command: 'deleteWordRight',
-    when: 'textInputFocus && !editorReadonly',
-  },
-  {
-    key: 'ctrl+t',
-    command: 'editor.action.transposeLetters',
-    when: 'textInputFocus && !editorReadonly',
-  },
-  {
-    key: 'shift+cmd+space',
-    command: 'editor.action.triggerParameterHints',
-    when: 'editorHasSignatureHelpProvider && editorTextFocus',
-  },
-  {
-    key: 'cmd+i',
-    command: 'editor.action.triggerSuggest',
-    when: 'editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible',
-  },
-  {
-    key: 'alt+escape',
-    command: 'editor.action.triggerSuggest',
-    when: 'editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible',
-  },
-  {
-    key: 'ctrl+space',
-    command: 'editor.action.triggerSuggest',
-    when: 'editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible',
-  },
-  {
-    key: 'cmd+r cmd+x',
-    command: 'editor.action.trimTrailingWhitespace',
-    when: 'editorTextFocus && !editorReadonly',
-  },
-  {
-    key: 'tab',
-    command: 'insertSnippet',
-    when: 'editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode',
-  },
-  {
-    key: 'tab',
-    command: 'jumpToNextSnippetPlaceholder',
-    when: 'hasNextTabstop && inSnippetMode && textInputFocus',
-  },
-  {
-    key: 'shift+tab',
-    command: 'jumpToPrevSnippetPlaceholder',
-    when: 'hasPrevTabstop && inSnippetMode && textInputFocus',
-  },
-  {
-    key: 'shift+escape',
-    command: 'leaveSnippet',
-    when: 'inSnippetMode && textInputFocus',
-  },
-  {
-    key: 'escape',
-    command: 'leaveSnippet',
-    when: 'inSnippetMode && textInputFocus',
-  },
-  {
-    key: 'cmd+k cmd+i',
-    command: 'editor.debug.action.showDebugHover',
-    when: 'editorTextFocus && inDebugMode',
-  },
-  {
-    key: 'f9',
-    command: 'editor.debug.action.toggleBreakpoint',
-    when: 'debuggersAvailable && editorTextFocus',
-  },
-  {
-    key: 'tab',
-    command: 'editor.emmet.action.expandAbbreviation',
-    when: 'config.emmet.triggerExpansionOnTab && editorTextFocus && !editorReadonly && !editorTabMovesFocus',
-  },
-  {
-    key: 'cmd+]',
-    command: 'editor.action.indentLines',
-    when: 'editorTextFocus && !editorReadonly',
-  },
-  {
-    key: 'cmd+[',
-    command: 'editor.action.outdentLines',
-    when: 'editorTextFocus && !editorReadonly',
-  },
-  {
-    key: 'cmd+/',
-    command: 'editor.action.commentLine',
-    when: 'editorTextFocus && !editorReadonly',
-  },
-  {
-    key: 'shift+alt+a',
-    command: 'editor.action.blockComment',
-    when: 'editorTextFocus && !editorReadonly',
-  },
-  {
-    key: 'cmd+f',
-    command: 'actions.find',
-    when: 'editorFocus || editorIsOpen',
-  },
-  {
-    key: 'alt+cmd+f',
-    command: 'editor.action.startFindReplaceAction',
-    when: 'editorFocus || editorIsOpen',
-  },
-  {
-    key: 'enter',
-    command: 'editor.action.nextMatchFindAction',
-    when: 'editorFocus && findInputFocussed',
-  },
-  {
-    key: 'shift+enter',
-    command: 'editor.action.previousMatchFindAction',
-    when: 'editorFocus && findInputFocussed',
-  },
-  {
-    key: 'alt+enter',
-    command: 'editor.action.selectAllMatches',
-    when: 'editorFocus && findWidgetVisible',
-  },
-  {
-    key: 'cmd+d',
-    command: 'editor.action.addSelectionToNextFindMatch',
-    when: 'editorFocus',
-  },
-  {
-    key: 'cmd+k cmd+d',
-    command: 'editor.action.moveSelectionToNextFindMatch',
-    when: 'editorFocus',
-  },
-  {
-    key: 'shift+alt+cmd+down',
-    command: 'editor.action.copyLinesDownAction',
-    when: 'editorTextFocus && !editorReadonly',
-  },
-  {
-    key: 'shift+alt+cmd+up',
-    command: 'editor.action.copyLinesUpAction',
-    when: 'editorTextFocus && !editorReadonly',
-  },
-];
-
 export const vimShortcuts = [
   // Beginner Text Navigation
   { key: 'h', command: 'move cursor left' },
@@ -6222,168 +5739,168 @@ export const commandLineShortcuts = [
   { key: 'gunzip [file].gz', command: 'decompress gzip file' },
 ];
 
-export const gitShortcuts = [
-  // Git Basics
-  { key: 'git init', command: 'initialize a new Git repository' },
-  { key: 'git clone [url]', command: 'clone a repository from a URL' },
-  { key: 'git status', command: 'show the status of changes' },
-  { key: 'git add [file]', command: 'stage changes for commit' },
-  { key: "git commit -m '[message]'", command: 'commit staged changes' },
-  { key: 'git push', command: 'push changes to remote repository' },
-  { key: 'git pull', command: 'pull changes from remote repository' },
-  { key: 'git fetch', command: 'fetch changes from remote' },
-  { key: 'git log', command: 'view commit history' },
-  { key: 'git diff', command: 'show changes between commits' },
-  { key: 'git reset [file]', command: 'unstage a staged file' },
-  { key: 'git checkout [branch]', command: 'switch to a different branch' },
+// export const gitShortcuts = [
+//   // Git Basics
+//   { key: 'git init', command: 'initialize a new Git repository' },
+//   { key: 'git clone [url]', command: 'clone a repository from a URL' },
+//   { key: 'git status', command: 'show the status of changes' },
+//   { key: 'git add [file]', command: 'stage changes for commit' },
+//   { key: "git commit -m '[message]'", command: 'commit staged changes' },
+//   { key: 'git push', command: 'push changes to remote repository' },
+//   { key: 'git pull', command: 'pull changes from remote repository' },
+//   { key: 'git fetch', command: 'fetch changes from remote' },
+//   { key: 'git log', command: 'view commit history' },
+//   { key: 'git diff', command: 'show changes between commits' },
+//   { key: 'git reset [file]', command: 'unstage a staged file' },
+//   { key: 'git checkout [branch]', command: 'switch to a different branch' },
 
-  // Branching
-  { key: 'git branch', command: 'list all branches' },
-  { key: 'git branch [name]', command: 'create a new branch' },
-  {
-    key: 'git checkout -b [name]',
-    command: 'create and switch to a new branch',
-  },
-  {
-    key: 'git merge [branch]',
-    command: 'merge another branch into current branch',
-  },
-  {
-    key: 'git rebase [branch]',
-    command: 'reapply commits on top of another base branch',
-  },
-  { key: 'git branch -d [name]', command: 'delete a branch' },
-  { key: 'git branch -D [name]', command: 'force delete a branch' },
-  { key: 'git checkout [commit]', command: 'checkout a specific commit' },
-  {
-    key: 'git cherry-pick [commit]',
-    command: 'apply a commit from another branch',
-  },
-  {
-    key: 'git stash branch [branch]',
-    command: 'create a branch from stashed changes',
-  },
-  {
-    key: 'git checkout -- [file]',
-    command: 'discard changes in working directory',
-  },
-  { key: 'git switch [branch]', command: 'switch to another branch' },
-  { key: 'git switch -c [name]', command: 'create and switch to a new branch' },
-  { key: 'git switch -d [name]', command: 'delete a branch' },
-  { key: 'git switch -m [old] [new]', command: 'rename a branch' },
+//   // Branching
+//   { key: 'git branch', command: 'list all branches' },
+//   { key: 'git branch [name]', command: 'create a new branch' },
+//   {
+//     key: 'git checkout -b [name]',
+//     command: 'create and switch to a new branch',
+//   },
+//   {
+//     key: 'git merge [branch]',
+//     command: 'merge another branch into current branch',
+//   },
+//   {
+//     key: 'git rebase [branch]',
+//     command: 'reapply commits on top of another base branch',
+//   },
+//   { key: 'git branch -d [name]', command: 'delete a branch' },
+//   { key: 'git branch -D [name]', command: 'force delete a branch' },
+//   { key: 'git checkout [commit]', command: 'checkout a specific commit' },
+//   {
+//     key: 'git cherry-pick [commit]',
+//     command: 'apply a commit from another branch',
+//   },
+//   {
+//     key: 'git stash branch [branch]',
+//     command: 'create a branch from stashed changes',
+//   },
+//   {
+//     key: 'git checkout -- [file]',
+//     command: 'discard changes in working directory',
+//   },
+//   { key: 'git switch [branch]', command: 'switch to another branch' },
+//   { key: 'git switch -c [name]', command: 'create and switch to a new branch' },
+//   { key: 'git switch -d [name]', command: 'delete a branch' },
+//   { key: 'git switch -m [old] [new]', command: 'rename a branch' },
 
-  // Merging / Rebasing
-  {
-    key: 'git merge [branch]',
-    command: 'merge another branch into current branch',
-  },
-  {
-    key: 'git rebase [branch]',
-    command: 'reapply commits on top of another base branch',
-  },
-  { key: 'git merge --abort', command: 'abort a merge' },
-  { key: 'git rebase --abort', command: 'abort a rebase' },
-  {
-    key: 'git rebase --continue',
-    command: 'continue after resolving conflicts',
-  },
-  { key: 'git rebase -i [commit]', command: 'interactive rebase from commit' },
-  {
-    key: 'git merge --no-ff [branch]',
-    command: 'create a merge commit even if fast-forwarding',
-  },
+//   // Merging / Rebasing
+//   {
+//     key: 'git merge [branch]',
+//     command: 'merge another branch into current branch',
+//   },
+//   {
+//     key: 'git rebase [branch]',
+//     command: 'reapply commits on top of another base branch',
+//   },
+//   { key: 'git merge --abort', command: 'abort a merge' },
+//   { key: 'git rebase --abort', command: 'abort a rebase' },
+//   {
+//     key: 'git rebase --continue',
+//     command: 'continue after resolving conflicts',
+//   },
+//   { key: 'git rebase -i [commit]', command: 'interactive rebase from commit' },
+//   {
+//     key: 'git merge --no-ff [branch]',
+//     command: 'create a merge commit even if fast-forwarding',
+//   },
 
-  // Remotes
-  { key: 'git remote -v', command: 'show remote repositories' },
-  {
-    key: 'git remote add [name] [url]',
-    command: 'add a new remote repository',
-  },
-  { key: 'git remote remove [name]', command: 'remove a remote repository' },
-  {
-    key: 'git push [remote] [branch]',
-    command: 'push changes to a specific remote branch',
-  },
-  {
-    key: 'git pull [remote] [branch]',
-    command: 'pull changes from a specific remote branch',
-  },
-  {
-    key: 'git fetch [remote]',
-    command: 'fetch changes from a specific remote repository',
-  },
+//   // Remotes
+//   { key: 'git remote -v', command: 'show remote repositories' },
+//   {
+//     key: 'git remote add [name] [url]',
+//     command: 'add a new remote repository',
+//   },
+//   { key: 'git remote remove [name]', command: 'remove a remote repository' },
+//   {
+//     key: 'git push [remote] [branch]',
+//     command: 'push changes to a specific remote branch',
+//   },
+//   {
+//     key: 'git pull [remote] [branch]',
+//     command: 'pull changes from a specific remote branch',
+//   },
+//   {
+//     key: 'git fetch [remote]',
+//     command: 'fetch changes from a specific remote repository',
+//   },
 
-  // Commit Logs
-  { key: 'git log', command: 'view commit history' },
-  { key: 'git log --oneline', command: 'view commit history in one line' },
-  { key: 'git log --graph', command: 'view commit history as a graph' },
-  { key: 'git log --author=[name]', command: 'filter commits by author' },
-  {
-    key: 'git log --since=[date]',
-    command: 'filter commits since a specific date',
-  },
-  {
-    key: 'git log --until=[date]',
-    command: 'filter commits until a specific date',
-  },
-  { key: 'git show [commit]', command: 'show details of a specific commit' },
+//   // Commit Logs
+//   { key: 'git log', command: 'view commit history' },
+//   { key: 'git log --oneline', command: 'view commit history in one line' },
+//   { key: 'git log --graph', command: 'view commit history as a graph' },
+//   { key: 'git log --author=[name]', command: 'filter commits by author' },
+//   {
+//     key: 'git log --since=[date]',
+//     command: 'filter commits since a specific date',
+//   },
+//   {
+//     key: 'git log --until=[date]',
+//     command: 'filter commits until a specific date',
+//   },
+//   { key: 'git show [commit]', command: 'show details of a specific commit' },
 
-  // Undo / Change History
-  {
-    key: 'git reset [commit]',
-    command: 'reset current branch to a specific commit',
-  },
-  {
-    key: 'git reset --hard [commit]',
-    command: 'reset to a specific commit and discard changes',
-  },
-  { key: 'git checkout -- [file]', command: 'discard changes in a file' },
-  {
-    key: 'git revert [commit]',
-    command: 'create a new commit that undoes changes',
-  },
-  { key: 'git stash', command: 'save changes temporarily' },
-  { key: 'git stash pop', command: 'apply last stashed changes' },
-  { key: 'git stash list', command: 'list all stashed changes' },
+//   // Undo / Change History
+//   {
+//     key: 'git reset [commit]',
+//     command: 'reset current branch to a specific commit',
+//   },
+//   {
+//     key: 'git reset --hard [commit]',
+//     command: 'reset to a specific commit and discard changes',
+//   },
+//   { key: 'git checkout -- [file]', command: 'discard changes in a file' },
+//   {
+//     key: 'git revert [commit]',
+//     command: 'create a new commit that undoes changes',
+//   },
+//   { key: 'git stash', command: 'save changes temporarily' },
+//   { key: 'git stash pop', command: 'apply last stashed changes' },
+//   { key: 'git stash list', command: 'list all stashed changes' },
 
-  // Using Tags
-  { key: 'git tag', command: 'list all tags' },
-  { key: 'git tag [name]', command: 'create a new tag' },
-  { key: 'git tag -d [name]', command: 'delete a tag' },
-  { key: 'git show [tag]', command: 'show details of a tag' },
-  { key: 'git push origin [tag]', command: 'push a tag to remote' },
-  { key: 'git push --tags', command: 'push all tags to remote' },
-  { key: 'git checkout [tag]', command: 'checkout a specific tag' },
-  { key: 'git describe [tag]', command: 'describe a tag' },
-  {
-    key: "git tag -a [name] -m '[message]'",
-    command: 'create an annotated tag',
-  },
-  { key: "git tag -s [name] -m '[message]'", command: 'create a signed tag' },
+//   // Using Tags
+//   { key: 'git tag', command: 'list all tags' },
+//   { key: 'git tag [name]', command: 'create a new tag' },
+//   { key: 'git tag -d [name]', command: 'delete a tag' },
+//   { key: 'git show [tag]', command: 'show details of a tag' },
+//   { key: 'git push origin [tag]', command: 'push a tag to remote' },
+//   { key: 'git push --tags', command: 'push all tags to remote' },
+//   { key: 'git checkout [tag]', command: 'checkout a specific tag' },
+//   { key: 'git describe [tag]', command: 'describe a tag' },
+//   {
+//     key: "git tag -a [name] -m '[message]'",
+//     command: 'create an annotated tag',
+//   },
+//   { key: "git tag -s [name] -m '[message]'", command: 'create a signed tag' },
 
-  // Using Stashes
-  { key: 'git stash', command: 'save changes temporarily' },
-  { key: 'git stash list', command: 'list all stashes' },
-  { key: 'git stash pop', command: 'apply last stashed changes' },
-  { key: 'git stash apply [stash]', command: 'apply a specific stash' },
-  { key: 'git stash drop [stash]', command: 'delete a specific stash' },
-  { key: 'git stash clear', command: 'remove all stashes' },
-  {
-    key: "git stash save '[message]'",
-    command: 'stash changes with a message',
-  },
-  { key: 'git stash show', command: 'show changes in the last stash' },
-  { key: 'git stash show -p', command: 'show patch of last stash' },
-  { key: 'git stash branch [branch]', command: 'create a branch from stash' },
+//   // Using Stashes
+//   { key: 'git stash', command: 'save changes temporarily' },
+//   { key: 'git stash list', command: 'list all stashes' },
+//   { key: 'git stash pop', command: 'apply last stashed changes' },
+//   { key: 'git stash apply [stash]', command: 'apply a specific stash' },
+//   { key: 'git stash drop [stash]', command: 'delete a specific stash' },
+//   { key: 'git stash clear', command: 'remove all stashes' },
+//   {
+//     key: "git stash save '[message]'",
+//     command: 'stash changes with a message',
+//   },
+//   { key: 'git stash show', command: 'show changes in the last stash' },
+//   { key: 'git stash show -p', command: 'show patch of last stash' },
+//   { key: 'git stash branch [branch]', command: 'create a branch from stash' },
 
-  // Using Bisect
-  { key: 'git bisect start', command: 'start bisecting' },
-  { key: 'git bisect bad', command: 'mark current commit as bad' },
-  { key: 'git bisect good [commit]', command: 'mark commit as good' },
-  { key: 'git bisect reset', command: 'end bisecting' },
-  { key: 'git bisect visualize', command: 'visualize the bisect process' },
-  { key: 'git bisect replay', command: 'replay the bisect session' },
-];
+//   // Using Bisect
+//   { key: 'git bisect start', command: 'start bisecting' },
+//   { key: 'git bisect bad', command: 'mark current commit as bad' },
+//   { key: 'git bisect good [commit]', command: 'mark commit as good' },
+//   { key: 'git bisect reset', command: 'end bisecting' },
+//   { key: 'git bisect visualize', command: 'visualize the bisect process' },
+//   { key: 'git bisect replay', command: 'replay the bisect session' },
+// ];
 export const windowsShortcuts = [
   // Entering Data I
   { key: 'Ctrl + N', command: 'Create a new document' },
