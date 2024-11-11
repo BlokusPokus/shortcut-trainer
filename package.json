@@ -2,6 +2,7 @@
   "name": "shortcut-trainer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shortcutmaster.com",
   "dependencies": {
     "lucide-react": "^0.453.0",
     "react": "^18.3.1",
