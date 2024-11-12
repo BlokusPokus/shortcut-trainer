@@ -73,24 +73,23 @@
 }
 
 .shortcuts-grid {
+    flex: 1;
+    overflow-y: auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     padding: 20px;
-    overflow-y: auto;
-    flex: 1;
+    margin-bottom: 60px;
 }
 
 .shortcut-card {
     background: var(--fg-color);
-    border-radius: 15px;
+    border-radius: 12px;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 2px 2px 8px color-mix(in srgb, var(--bg-color) 85%, black),
-        -1px -1px 4px color-mix(in srgb, var(--bg-color) 90%, white);
+    gap: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .shortcut-card:hover {
@@ -99,15 +98,39 @@
 }
 
 .shortcut-key {
-    font-family: 'Inconsolata', monospace;
-    color: var(--hl-color);
-    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+
+.keycap {
+    background-color: var(--bg-color);
+    border: 1px solid var(--hl-color);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-family: monospace;
+    font-size: 0.9rem;
     font-weight: 600;
+    color: var(--font-color);
+    box-shadow:
+        0 2px 0 var(--hl-color),
+        0 3px 3px rgba(0, 0, 0, 0.2);
+    min-width: 20px;
+    text-align: center;
+}
+
+.operator {
+    color: var(--font-color);
+    opacity: 0.7;
+    padding: 0 4px;
 }
 
 .shortcut-command {
     color: var(--font-color);
-    font-size: 1em;
+    font-size: 0.9rem;
+    opacity: 0.8;
 }
 
 .shortcuts-grid::-webkit-scrollbar-track {

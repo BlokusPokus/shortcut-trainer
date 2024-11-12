@@ -45,6 +45,31 @@ const ShortcutListPage: React.FC = () => {
     cursor: { name: 'Cursor', shortcuts: cursorShortcut },
   };
 
+  const formatShortcutKey = (key: string) => {
+    const parts = key.split(/(\+|,|\bthen\b)/g);
+    return parts.map((part, index) => {
+      const trimmedPart = part.trim();
+      if (
+        trimmedPart === '+' ||
+        trimmedPart === ',' ||
+        trimmedPart === 'then'
+      ) {
+        return (
+          <span key={index} className="operator">
+            {trimmedPart}
+          </span>
+        );
+      }
+      if (trimmedPart) {
+        return (
+          <span key={index} className="keycap">
+            {trimmedPart}
+          </span>
+        );
+      }
+      return null;
+    });
+  };
   const filteredShortcuts = lists[selectedList].shortcuts.filter(
     (shortcut: Shortcut) =>
       shortcut.key.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -82,8 +107,10 @@ const ShortcutListPage: React.FC = () => {
 
       <div className="shortcuts-grid">
         {filteredShortcuts.map((shortcut: Shortcut, index: number) => (
-          <div key={index} className="shortcut-card">
-            <div className="shortcut-key">{shortcut.key}</div>
+          <div className="shortcut-card">
+            <div className="shortcut-key">
+              {formatShortcutKey(shortcut.key)}
+            </div>
             <div className="shortcut-command">{shortcut.command}</div>
           </div>
         ))}

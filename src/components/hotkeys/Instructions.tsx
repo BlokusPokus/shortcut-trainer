@@ -1,7 +1,7 @@
 //#region Imports
 // React and Third-party Libraries
 import React from 'react';
-import { List, Play, Timer as TimerIcon } from 'lucide-react';
+import { List, Play, Scroll, Timer as TimerIcon } from 'lucide-react';
 // Types
 import { InstructionsProps } from '../types/types';
 // Constants
@@ -29,6 +29,9 @@ export const Instructions: React.FC<InstructionsProps> = ({
     <p>
       Press <TimerIcon /> to set the timer. current time:{' '}
       <span className="highlight-text">{getTimeLabel(initialTime)}</span>
+    </p>
+    <p>
+      Press <Scroll /> to go study the lists
     </p>
   </div>
 );
