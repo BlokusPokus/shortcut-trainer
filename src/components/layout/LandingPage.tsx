@@ -79,7 +79,7 @@ const LandingPage: React.FC = () => {
       <BrowserShortcut />
 
       <div className={`container `}>
-        <Shortcutsublist />
+        {/* <Shortcutsublist /> */}
         <div>
           <CommandPalette
             onThemeChange={handleThemeChange}

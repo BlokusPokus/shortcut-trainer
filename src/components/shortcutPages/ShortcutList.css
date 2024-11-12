@@ -1,0 +1,154 @@
+.logo-home {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    text-decoration: none;
+    color: var(--font-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.2s;
+}
+
+.logo-home:hover {
+    color: var(--hl-color);
+}
+
+.logo-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.shortcut-list-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+}
+
+.shortcut-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.list-selector {
+    display: flex;
+    gap: 20px;
+}
+
+.list-button {
+    background: none;
+    border: none;
+    color: var(--font-color);
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: all 0.2s;
+    font-size: 1.1em;
+}
+
+.list-button:hover {
+    color: var(--hl-color);
+}
+
+.list-button.selected {
+    color: var(--hl-color);
+    border-bottom: 2px solid var(--hl-color);
+}
+
+.search-bar {
+    padding: 10px 20px;
+    background: var(--fg-color);
+    border: 1px solid var(--hl-color);
+    color: var(--font-color);
+    border-radius: 5px;
+    width: 300px;
+    font-size: 1rem;
+}
+
+.shortcuts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.shortcut-card {
+    background: var(--fg-color);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 2px 2px 8px color-mix(in srgb, var(--bg-color) 85%, black),
+        -1px -1px 4px color-mix(in srgb, var(--bg-color) 90%, white);
+}
+
+.shortcut-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 15px color-mix(in srgb, var(--bg-color) 70%, black);
+}
+
+.shortcut-key {
+    font-family: 'Inconsolata', monospace;
+    color: var(--hl-color);
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.shortcut-command {
+    color: var(--font-color);
+    font-size: 1em;
+}
+
+.shortcuts-grid::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+.shortcuts-grid::-webkit-scrollbar-thumb {
+    background: var(--hl-color);
+    border-radius: 2px;
+}
+
+/* Media queries based on History.css */
+@media screen and (max-width: 1200px) {
+    .shortcuts-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .shortcuts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .shortcuts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .shortcut-header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .shortcuts-grid {
+        grid-template-columns: 1fr;
+    }
+}

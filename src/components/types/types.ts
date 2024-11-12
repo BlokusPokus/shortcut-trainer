@@ -139,6 +139,7 @@ export type UseGameEndProps = GameHistoryProps;
 // Used in: Header.tsx
 export interface HeaderProps {
   gameStarted: boolean;
+  showBackButton?: boolean;
 }
 
 // Used in: Footer.tsx
