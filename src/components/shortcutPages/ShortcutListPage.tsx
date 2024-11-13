@@ -13,7 +13,7 @@ import {
 import './ShortcutList.css';
 import Footer from '../layout/Footer';
 import { Link } from 'react-router-dom';
-import { Info, Keyboard } from 'lucide-react';
+import { Grid, Info, Keyboard, List } from 'lucide-react';
 import { CommandPalette } from '../themes/CommandPallet';
 import { usePalletContext } from '../../PalletContext';
 import { DEFAULT_THEMES } from '../constants/defaultThemes';
@@ -37,6 +37,7 @@ const ShortcutListPage = () => {
   const [selectedList, setSelectedList] = useState<keyof ListsType>('vsCode');
   const [searchTerm, setSearchTerm] = useState('');
   const { theme, setTheme } = usePalletContext();
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   const handleThemeChange = (themeId: string) => {
     const selectedTheme = DEFAULT_THEMES.find(theme => theme.id === themeId);
@@ -90,17 +91,41 @@ const ShortcutListPage = () => {
 
   return (
     <div className={theme}>
-      <div>
+      <div className="top-bar">
         <CommandPalette
           onThemeChange={handleThemeChange}
           currentTheme={theme}
         />
-      </div>
-      <div className="shortcut-list-page">
+
+        <div className="search-section">
+          <input
+            type="text"
+            className="search-bar"
+            placeholder="Search shortcuts..."
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+          />
+          <button
+            className={`view-toggle ${viewMode === 'grid' ? 'active' : ''}`}
+            onClick={() => setViewMode('grid')}
+          >
+            <Grid size={20} />
+          </button>
+          <button
+            className={`view-toggle ${viewMode === 'list' ? 'active' : ''}`}
+            onClick={() => setViewMode('list')}
+          >
+            <List size={20} />
+          </button>
+        </div>
+
         <Link to="/" className="logo-home">
           <Keyboard size={24} />
           <span className="logo-text">Trainer</span>
         </Link>
+      </div>
+
+      <div className="shortcut-list-page">
         <div className="shortcut-header">
           <div className="list-selector">
             {Object.entries(lists).map(([key, value]) => (
@@ -113,30 +138,34 @@ const ShortcutListPage = () => {
               </button>
             ))}
           </div>
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Search shortcuts..."
-            value={searchTerm}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setSearchTerm(e.target.value)
-            }
-          />
         </div>
 
-        <div className="shortcuts-grid">
-          {filteredShortcuts.map((shortcut: Shortcut, index: number) => (
-            <div className="shortcut-card" key={index}>
-              <Info className="info-icon" size={16} />
-              <div className="info-tooltip">
-                {shortcut.description || 'No additional information available'}
+        <div className={`shortcuts-container ${viewMode}`}>
+          {filteredShortcuts.map((shortcut: Shortcut, index: number) =>
+            viewMode === 'grid' ? (
+              <div className="shortcut-card" key={index}>
+                <Info className="info-icon" size={16} />
+                <div className="info-tooltip">
+                  {shortcut.description ||
+                    'No additional information available'}
+                </div>
+                <div className="shortcut-command">{shortcut.command}</div>
+                <div className="shortcut-key">
+                  {formatShortcutKey(shortcut.key)}
+                </div>
               </div>
-              <div className="shortcut-command">{shortcut.command}</div>
-              <div className="shortcut-key">
-                {formatShortcutKey(shortcut.key)}
+            ) : (
+              <div className="shortcut-list-item" key={index}>
+                <div className="shortcut-command">{shortcut.command}</div>
+                {shortcut.description && (
+                  <Info className="info-icon" size={16} />
+                )}
+                <div className="shortcut-key">
+                  {formatShortcutKey(shortcut.key)}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
         <Footer />
       </div>
