@@ -3,7 +3,7 @@ body {
     color: var(--font-color);
 }
 
-.default {
+.dark-soul {
     --bg-color: black;
     --font-color: lightslategray;
     --hl-color: rgb(210, 207, 202);
@@ -43,15 +43,20 @@ body {
 .forest {
     --bg-color: #334443;
     --font-color: #fff8df;
-    --hl-color: #50C878;  /* Changed to emerald green */
+    --hl-color: #50C878;
+    /* Changed to emerald green */
     --fg-color: #34656d;
 }
 
 .dont-try-that-one {
-    --bg-color: #ff00ff;      /* Hot pink */
-    --font-color: #00ff00;    /* Neon green */
-    --hl-color: #ffff00;      /* Bright yellow */
-    --fg-color: #00ffff;      /* Cyan */
+    --bg-color: #ff00ff;
+    /* Hot pink */
+    --font-color: #00ff00;
+    /* Neon green */
+    --hl-color: #ffff00;
+    /* Bright yellow */
+    --fg-color: #00ffff;
+    /* Cyan */
 }
 
 
@@ -76,3 +81,9 @@ body {
     --fg-color: #485e2c;
 }
 
+.boring-white {
+    --bg-color: #ffffff;
+    --font-color: #000000;
+    --hl-color: #c4bebe;
+    --fg-color: #9b9b9b;
+}

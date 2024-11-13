@@ -102,7 +102,7 @@ export const vsCodeShortchutMac = [
   { key: 'shift+meta+h', command: 'Replace in Files' },
   // { "key": "ctrl++backquote", "command": "Toggle Terminal" },
   { key: 'f9', command: 'Toggle Breakpoint' },
-  { key: 'f5', command: 'StartslashContinue Debugging' },
+  { key: 'f5', command: 'Start/Continue Debugging' },
   { key: 'f11', command: 'Step Into' },
   { key: 'shift+f11', command: 'Step Out' },
   { key: 'meta+c', command: 'Copy' },

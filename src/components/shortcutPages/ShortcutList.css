@@ -25,6 +25,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    padding-bottom: 0px;
     height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
@@ -32,15 +33,24 @@
 
 .shortcut-header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
-    padding: 0 20px;
+    gap: 10px;
+
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    background: var(--bg-color);
+    z-index: 10;
+    border-bottom: 1px solid var(--hl-color);
 }
 
 .list-selector {
     display: flex;
-    gap: 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: -20px;
 }
 
 .list-button {
@@ -63,13 +73,25 @@
 }
 
 .search-bar {
-    padding: 10px 20px;
+    width: 80%;
+    max-width: 600px;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: 2px solid var(--hl-color);
+    border-radius: 8px;
     background: var(--fg-color);
-    border: 1px solid var(--hl-color);
     color: var(--font-color);
-    border-radius: 5px;
-    width: 300px;
-    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.search-bar:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--hl-color);
+}
+
+.search-bar::placeholder {
+    color: var(--font-color);
+    opacity: 0.6;
 }
 
 .shortcuts-grid {
@@ -79,7 +101,8 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     padding: 20px;
-    margin-bottom: 60px;
+    padding-bottom: 0px;
+
 }
 
 .shortcut-card {
@@ -90,6 +113,46 @@
     flex-direction: column;
     gap: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.info-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--font-color);
+    opacity: 0.6;
+    cursor: help;
+    transition: all 0.2s;
+}
+
+.info-icon:hover {
+    color: var(--hl-color);
+    opacity: 1;
+}
+
+.info-tooltip {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: var(--fg-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--hl-color);
+    font-size: 0.8rem;
+    color: var(--font-color);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+    z-index: 10;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-icon:hover+.info-tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: -50px;
 }
 
 .shortcut-card:hover {
@@ -129,7 +192,8 @@
 
 .shortcut-command {
     color: var(--font-color);
-    font-size: 0.9rem;
+    font-weight: 600;
+    font-size: 1.2rem;
     opacity: 0.8;
 }
 

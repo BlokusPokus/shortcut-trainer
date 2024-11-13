@@ -30,8 +30,9 @@
     transform: rotateY(180deg);
 }
 
-.flip-card-front, .flip-card-back {
-    box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+.flip-card-front,
+.flip-card-back {
+    box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -46,7 +47,7 @@
     padding: 20px;
     box-sizing: border-box;
     overflow: hidden;
-    
+
 }
 
 .flip-card-front {
@@ -63,7 +64,8 @@
     transform: rotateY(180deg);
 }
 
-.action-command, .action-key {
+.action-command,
+.action-key {
     font-size: 2em;
     font-weight: 900;
     text-align: center;
@@ -83,7 +85,7 @@
 }
 
 span {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: bold;
     color: var(--hl-color);
     margin-bottom: 10px;
