@@ -26,11 +26,14 @@
   column-gap: 10px;
   row-gap: 10px;
   list-style-type: none;
-  margin: 0;
-  width: 100%;
+  margin: 0 auto;
+  /* Add auto margins horizontally */
+  width: fit-content;
+  /* Change from 100% to fit-content */
   max-width: 1200px;
+  padding: 0;
+  /* Add this to remove any default padding */
 }
-
 
 
 /* Media queries for different screen sizes */

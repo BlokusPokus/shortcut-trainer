@@ -91,34 +91,35 @@ const ShortcutListPage = () => {
 
   return (
     <div className={theme}>
-      <div className="top-bar">
-        <CommandPalette
-          onThemeChange={handleThemeChange}
-          currentTheme={theme}
-        />
-
-        <div className="search-section">
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Search shortcuts..."
-            value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
+      <div>
+        <div className="top-bar">
+          <CommandPalette
+            onThemeChange={handleThemeChange}
+            currentTheme={theme}
           />
-          <button
-            className={`view-toggle ${viewMode === 'grid' ? 'active' : ''}`}
-            onClick={() => setViewMode('grid')}
-          >
-            <Grid size={20} />
-          </button>
-          <button
-            className={`view-toggle ${viewMode === 'list' ? 'active' : ''}`}
-            onClick={() => setViewMode('list')}
-          >
-            <List size={20} />
-          </button>
-        </div>
 
+          <div className="search-section">
+            <input
+              type="text"
+              className="search-bar"
+              placeholder="Search shortcuts..."
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+            />
+            <button
+              className={`view-toggle ${viewMode === 'grid' ? 'active' : ''}`}
+              onClick={() => setViewMode('grid')}
+            >
+              <Grid size={20} />
+            </button>
+            <button
+              className={`view-toggle ${viewMode === 'list' ? 'active' : ''}`}
+              onClick={() => setViewMode('list')}
+            >
+              <List size={20} />
+            </button>
+          </div>
+        </div>
         <Link to="/" className="logo-home">
           <Keyboard size={24} />
           <span className="logo-text">Trainer</span>
