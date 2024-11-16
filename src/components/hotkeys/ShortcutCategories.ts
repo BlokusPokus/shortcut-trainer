@@ -1,0 +1,26 @@
+export const shortcutCategories = {
+  vsCode: [
+    'editor',
+    'navigation',
+    'search',
+    'debug',
+    'terminal',
+    'file',
+    'view',
+    'workbench',
+  ],
+  macOS: ['system', 'finder', 'window', 'text', 'screenshot', 'accessibility'],
+  browser: ['navigation', 'tabs', 'bookmarks', 'history', 'tools', 'page'],
+  excel: [
+    'navigation',
+    'selection',
+    'formatting',
+    'editing',
+    'formulas',
+    'data',
+  ],
+  vim: ['navigation', 'editing', 'visual', 'search', 'commands', 'macros'],
+  cursor: ['editor', 'navigation', 'selection', 'debug', 'terminal'],
+  commandLine: ['navigation', 'file', 'system', 'process', 'network'],
+  windows: ['system', 'window', 'file', 'apps', 'accessibility'],
+};

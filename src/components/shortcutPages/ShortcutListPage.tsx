@@ -18,6 +18,14 @@ import { CommandPalette } from '../themes/CommandPallet';
 import { usePalletContext } from '../../PalletContext';
 import { DEFAULT_THEMES } from '../constants/defaultThemes';
 import { formatKeyString } from '../hotkeys/keyFormatter';
+import { shortcutCategories } from '../hotkeys/ShortcutCategories';
+
+// Add these new interfaces
+interface CategoryFilterProps {
+  categories: string[];
+  selectedCategories: string[];
+  onCategoryChange: (category: string) => void;
+}
 
 interface Shortcut {
   key: string;
@@ -35,8 +43,30 @@ type ListsType = {
   [key: string]: ListInfo;
 };
 
+const CategoryFilter: React.FC<CategoryFilterProps> = ({
+  categories,
+  selectedCategories,
+  onCategoryChange,
+}) => {
+  return (
+    <div className="category-filter">
+      {categories.map(category => (
+        <label key={category} className="category-label">
+          <input
+            type="checkbox"
+            checked={selectedCategories.includes(category)}
+            onChange={() => onCategoryChange(category)}
+          />
+          {category.charAt(0).toUpperCase() + category.slice(1)}
+        </label>
+      ))}
+    </div>
+  );
+};
 const ShortcutListPage = () => {
   const [selectedList, setSelectedList] = useState<keyof ListsType>('vsCode');
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
   const [searchTerm, setSearchTerm] = useState('');
   const { theme, setTheme } = usePalletContext();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -47,6 +77,14 @@ const ShortcutListPage = () => {
       : navigator.platform.toUpperCase().indexOf('MAC') >= 0;
   });
 
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategories(prev => {
+      if (prev.includes(category)) {
+        return prev.filter(c => c !== category);
+      }
+      return [...prev, category];
+    });
+  };
   const osSpecificLists = {
     mac: ['macOS'],
     windows: ['windows'],
@@ -99,9 +137,19 @@ const ShortcutListPage = () => {
     });
   };
   const filteredShortcuts = lists[selectedList].shortcuts.filter(
-    (shortcut: Shortcut) =>
-      shortcut.key.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      shortcut.command.toLowerCase().includes(searchTerm.toLowerCase())
+    (shortcut: Shortcut) => {
+      const matchesSearch =
+        shortcut.key.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        shortcut.command.toLowerCase().includes(searchTerm.toLowerCase());
+
+      const matchesCategories =
+        selectedCategories.length === 0 ||
+        selectedCategories.some(category =>
+          shortcut.command.toLowerCase().includes(category.toLowerCase())
+        );
+
+      return matchesSearch && matchesCategories;
+    }
   );
 
   return (
@@ -183,6 +231,19 @@ const ShortcutListPage = () => {
               );
             })}
           </div>
+          {shortcutCategories[
+            selectedList as keyof typeof shortcutCategories
+          ] && (
+            <CategoryFilter
+              categories={
+                shortcutCategories[
+                  selectedList as keyof typeof shortcutCategories
+                ]
+              }
+              selectedCategories={selectedCategories}
+              onCategoryChange={handleCategoryChange}
+            />
+          )}
         </div>
 
         <div className={`shortcuts-container ${viewMode}`}>

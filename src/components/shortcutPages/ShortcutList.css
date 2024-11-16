@@ -20,6 +20,35 @@
     font-weight: bold;
 }
 
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.category-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--fg-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.category-label:hover {
+    background: color-mix(in srgb, var(--fg-color) 98%, var(--hl-color));
+}
+
+.category-label input[type="checkbox"] {
+    accent-color: var(--hl-color);
+}
+
 .shortcut-list-page {
     width: 100%;
     max-width: 1200px;
