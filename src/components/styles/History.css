@@ -155,6 +155,8 @@
   background-color: var(--hl-color);
 }
 
+
+
 /* Typography */
 .singleInputHistory .shortcut {
   font-family: 'Inconsolata', monospace;
@@ -192,6 +194,13 @@
 .history-section::-webkit-scrollbar-thumb {
   background-color: var(--hl-color);
   border-radius: 40px;
+}
+
+.footer-container {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes correctAnswer {

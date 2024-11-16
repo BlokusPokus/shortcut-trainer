@@ -9,6 +9,7 @@ import { HistoryProps } from '../types/types';
 import '../styles/History.css';
 // Hooks and Context
 import { useGameEnd } from '../hooks/useGameEnd';
+import { useOsDetection } from '../hotkeys/useOsDetection';
 //#endregion
 
 const History: React.FC<HistoryProps> = ({
@@ -17,6 +18,8 @@ const History: React.FC<HistoryProps> = ({
   gameStarted,
   setGameStarted,
 }) => {
+  const { isMac } = useOsDetection();
+
   const stats = useMemo(() => {
     const completedCount = inputHistory.filter(
       input => input.status === 'found'
@@ -49,13 +52,14 @@ const History: React.FC<HistoryProps> = ({
                   command={command}
                   status={input.status}
                   isLatest={index === 0}
+                  isMac={isMac}
                 />
               );
             })}
           </ul>
         ) : (
           <div className="empty-history">
-            <p></p>
+            <p>No history yet. Start typing shortcuts!</p>
           </div>
         )}
       </div>

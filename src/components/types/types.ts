@@ -100,6 +100,7 @@ export interface HistoryItemProps {
   command: string;
   status: InputHistoryItem['status'];
   isLatest?: boolean;
+  isMac?: boolean;
 }
 
 // Used in: TimeSelector component
